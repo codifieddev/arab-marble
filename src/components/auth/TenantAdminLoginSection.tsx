@@ -115,11 +115,14 @@ export default function TenantAdminLoginSection() {
       };
       // Step 2: Establish local cookies & storage so admin is logged in locally
       const maxAge = 60 * 60 * 24 * 30; // 30 days
-      document.cookie = `auth_token=${token}; path=/; max-age=${maxAge}; SameSite=Lax`;
-      document.cookie = `${tenantDb}_auth_token=${token}; path=/; max-age=${maxAge}; SameSite=Lax`;
-      document.cookie = `auth_token_${tenantDb}=${token}; path=/; max-age=${maxAge}; SameSite=Lax`;
+      const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+      const secFlag = isHttps ? '; Secure' : '';
+      document.cookie = `auth_token=${token}; path=/; max-age=${maxAge}; SameSite=Lax${secFlag}`;
+      document.cookie = `${tenantDb}_auth_token=${token}; path=/; max-age=${maxAge}; SameSite=Lax${secFlag}`;
+      document.cookie = `auth_token_${tenantDb}=${token}; path=/; max-age=${maxAge}; SameSite=Lax${secFlag}`;
       try {
         localStorage.setItem('token', token);
+        localStorage.setItem('auth_token', token);
         localStorage.setItem('user', JSON.stringify(user));
         dispatch(setCredentials({ user, token }));
       } catch (storageErr) {

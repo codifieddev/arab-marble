@@ -57,33 +57,37 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ slug?:
     const apiUrl = rawApiUrl;
 
     try {
-      const res = await fetch(`${apiUrl}/platform/business-blueprint`, {
-        headers: {
-          "x-tenant-db": tenantDb,
-        },
-        cache: "no-store",
-        signal: AbortSignal.timeout(10000),
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        const payload = json?.data?.payload || json?.data || json || {};
-
-        return NextResponse.json(
-          {
-            branding: {
-              logoUrl: resolveBrandLogo(payload),
-              faviconUrl: resolveBrandFavicon(payload),
-              brandName: resolveBrandName(payload),
-              payload,
-            },
-          },
-          {
-            headers: {
-              "Cache-Control": "no-store, no-cache, must-revalidate",
-            },
+      const tryUrls = [
+        `${apiUrl}/platform/business-blueprint`,
+        `${apiUrl}/api/platform/business-blueprint`,
+      ];
+      for (const testUrl of tryUrls) {
+        try {
+          const res = await fetch(testUrl, {
+            headers: { "x-tenant-db": tenantDb },
+            cache: "no-store",
+            signal: AbortSignal.timeout(10000),
+          });
+          if (res.ok) {
+            const json = await res.json();
+            const payload = json?.data?.payload || json?.data || json || {};
+            return NextResponse.json(
+              {
+                branding: {
+                  logoUrl: resolveBrandLogo(payload),
+                  faviconUrl: resolveBrandFavicon(payload),
+                  brandName: resolveBrandName(payload),
+                  payload,
+                },
+              },
+              {
+                headers: {
+                  "Cache-Control": "no-store, no-cache, must-revalidate",
+                },
+              }
+            );
           }
-        );
+        } catch {}
       }
     } catch (error: any) {
       console.warn("[api/branding/current] Error fetching fresh blueprint:", error?.message);
@@ -127,8 +131,9 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ slug?:
       const isExplicitAdmin = req.headers.get("x-auth-type") === "admin" || req.headers.get("x-admin-portal") === "true";
       targetPath = isExplicitAdmin ? "auth/login" : "auth/customer/login";
     } else if (rest === "me") {
-      const isExplicitAdmin = req.headers.get("x-auth-type") === "admin" || req.headers.get("x-admin-portal") === "true";
-      targetPath = isExplicitAdmin ? "auth/me" : "auth/customer/me";
+      // In FastAPI, auth/me handles both staff/admin and customer sessions seamlessly.
+      // Explicitly prioritize auth/me so tenant admins and staff are never misrouted to customer-only tables.
+      targetPath = "auth/me";
     } else {
       targetPath = "auth/" + rest;
     }

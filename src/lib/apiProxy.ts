@@ -118,6 +118,17 @@ export async function proxyRequest(
         redirect: "follow",
       });
     }
+
+    // If backend returns 404 or 405 (e.g. gateway/admin host where endpoints require /api prefix)
+    if ((response.status === 404 || response.status === 405) && !url.includes('/api/')) {
+      const altUrl = `${baseBackendUrl}/api/${targetPath}${searchParams ? `?${searchParams}` : ""}`;
+      try {
+        const altResponse = await fetch(altUrl, { ...fetchOptions, redirect: "follow" });
+        if (altResponse.status !== 404 && altResponse.status !== 405) {
+          response = altResponse;
+        }
+      } catch {}
+    }
     let nextResponse: NextResponse;
     const contentType = response.headers.get("content-type");
     if (contentType?.includes("application/json")) {

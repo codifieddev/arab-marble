@@ -127,12 +127,36 @@ export const registerThunk = createAsyncThunk(
 
 export const fetchMeThunk = createAsyncThunk(
   'auth/me',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const response = await fetch('/api/auth/me', { credentials: 'include' });
+      const state = getState() as any;
+      const token = state?.auth?.token || (typeof window !== 'undefined' ? (localStorage.getItem('token') || localStorage.getItem('auth_token')) : null);
+      let isStaffOrAdmin = false;
+      try {
+        const u = state?.auth?.user || (typeof window !== 'undefined' && localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null);
+        if (u && (u.role === 'tenant_admin' || u.role === 'staff' || u.role === 'admin' || u.role === 'platform_owner' || u.role === 'platform_admin' || u.is_tenant_owner)) {
+          isStaffOrAdmin = true;
+        }
+      } catch {}
+
+      const headers: Record<string, string> = {
+        'x-tenant-slug': process.env.NEXT_PUBLIC_TENANT_SLUG || 'arab-marble',
+        'x-tenant-db': process.env.NEXT_PUBLIC_TENANT_DB || 'kp_arab_marble',
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      if (isStaffOrAdmin) {
+        headers['x-auth-type'] = 'admin';
+      }
+
+      const response = await fetch('/api/auth/me', {
+        headers,
+        credentials: 'include',
+      });
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || data.message || 'Session unavailable');
-      return { user: normalizeUser(data.user || data) };
+      return { user: normalizeUser(data.user || data.session || data) };
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -348,10 +372,13 @@ const authSlice = createSlice({
     });
     builder.addCase(fetchMeThunk.rejected, (state) => {
       state.isLoading = false;
-      state.user = null;
-      state.token = null;
-      state.isAuthenticated = false;
-      clearLocalStorageAuth();
+      // Do not clear credentials on background revalidation failure if a valid unexpired token is stored
+      if (!state.token || isTokenExpired(state.token)) {
+        state.user = null;
+        state.token = null;
+        state.isAuthenticated = false;
+        clearLocalStorageAuth();
+      }
     });
     builder.addCase(logout.fulfilled, (state) => {
       state.user = null;

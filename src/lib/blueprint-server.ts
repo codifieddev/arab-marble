@@ -64,13 +64,26 @@ const apiUrl = rawApiUrl;
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
-        const res = await fetch(`${apiUrl}/platform/business-blueprint`, {
+        let res = await fetch(`${apiUrl}/platform/business-blueprint`, {
           headers: {
             'x-tenant-db': tenantDb,
           },
           signal: AbortSignal.timeout(15000),
           next: { revalidate: process.env.NODE_ENV === 'production' ? 60 : 0 },
         });
+
+        if (!res.ok && (res.status === 404 || res.status === 405)) {
+          try {
+            const altRes = await fetch(`${apiUrl}/api/platform/business-blueprint`, {
+              headers: { 'x-tenant-db': tenantDb },
+              signal: AbortSignal.timeout(15000),
+              next: { revalidate: process.env.NODE_ENV === 'production' ? 60 : 0 },
+            });
+            if (altRes.ok) {
+              res = altRes;
+            }
+          } catch {}
+        }
 
         if (res.ok) {
           const json = await res.json();
