@@ -1,0 +1,661 @@
+{
+  "id": "peekeeper-unisex",
+  "slug": "peekeeper",
+  "title": "Peekeeper",
+  "subtitle": "(Unisex Design)",
+  "price": 46.99,
+  "mainImage": "/images/products/walnut.jpg",
+  "thumbnails": [
+    "/images/products/walnut.jpg",
+    "/images/products/pink-begonia.jpg",
+    "/images/products/peri-blue.jpg",
+    "/images/products/lilac.jpg",
+    "/images/products/hot-pink.jpg",
+    "/images/products/fire-red.jpg",
+    "/images/products/denim.jpg"
+  ],
+  "description": "See below for \"SIZE GUIDE\" on how to measure your dog for the best dog diaper fit.",
+  "sizeOptions": [
+    {
+      "value": "xs",
+      "label": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+      "note": "Extra Small",
+      "stock": 45
+    },
+    {
+      "value": "sm",
+      "label": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+      "note": "Small",
+      "stock": 52
+    },
+    {
+      "value": "med",
+      "label": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+      "note": "Medium",
+      "stock": 52
+    }
+  ],
+  "colorOptions": [
+    {
+      "value": "walnut",
+      "label": "Walnut",
+      "fabric": "100% Cotton Flannel",
+      "hex": "#8B6914",
+      "image": "/images/products/walnut.jpg",
+      "stock": 25
+    },
+    {
+      "value": "pink-begonia",
+      "label": "Pink Begonia",
+      "fabric": "100% Cotton Flannel",
+      "hex": "#F0A0B8",
+      "image": "/images/products/pink-begonia.jpg",
+      "stock": 20
+    },
+    {
+      "value": "peri-blue",
+      "label": "Periwinkle Blue",
+      "fabric": "100% Cotton Flannel",
+      "hex": "#8090C8",
+      "image": "/images/products/peri-blue.jpg",
+      "stock": 18
+    },
+    {
+      "value": "lilac",
+      "label": "Lavender (Lilac)",
+      "fabric": "100% Long Staple Cotton",
+      "hex": "#C8A0D0",
+      "image": "/images/products/lilac.jpg",
+      "stock": 15
+    },
+    {
+      "value": "hot-pink",
+      "label": "Hot Pink",
+      "fabric": "100% Cotton Flannel",
+      "hex": "#FF5070",
+      "image": "/images/products/hot-pink.jpg",
+      "stock": 22
+    },
+    {
+      "value": "fire-red",
+      "label": "Fire Engine Red",
+      "fabric": "100% Cotton Flannel",
+      "hex": "#C82020",
+      "image": "/images/products/fire-red.jpg",
+      "stock": 19
+    },
+    {
+      "value": "denim",
+      "label": "Denim Blue",
+      "fabric": "100% Cotton Denim",
+      "hex": "#4878A8",
+      "image": "/images/products/denim.jpg",
+      "stock": 30
+    }
+  ],
+  "variants": [
+    {
+      "id": "xs-walnut",
+      "sku": "PK-XS-WALNUT",
+      "price": 46.99,
+      "size": "xs",
+      "color": "walnut",
+      "colorLabel": "Walnut",
+      "hex": "#8B6914",
+      "image": "/images/products/walnut.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Walnut"
+      }
+    },
+    {
+      "id": "xs-pink-begonia",
+      "sku": "PK-XS-PINK-BEGONIA",
+      "price": 46.99,
+      "size": "xs",
+      "color": "pink-begonia",
+      "colorLabel": "Pink Begonia",
+      "hex": "#F0A0B8",
+      "image": "/images/products/pink-begonia.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Pink Begonia"
+      }
+    },
+    {
+      "id": "xs-peri-blue",
+      "sku": "PK-XS-PERI-BLUE",
+      "price": 46.99,
+      "size": "xs",
+      "color": "peri-blue",
+      "colorLabel": "Periwinkle Blue",
+      "hex": "#8090C8",
+      "image": "/images/products/peri-blue.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Periwinkle Blue"
+      }
+    },
+    {
+      "id": "xs-lilac",
+      "sku": "PK-XS-LILAC",
+      "price": 46.99,
+      "size": "xs",
+      "color": "lilac",
+      "colorLabel": "Lavender (Lilac)",
+      "hex": "#C8A0D0",
+      "image": "/images/products/lilac.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Lavender (Lilac)"
+      }
+    },
+    {
+      "id": "xs-hot-pink",
+      "sku": "PK-XS-HOT-PINK",
+      "price": 46.99,
+      "size": "xs",
+      "color": "hot-pink",
+      "colorLabel": "Hot Pink",
+      "hex": "#FF5070",
+      "image": "/images/products/hot-pink.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Hot Pink"
+      }
+    },
+    {
+      "id": "xs-fire-red",
+      "sku": "PK-XS-FIRE-RED",
+      "price": 46.99,
+      "size": "xs",
+      "color": "fire-red",
+      "colorLabel": "Fire Engine Red",
+      "hex": "#C82020",
+      "image": "/images/products/fire-red.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Fire Engine Red"
+      }
+    },
+    {
+      "id": "xs-denim",
+      "sku": "PK-XS-DENIM",
+      "price": 46.99,
+      "size": "xs",
+      "color": "denim",
+      "colorLabel": "Denim Blue",
+      "hex": "#4878A8",
+      "image": "/images/products/denim.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(XS 10\") Waist 9\"-12\", Length 10\"-12\"",
+        "color": "Denim Blue"
+      }
+    },
+    {
+      "id": "sm-walnut",
+      "sku": "PK-SM-WALNUT",
+      "price": 46.99,
+      "size": "sm",
+      "color": "walnut",
+      "colorLabel": "Walnut",
+      "hex": "#8B6914",
+      "image": "/images/products/walnut.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Walnut"
+      }
+    },
+    {
+      "id": "sm-pink-begonia",
+      "sku": "PK-SM-PINK-BEGONIA",
+      "price": 46.99,
+      "size": "sm",
+      "color": "pink-begonia",
+      "colorLabel": "Pink Begonia",
+      "hex": "#F0A0B8",
+      "image": "/images/products/pink-begonia.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Pink Begonia"
+      }
+    },
+    {
+      "id": "sm-peri-blue",
+      "sku": "PK-SM-PERI-BLUE",
+      "price": 46.99,
+      "size": "sm",
+      "color": "peri-blue",
+      "colorLabel": "Periwinkle Blue",
+      "hex": "#8090C8",
+      "image": "/images/products/peri-blue.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Periwinkle Blue"
+      }
+    },
+    {
+      "id": "sm-lilac",
+      "sku": "PK-SM-LILAC",
+      "price": 46.99,
+      "size": "sm",
+      "color": "lilac",
+      "colorLabel": "Lavender (Lilac)",
+      "hex": "#C8A0D0",
+      "image": "/images/products/lilac.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Lavender (Lilac)"
+      }
+    },
+    {
+      "id": "sm-hot-pink",
+      "sku": "PK-SM-HOT-PINK",
+      "price": 46.99,
+      "size": "sm",
+      "color": "hot-pink",
+      "colorLabel": "Hot Pink",
+      "hex": "#FF5070",
+      "image": "/images/products/hot-pink.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Hot Pink"
+      }
+    },
+    {
+      "id": "sm-fire-red",
+      "sku": "PK-SM-FIRE-RED",
+      "price": 46.99,
+      "size": "sm",
+      "color": "fire-red",
+      "colorLabel": "Fire Engine Red",
+      "hex": "#C82020",
+      "image": "/images/products/fire-red.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Fire Engine Red"
+      }
+    },
+    {
+      "id": "sm-denim",
+      "sku": "PK-SM-DENIM",
+      "price": 46.99,
+      "size": "sm",
+      "color": "denim",
+      "colorLabel": "Denim Blue",
+      "hex": "#4878A8",
+      "image": "/images/products/denim.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(SM 12\") Waist 13\"-16\", Length 12\"-16\"",
+        "color": "Denim Blue"
+      }
+    },
+    {
+      "id": "med-walnut",
+      "sku": "PK-MED-WALNUT",
+      "price": 46.99,
+      "size": "med",
+      "color": "walnut",
+      "colorLabel": "Walnut",
+      "hex": "#8B6914",
+      "image": "/images/products/walnut.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Walnut"
+      }
+    },
+    {
+      "id": "med-pink-begonia",
+      "sku": "PK-MED-PINK-BEGONIA",
+      "price": 46.99,
+      "size": "med",
+      "color": "pink-begonia",
+      "colorLabel": "Pink Begonia",
+      "hex": "#F0A0B8",
+      "image": "/images/products/pink-begonia.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Pink Begonia"
+      }
+    },
+    {
+      "id": "med-peri-blue",
+      "sku": "PK-MED-PERI-BLUE",
+      "price": 46.99,
+      "size": "med",
+      "color": "peri-blue",
+      "colorLabel": "Periwinkle Blue",
+      "hex": "#8090C8",
+      "image": "/images/products/peri-blue.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Periwinkle Blue"
+      }
+    },
+    {
+      "id": "med-lilac",
+      "sku": "PK-MED-LILAC",
+      "price": 46.99,
+      "size": "med",
+      "color": "lilac",
+      "colorLabel": "Lavender (Lilac)",
+      "hex": "#C8A0D0",
+      "image": "/images/products/lilac.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Lavender (Lilac)"
+      }
+    },
+    {
+      "id": "med-hot-pink",
+      "sku": "PK-MED-HOT-PINK",
+      "price": 46.99,
+      "size": "med",
+      "color": "hot-pink",
+      "colorLabel": "Hot Pink",
+      "hex": "#FF5070",
+      "image": "/images/products/hot-pink.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Hot Pink"
+      }
+    },
+    {
+      "id": "med-fire-red",
+      "sku": "PK-MED-FIRE-RED",
+      "price": 46.99,
+      "size": "med",
+      "color": "fire-red",
+      "colorLabel": "Fire Engine Red",
+      "hex": "#C82020",
+      "image": "/images/products/fire-red.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Fire Engine Red"
+      }
+    },
+    {
+      "id": "med-denim",
+      "sku": "PK-MED-DENIM",
+      "price": 46.99,
+      "size": "med",
+      "color": "denim",
+      "colorLabel": "Denim Blue",
+      "hex": "#4878A8",
+      "image": "/images/products/denim.jpg",
+      "stock": 15,
+      "selectedOptions": {
+        "size": "(MED 14\") Waist 17\"-21\", Length 14\"-18\"",
+        "color": "Denim Blue"
+      }
+    }
+  ],
+  "inventory": 315,
+  "payPalText": "Pay in 4 interest-free payments of $14.68 with PayPal. Learn more",
+  "rating": 4.86,
+  "reviewCount": 125,
+  "starColor": "#F7B500",
+  "emptyStarColor": "#E5E7EB",
+  "reviewSummary": {
+    "average": 4.86,
+    "total": 113,
+    "distribution": [
+      {
+        "stars": 5,
+        "count": 107
+      },
+      {
+        "stars": 4,
+        "count": 2
+      },
+      {
+        "stars": 3,
+        "count": 1
+      },
+      {
+        "stars": 2,
+        "count": 0
+      },
+      {
+        "stars": 1,
+        "count": 3
+      }
+    ]
+  },
+  "netBag": {
+    "title": "Net Bag",
+    "price": 4.9,
+    "description": "Our custom mesh net bag makes washing your PeeKeeper diapers easy. Simply toss diapers in the bag and machine wash \u2014 no more hunting for lost diapers in the laundry.",
+    "image": "/images/premium-puppy-diapers/net-bag.jpg"
+  },
+  "sizeGuide": {
+    "intro": "In order to get the best fit, please follow the instructions for measuring your dog carefully. Your measurements will determine how well the PeeKeeper dog diaper will fit. The weight is provided only as a guideline.",
+    "image": "/images/premium-puppy-diapers/dog2-1_new.jpg",
+    "table": [
+      [
+        "Extra Small",
+        "9\" to 12\"",
+        "from 10\" to 12\"",
+        "no less than 5 lbs"
+      ],
+      [
+        "Small",
+        "13\" to 16\"",
+        "from 12\" to 16\"",
+        "varies"
+      ],
+      [
+        "Medium",
+        "17\" to 21\"",
+        "from 14\" to 18\"",
+        "no more than 40 lbs"
+      ]
+    ]
+  },
+  "cards": [
+    {
+      "title": "Measure with a flexible tape",
+      "text": "If you do not have a flexible tape, measure your dog with a string or shoelace and then lay the string or shoelace flat on a table and measure it. Metal tapes will not give an accurate measurement."
+    },
+    {
+      "title": "First Measure Waist",
+      "text": "Measure one inch in front of your dog's hind legs, not around the chest. The waist measurement determines the size you select. Extra-Small, Small or Medium size."
+    },
+    {
+      "title": "Second Measure Length",
+      "text": "After you determine Extra-Small, Small or Medium size select the length. Measure from the base of the neck at collar to the tail. Be sure to have dog's head held up, not down sniffing the ground."
+    }
+  ],
+  "gallery": [
+    {
+      "id": "g1",
+      "src": "/images/premium-puppy-diapers/dachshund-walnut-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Walnut",
+      "width": 720,
+      "height": 620,
+      "rowSpan": 2
+    },
+    {
+      "id": "g2",
+      "src": "/images/premium-puppy-diapers/shih-tzu-pink-begonia-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Pink Begonia",
+      "width": 720,
+      "height": 520
+    },
+    {
+      "id": "g3",
+      "src": "/images/premium-puppy-diapers/yorkie-denim-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Denim",
+      "width": 720,
+      "height": 540,
+      "rowSpan": 2
+    },
+    {
+      "id": "g4",
+      "src": "/images/premium-puppy-diapers/dachshund-fire-red-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Fire Red",
+      "width": 720,
+      "height": 480
+    },
+    {
+      "id": "g5",
+      "src": "/images/premium-puppy-diapers/pekingese-hot-pink-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Hot Pink",
+      "width": 720,
+      "height": 620,
+      "rowSpan": 2
+    },
+    {
+      "id": "g6",
+      "src": "/images/premium-puppy-diapers/dachshund-peri-blue-front.webp.png",
+      "alt": "PeeKeeper dog diaper - Peri Blue",
+      "width": 720,
+      "height": 500
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "name": "S****",
+      "date": "March 26, 2025",
+      "title": "We are back for Pandi",
+      "text": "You all have helped us and several small seniors we've rescued over the years. Now it's Pandi's time for your great product! They hold up so well, too. She's just a little bigger than our others.",
+      "stars": 5,
+      "image": "/images/premium-puppy-diapers/small-dog-indoor-review.jpg.jpeg",
+      "helpful": 0,
+      "notHelpful": 1,
+      "verified": true,
+      "withImages": true
+    },
+    {
+      "id": "r2",
+      "name": "S****** L******",
+      "date": "March 26, 2024",
+      "title": "Our Sweetie Wheatie",
+      "text": "This is truly a life changing product for both our dog and ourselves. After adopting our dog at 8 weeks old, we later learned after many issues with potty training that she had a ectopic ureter causing her to leak urine. After many procedures, she still wasn't able to fully hold her urine which made caring for her very difficult. We found PeeKeeper after searching desperately for something that would help her. She's almost 8 years old now, and she's owned MANY of these over the years. They've truly become integrated into our daily routine. Thank you for such an amazing product! We will continue to buy them and recommend them!",
+      "stars": 5,
+      "image": "/images/premium-puppy-diapers/blue-diaper-small-dog-resting-review.jpg.jpeg",
+      "helpful": 1,
+      "notHelpful": 1,
+      "verified": true,
+      "withImages": true
+    },
+    {
+      "id": "r3",
+      "name": "C******",
+      "date": "October 25, 2023",
+      "title": "Old Male Mini Daxie",
+      "text": "This is an AMAZING PRODUCT. 5 years of daily use so far. My 14 year old mini doxie has been bad in the house for years. But, I love him and that means he stays. He wears this from morning to night with about 5 pad changes a day. He cannot get out of it and it does not leak with those big granny pads. I have 2 so when one is the the wash, he wears the other. Kind of gross to admit, but he can do a poo with it on and it does not get stuck inside. Easy to pick up with a tissue and toss. Truly a great thing. He has worn it every day for at least 5 years. Well worth the money and less wear on your carpets.",
+      "stars": 5,
+      "image": "/images/premium-puppy-diapers/pink-diaper-hallway-review.jpg.jpg",
+      "helpful": 9,
+      "notHelpful": 1,
+      "verified": true,
+      "withImages": true
+    },
+    {
+      "id": "r4",
+      "name": "E***",
+      "date": "September 8, 2023",
+      "title": "",
+      "text": "The Medium 16\" PeeKeeper fits perfectly on our Winston! I've attached a picture of it on him. We inserted a long Poise pad which also fits perfectly across to each side. We couldn't be happier. Over the years I've spent a lot of money from different vendors and yours by far are the best. We can't thank you enough. God Bless You and your company for going the extra mile. With sincere gratitude",
+      "stars": 5,
+      "image": "/images/premium-puppy-diapers/pug-stairs-review.jpg.jpg",
+      "helpful": 7,
+      "notHelpful": 1,
+      "verified": true,
+      "withImages": true
+    },
+    {
+      "id": "r5",
+      "name": "M***",
+      "date": "July 27, 2023",
+      "title": "Jamlot11@yahoo.com",
+      "text": "Sadly I'm back to buy my third one Our little guy is getting old and he can't hold his pee...the pee keeper is the only dog diaper I'll ever buy.3 times My First diaper lasted five years. The Red velvet and then denim were my fav.I'm buying another one because this dog is bigger than my last.",
+      "stars": 5,
+      "helpful": 2,
+      "notHelpful": 1,
+      "verified": false
+    },
+    {
+      "id": "r6",
+      "name": "E*****",
+      "date": "April 18, 2023",
+      "title": "I LOVE your Pee Keepers!",
+      "text": "They made my life worth living because one of my other Jack Russell Terriers had CUSHINGS - and I was cleaning up pee-pee all over the place 24/7!!!! I bought 2 of them (one to wear & one in the wash) for him to wear and il having them was LIFE TRANSFORMING for the both of us! He wasn't embarrassed about his little puddles & I wasn't pissed that he went on the ORIENTAL RUG, AGAIN! Now I've rescued a female \"breeding bitch\" from a raid on a back yard breeder/puppy mill. The female I have lived 6 entire years in a cage - and we've been having to socialize and potty train her. (\"Sigh\") .. now, I'm moving from a house with easy clean marble floors to a house with all original real wood floors! So.. your Pee Keepers will once again be indispensable to me!! Thank you so much for having such a life changing product! Eloise",
+      "stars": 5,
+      "helpful": 8,
+      "notHelpful": 1,
+      "verified": true
+    },
+    {
+      "id": "r7",
+      "name": "A**** W*****",
+      "date": "April 7, 2023",
+      "title": "Happy Customer",
+      "text": "I had heard about this product from my cousin who also has a Yorkie. My precious Rex was marking everything and I had tried the wrap around diapers. He would get under things to wedge himself out of them. I even sewed a strap on it to tie it to his collar. He would still manage to get it off and run around with the diaper dangling beside him. He is one smart cookie. Lol! Thank you so much for your help and such a wonderful product. It has helped keep me less stressed watching his every move.",
+      "reply": "We are so happy to hear what a life changer the PeeKeeper has been for you and Rex. Thanks for sharing it with us. We love hearing from our customers.",
+      "stars": 5,
+      "image": "/images/premium-puppy-diapers/yorkie-blue-diaper-review.jpg.jpg",
+      "helpful": 9,
+      "notHelpful": 3,
+      "verified": true,
+      "withImages": true
+    },
+    {
+      "id": "r8",
+      "name": "J*** J* B*****",
+      "date": "March 28, 2023",
+      "title": "Sizes",
+      "text": "This looks like a great product but not big enough for my dog who has a 24\" waist. I'd buy a couple for sure if you have one size larger.",
+      "stars": 5,
+      "helpful": 5,
+      "notHelpful": 2,
+      "verified": false
+    },
+    {
+      "id": "r9",
+      "name": "L**** B",
+      "date": "March 14, 2023",
+      "title": "Perfect",
+      "text": "I just wanted to reach out and thank you for making the peekeeper. I have a 17 year old dachshund with leaking issues and have tried a lot of different products that cause him either discomfort , or did not stay on. Your product is amazing. Thank you so much",
+      "image": "/images/premium-puppy-diapers/red-diaper-senior-dachshund-review.jpg.jpg",
+      "helpful": 15,
+      "notHelpful": 3,
+      "verified": true,
+      "withImages": true,
+      "stars": 5
+    },
+    {
+      "id": "r10",
+      "name": "V*******",
+      "date": "March 9, 2023",
+      "title": "Nothing for Daniff's",
+      "text": "Why is there nothing for XXXL dogs? I have a mastiff / Great Dane. She does not fit in any size offered. How sad that she is left out of other items. But frustrated that I cannot find anything for her heat cycle.",
+      "stars": 1,
+      "helpful": 14,
+      "notHelpful": 6,
+      "verified": false
+    }
+  ]
+}

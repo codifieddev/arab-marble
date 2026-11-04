@@ -1,0 +1,707 @@
+{
+  "id": "default-peekeeper",
+  "document_key": "kp_pee_keeper_business",
+  "business_profile": {
+    "name": {
+      "en": "PeeKeeper",
+      "hi": "पीकीपर"
+    },
+    "tagline": {
+      "primary": {
+        "en": "Create. Build. Design.",
+        "hi": "एस्केप-प्रूफ डॉग डायपर"
+      },
+      "secondary": {
+        "en": "Comfort & Freedom for Your Dog"
+      }
+    },
+    "logo": "",
+    "favicon": "",
+    "description": {
+      "en": "Arab Marble was established in Abu Dhabi in 1973. Exclusive distributor of Omani Beige marble, Italian marble, and granite in Abu Dhabi & Al Ain area."
+    },
+    "foundedYear": 2009,
+    "headquarters": "Abu Dhabi, UAE",
+    "values": [
+      {
+        "title": {
+          "en": "Quality First"
+        },
+        "description": {
+          "en": "Premium cotton fabrics made in Pennsylvania, USA"
+        },
+        "icon": "shield-check"
+      },
+      {
+        "title": {
+          "en": "Pet Comfort"
+        },
+        "description": {
+          "en": "Designed for all-day wear with maximum comfort"
+        },
+        "icon": "heart"
+      },
+      {
+        "title": {
+          "en": "Innovation"
+        },
+        "description": {
+          "en": "Patented escape-proof design since 2009"
+        },
+        "icon": "lightbulb"
+      }
+    ],
+    "socialLinks": [
+      {
+        "platform": "pinterest",
+        "url": "https://pinterest.com/peekeeper"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://facebook.com/peekeeper"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://instagram.com/peekeeper"
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://tiktok.com/@peekeeper"
+      }
+    ]
+  },
+  "business_info": {
+    "legalName": "PeeKeeper LLC"
+  },
+  "business_communications": {
+    "phone": "+1 (Contact via website)",
+    "email": "info@peekeeper.com"
+  },
+  "business_contact_info": {
+    "address": {
+      "en": "Pennsylvania, USA"
+    },
+    "phone": "+1 (Contact via website)",
+    "email": "info@peekeeper.com"
+  },
+  "business_legal_regulatory": {
+    "termsUrl": "/terms",
+    "privacyUrl": "/privacy",
+    "returnsUrl": "/returns"
+  },
+  "public_theme": {
+    "colors": {
+      "primary": "#D9547A",
+      "primaryLight": "#E8899F",
+      "primaryDark": "#B83A60",
+      "primaryHover": "#C04A6E",
+      "secondary": "#5A8C54",
+      "accent": "#C4B5D4",
+      "accentHover": "#B09CC4",
+      "accentSoft": "#FDF7EF",
+      "background": "#FDF7EF",
+      "surface": "#FFFFFF",
+      "card": "#FFFFFF",
+      "text": "#3D2E2E",
+      "textSecondary": "#6B5555",
+      "textMuted": "#A49090",
+      "border": "#F5EDE0",
+      "borderHover": "#E0D8EC",
+      "success": "#5A8C54",
+      "warning": "#E8899F",
+      "error": "#D9547A",
+      "info": "#C4B5D4",
+      "overlay": "rgba(61,46,46,0.65)"
+    },
+    "typography": {
+      "bodyFont": "'Nunito', sans-serif",
+      "headingFont": "'DM Serif Display', Georgia, serif",
+      "monoFont": "'JetBrains Mono', monospace",
+      "text": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "md": "1.125rem",
+        "lg": "1.25rem",
+        "xl": "1.5rem",
+        "2xl": "1.875rem",
+        "3xl": "2.5rem",
+        "4xl": "3.5rem",
+        "5xl": "4.5rem"
+      },
+      "fw": {
+        "light": "300",
+        "normal": "400",
+        "medium": "500",
+        "semibold": "600",
+        "bold": "700",
+        "extrabold": "800"
+      },
+      "lineHeight": {
+        "tight": "1.2",
+        "normal": "1.5",
+        "relaxed": "1.75"
+      }
+    },
+    "spacing": {
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "16": "4rem",
+      "20": "5rem",
+      "24": "6rem"
+    },
+    "radius": {
+      "sm": "8px",
+      "md": "16px",
+      "lg": "28px",
+      "xl": "32px",
+      "2xl": "40px",
+      "full": "9999px"
+    },
+    "shadow": {
+      "sm": "0 2px 12px rgba(61,46,46,0.08)",
+      "md": "0 6px 28px rgba(61,46,46,0.12)",
+      "lg": "0 16px 56px rgba(61,46,46,0.16)",
+      "hover": "0 20px 64px rgba(61,46,46,0.18)"
+    },
+    "layout": {
+      "container": "1280px",
+      "navbarHeight": "72px",
+      "sectionPadding": "5rem"
+    },
+    "buttons": {
+      "height": "52px",
+      "paddingX": "1.75rem",
+      "radius": "9999px",
+      "primaryBackground": "#D9547A",
+      "primaryText": "#FFFFFF",
+      "primaryHover": "#B83A60",
+      "secondaryBackground": "#E0D8EC",
+      "secondaryText": "#6B5555",
+      "secondaryHover": "#C4B5D4",
+      "outlineBorder": "#F2B8C6",
+      "outlineText": "#D9547A",
+      "outlineHoverBg": "#D9547A",
+      "outlineHoverText": "#FFFFFF"
+    },
+    "forms": {
+      "inputHeight": "52px",
+      "inputPaddingX": "16px",
+      "inputPaddingY": "12px",
+      "inputRadius": "9999px",
+      "inputBackground": "#FFFFFF",
+      "inputText": "#3D2E2E",
+      "inputBorder": "#F5EDE0",
+      "inputBorderHover": "#D1D5DB",
+      "inputPlaceholder": "#A49090",
+      "inputFocusBorder": "#D9547A",
+      "inputFocusShadow": "0 0 0 4px rgba(217,84,122,0.15)",
+      "inputDisabledBackground": "#FDF7EF",
+      "inputDisabledText": "#A49090",
+      "textareaMinHeight": "120px"
+    },
+    "modal": {
+      "sm": "420px",
+      "md": "720px",
+      "lg": "1024px"
+    },
+    "darkMode": {
+      "background": "#1a1a2e",
+      "surface": "#16213e",
+      "card": "#1a1a2e",
+      "text": "#e2e8f0",
+      "textSecondary": "#a0aec0",
+      "textMuted": "#718096",
+      "border": "#2d3748",
+      "inputBackground": "#2d3748",
+      "inputText": "#e2e8f0",
+      "inputBorder": "#4a5568",
+      "inputPlaceholder": "#718096",
+      "inputDisabledBackground": "#1a202c"
+    }
+  },
+  "admin_theme": {
+    "colors": {
+      "primary": "#D9547A",
+      "primaryLight": "#E8899F",
+      "primaryDark": "#B83A60",
+      "primaryHover": "#C04A6E",
+      "secondary": "#5A8C54",
+      "accent": "#C4B5D4",
+      "accentHover": "#B09CC4",
+      "accentSoft": "#FDF7EF",
+      "background": "#FDF7EF",
+      "surface": "#FFFFFF",
+      "card": "#FFFFFF",
+      "text": "#3D2E2E",
+      "textSecondary": "#6B5555",
+      "textMuted": "#A49090",
+      "border": "#F5EDE0",
+      "borderHover": "#E0D8EC",
+      "success": "#5A8C54",
+      "warning": "#E8899F",
+      "error": "#D9547A",
+      "info": "#C4B5D4",
+      "overlay": "rgba(61,46,46,0.65)"
+    },
+    "typography": {
+      "bodyFont": "'Nunito', sans-serif",
+      "headingFont": "'DM Serif Display', Georgia, serif",
+      "monoFont": "'JetBrains Mono', monospace",
+      "text": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "md": "1.125rem",
+        "lg": "1.25rem",
+        "xl": "1.5rem",
+        "2xl": "1.875rem",
+        "3xl": "2.5rem",
+        "4xl": "3.5rem",
+        "5xl": "4.5rem"
+      },
+      "fw": {
+        "light": "300",
+        "normal": "400",
+        "medium": "500",
+        "semibold": "600",
+        "bold": "700",
+        "extrabold": "800"
+      },
+      "lineHeight": {
+        "tight": "1.2",
+        "normal": "1.5",
+        "relaxed": "1.75"
+      }
+    },
+    "spacing": {
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "16": "4rem",
+      "20": "5rem",
+      "24": "6rem"
+    },
+    "radius": {
+      "sm": "8px",
+      "md": "16px",
+      "lg": "28px",
+      "xl": "32px",
+      "2xl": "40px",
+      "full": "9999px"
+    },
+    "shadow": {
+      "sm": "0 2px 12px rgba(61,46,46,0.08)",
+      "md": "0 6px 28px rgba(61,46,46,0.12)",
+      "lg": "0 16px 56px rgba(61,46,46,0.16)",
+      "hover": "0 20px 64px rgba(61,46,46,0.18)"
+    },
+    "layout": {
+      "container": "1280px",
+      "navbarHeight": "72px",
+      "sectionPadding": "5rem"
+    },
+    "buttons": {
+      "height": "52px",
+      "paddingX": "1.75rem",
+      "radius": "9999px",
+      "primaryBackground": "#D9547A",
+      "primaryText": "#FFFFFF",
+      "primaryHover": "#B83A60",
+      "secondaryBackground": "#E0D8EC",
+      "secondaryText": "#6B5555",
+      "secondaryHover": "#C4B5D4",
+      "outlineBorder": "#F2B8C6",
+      "outlineText": "#D9547A",
+      "outlineHoverBg": "#D9547A",
+      "outlineHoverText": "#FFFFFF"
+    },
+    "forms": {
+      "inputHeight": "52px",
+      "inputPaddingX": "16px",
+      "inputPaddingY": "12px",
+      "inputRadius": "9999px",
+      "inputBackground": "#FFFFFF",
+      "inputText": "#3D2E2E",
+      "inputBorder": "#F5EDE0",
+      "inputBorderHover": "#D1D5DB",
+      "inputPlaceholder": "#A49090",
+      "inputFocusBorder": "#D9547A",
+      "inputFocusShadow": "0 0 0 4px rgba(217,84,122,0.15)",
+      "inputDisabledBackground": "#FDF7EF",
+      "inputDisabledText": "#A49090",
+      "textareaMinHeight": "120px"
+    },
+    "modal": {
+      "sm": "420px",
+      "md": "720px",
+      "lg": "1024px"
+    },
+    "darkMode": {
+      "background": "#1a1a2e",
+      "surface": "#16213e",
+      "card": "#1a1a2e",
+      "text": "#e2e8f0",
+      "textSecondary": "#a0aec0",
+      "textMuted": "#718096",
+      "border": "#2d3748",
+      "inputBackground": "#2d3748",
+      "inputText": "#e2e8f0",
+      "inputBorder": "#4a5568",
+      "inputPlaceholder": "#718096",
+      "inputDisabledBackground": "#1a202c"
+    }
+  },
+  "public_navigation": {
+    "public": [
+      {
+        "label": {
+          "en": "Home"
+        },
+        "href": "/"
+      },
+      {
+        "label": {
+          "en": "Shop"
+        },
+        "href": "/shop"
+      },
+      {
+        "label": {
+          "en": "About"
+        },
+        "href": "/about",
+        "megaColumns": [
+          {
+            "title": "Our Story",
+            "items": [
+              {
+                "label": {
+                  "en": "About PeeKeeper"
+                },
+                "href": "/about"
+              },
+              {
+                "label": {
+                  "en": "Made in USA"
+                },
+                "href": "/about"
+              },
+              {
+                "label": {
+                  "en": "Our Patent"
+                },
+                "href": "/about"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "items": [
+              {
+                "label": {
+                  "en": "How to Measure"
+                },
+                "href": "/faq"
+              },
+              {
+                "label": {
+                  "en": "Customer Reviews"
+                },
+                "href": "/customer-reviews"
+              },
+              {
+                "label": {
+                  "en": "FAQs"
+                },
+                "href": "/faq"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": {
+          "en": "Size Guide"
+        },
+        "href": "/dog-diaper-size-guide"
+      },
+      {
+        "label": {
+          "en": "Contact"
+        },
+        "href": "/contact"
+      }
+    ]
+  },
+  "admin_navigation": {
+    "public": [
+      {
+        "label": {
+          "en": "Dashboard"
+        },
+        "href": "/admin"
+      },
+      {
+        "label": {
+          "en": "Pages"
+        },
+        "href": "/admin/pages"
+      },
+      {
+        "label": {
+          "en": "Products"
+        },
+        "href": "/admin/products"
+      },
+      {
+        "label": {
+          "en": "Orders"
+        },
+        "href": "/admin/orders"
+      },
+      {
+        "label": {
+          "en": "Settings"
+        },
+        "href": "/admin/settings"
+      }
+    ]
+  },
+  "routes": {
+    "public": [
+      {
+        "path": "/",
+        "component": "home",
+        "isProtected": false
+      },
+      {
+        "path": "/shop",
+        "component": "shop",
+        "isProtected": false
+      },
+      {
+        "path": "/about",
+        "component": "about",
+        "isProtected": false
+      },
+      {
+        "path": "/contact",
+        "component": "contact",
+        "isProtected": false
+      },
+      {
+        "path": "/faq",
+        "component": "faq",
+        "isProtected": false
+      },
+      {
+        "path": "/cart",
+        "component": "cart",
+        "isProtected": false
+      },
+      {
+        "path": "/checkout",
+        "component": "checkout",
+        "isProtected": false
+      },
+      {
+        "path": "/account",
+        "component": "account",
+        "isProtected": true
+      },
+      {
+        "path": "/account/orders",
+        "component": "orders",
+        "isProtected": true
+      },
+      {
+        "path": "/account/profile",
+        "component": "profile",
+        "isProtected": true
+      },
+      {
+        "path": "/wishlist",
+        "component": "wishlist",
+        "isProtected": false
+      },
+      {
+        "path": "/search",
+        "component": "search",
+        "isProtected": false
+      },
+      {
+        "path": "/terms",
+        "component": "terms",
+        "isProtected": false
+      },
+      {
+        "path": "/privacy",
+        "component": "privacy",
+        "isProtected": false
+      },
+      {
+        "path": "/returns",
+        "component": "returns",
+        "isProtected": false
+      }
+    ],
+    "protected": [],
+    "admin": [
+      {
+        "path": "/admin",
+        "component": "admin-dashboard",
+        "isProtected": true
+      }
+    ]
+  },
+  "commerce": {
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "freeShippingThreshold": 4999,
+    "taxRate": 18,
+    "shippingCost": 599,
+    "enabledPaymentMethods": [
+      "stripe",
+      "razorpay",
+      "cod"
+    ],
+    "enabledShippingMethods": [
+      {
+        "id": "standard",
+        "name": {
+          "en": "Standard Shipping"
+        },
+        "cost": 599
+      },
+      {
+        "id": "express",
+        "name": {
+          "en": "Express Shipping"
+        },
+        "cost": 1299,
+        "minOrderValue": 0
+      }
+    ]
+  },
+  "localization": {
+    "activeLanguages": [
+      "en",
+      "hi"
+    ],
+    "defaultLanguage": "en",
+    "activeCurrencies": [
+      {
+        "code": "USD",
+        "symbol": "$"
+      },
+      {
+        "code": "INR",
+        "symbol": "₹"
+      }
+    ],
+    "defaultCurrency": "USD"
+  },
+  "media_configuration": {
+    "maxFileSize": 5242880,
+    "allowedImageTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ],
+    "imageQuality": 80
+  },
+  "dashboard_widgets": [
+    {
+      "id": "revenue",
+      "type": "metric",
+      "title": {
+        "en": "Revenue"
+      },
+      "config": {}
+    },
+    {
+      "id": "orders",
+      "type": "metric",
+      "title": {
+        "en": "Orders"
+      },
+      "config": {}
+    },
+    {
+      "id": "visitors",
+      "type": "metric",
+      "title": {
+        "en": "Visitors"
+      },
+      "config": {}
+    }
+  ],
+  "vocabulary": {
+    "shop_now": {
+      "en": "Shop Now",
+      "hi": "अभी खरीदें"
+    },
+    "add_to_cart": {
+      "en": "Add to Cart",
+      "hi": "कार्ट में जोड़ें"
+    },
+    "view_cart": {
+      "en": "View Cart",
+      "hi": "कार्ट देखें"
+    },
+    "checkout": {
+      "en": "Checkout",
+      "hi": "चेकआउट"
+    },
+    "wishlist": {
+      "en": "Wishlist",
+      "hi": "इच्छा-सूची"
+    },
+    "search": {
+      "en": "Search",
+      "hi": "खोजें"
+    },
+    "account": {
+      "en": "My Account",
+      "hi": "मेरा खाता"
+    },
+    "logout": {
+      "en": "Logout",
+      "hi": "लॉग आउट"
+    },
+    "login": {
+      "en": "Login",
+      "hi": "लॉग इन"
+    },
+    "register": {
+      "en": "Register",
+      "hi": "पंजीकरण"
+    }
+  },
+  "templates": [],
+  "tone_tags": [],
+  "primary_goals": [],
+  "enabled_modules": {
+    "ecommerce": true,
+    "blog": false,
+    "portfolio": false,
+    "team": false,
+    "careers": false
+  },
+  "created_at": "2025-01-01T00:00:00Z",
+  "updated_at": "2025-01-01T00:00:00Z"
+}

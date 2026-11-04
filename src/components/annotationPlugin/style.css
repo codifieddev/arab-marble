@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@layer base {
+  .annotator-calibration-mode [data-annotate-id] {
+    outline: 2px dashed #6366f1 !important;
+    outline-offset: 2px !important;
+    position: relative;
+  }
+}

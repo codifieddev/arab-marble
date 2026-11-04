@@ -1,0 +1,284 @@
+{
+  "title": {
+    "en": "Home"
+  },
+  "slug": "home",
+  "metaTitle": {
+    "en": "Arab Marble | Create. Build. Design."
+  },
+  "metaDescription": {
+    "en": "Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite since 1973."
+  },
+  "isPublished": true,
+  "status": "published",
+  "content": [
+    {
+      "id": "hero-home",
+      "type": "hero",
+      "props": {
+        "heading": {
+          "en": "Create.\nBuild.\nDesign."
+        },
+        "subheading": {
+          "en": ""
+        },
+        "backgroundImage": "/images/home-hero.jpg",
+        "cta": {
+          "label": {
+            "en": ""
+          },
+          "href": "/shop"
+        }
+      }
+    },
+    {
+      "id": "who-we-are",
+      "type": "about-story",
+      "props": {
+        "tag": {
+          "en": ""
+        },
+        "heading": {
+          "en": "Who We are"
+        },
+        "paragraphs": [
+          "Arab Marble was established in Abu Dhabi in 1973.\nEver since its inception, Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite. Arab Marble engages in the wholesale and retail distribution and fixing of marble and granite for special decorative works, palaces, hotels, villas and high-rise prestigious and commercial buildings. Our supplier's network encompasses more than 350 stone processing factories worldwide.",
+          "We are an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain area."
+        ],
+        "image": "/images/who-we-are.jpg",
+        "imageAlt": {
+          "en": "Arab Marble Stonework Sculpture"
+        }
+      }
+    },
+    {
+      "id": "statement-section",
+      "type": "statement",
+      "props": {
+        "text": "Arab Marble has completed and executed works in Abu Dhabi, Dubai, Sharjah, Al Ain, Ajman, Kuwait, Bahrain and Qatar."
+      }
+    },
+    {
+      "id": "home-tiles-section",
+      "type": "home-tiles",
+      "props": {
+        "leftLabel": "PRODUCTS",
+        "leftHref": "/shop",
+        "leftImage": "/images/products-tile.jpg",
+        "rightLabel": "PROJECTS",
+        "rightHref": "/projects/latest",
+        "rightImage": "/images/projects-tile.jpg"
+      }
+    },
+    {
+      "id": "home-testimonials",
+      "type": "testimonials",
+      "isReferenced": true,
+      "references": {
+        "testimonialIds": [
+          "6aeac100ce653d9e935b2a6c",
+          "6aeac100ce653d9e935b2a6d",
+          "6aeac100ce653d9e935b2a6e",
+          "6aeac100ce653d9e935b2a6f"
+        ]
+      },
+      "props": {
+        "tag": "CLIENT TESTIMONIALS",
+        "heading": "WHAT OUR CLIENTS SAY",
+        "subheading": "Trusted by leading architects, interior designers, and luxury developers across the UAE since 1973.",
+        "showCta": false,
+        "testimonialIds": [
+          "6aeac100ce653d9e935b2a6c",
+          "6aeac100ce653d9e935b2a6d",
+          "6aeac100ce653d9e935b2a6e",
+          "6aeac100ce653d9e935b2a6f"
+        ],
+        "items": [
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6c",
+            "id": "6aeac100ce653d9e935b2a6c",
+            "name": "Eng. Tariq Al Hashimi",
+            "author": "Eng. Tariq Al Hashimi",
+            "role": "Managing Director, Al Hashimi Architecture & Engineering",
+            "quote": "Arab Marble supplied and installed over 4,500 sqm of book-matched Calacatta Oro and Crema Marfil for our luxury villa project in Emirates Hills. The precision waterjet cutting and seamless vein matching were world-class.",
+            "text": "Arab Marble supplied and installed over 4,500 sqm of book-matched Calacatta Oro and Crema Marfil for our luxury villa project in Emirates Hills. The precision waterjet cutting and seamless vein matching were world-class.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6d",
+            "id": "6aeac100ce653d9e935b2a6d",
+            "name": "Elena Rostova",
+            "author": "Elena Rostova",
+            "role": "Head of Interior Design, Studio Luxe Abu Dhabi",
+            "quote": "Finding consistent, high-grade Omani Beige slabs for large-scale hotel lobbies used to be our biggest challenge until we partnered with Arab Marble. Their direct quarry access and on-time delivery set the gold standard in the UAE.",
+            "text": "Finding consistent, high-grade Omani Beige slabs for large-scale hotel lobbies used to be our biggest challenge until we partnered with Arab Marble. Their direct quarry access and on-time delivery set the gold standard in the UAE.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6e",
+            "id": "6aeac100ce653d9e935b2a6e",
+            "name": "Rashid Bin Butti Al Qubaisi",
+            "author": "Rashid Bin Butti Al Qubaisi",
+            "role": "Project Director, Al Qubaisi Developments",
+            "quote": "Having collaborated with Arab Marble across several commercial towers in Mussafah and Abu Dhabi Downtown, their craftsmanship, stone calibration, and dry-lay fixing capabilities are simply unmatched.",
+            "text": "Having collaborated with Arab Marble across several commercial towers in Mussafah and Abu Dhabi Downtown, their craftsmanship, stone calibration, and dry-lay fixing capabilities are simply unmatched.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6f",
+            "id": "6aeac100ce653d9e935b2a6f",
+            "name": "Marcus Vance",
+            "author": "Marcus Vance",
+            "role": "Principal Architect, Vance & Associates International",
+            "quote": "From selecting rare Dark Emperador and Statuario blocks at their Abu Dhabi yard to final polish and on-site fixing, the technical expertise of Arab Marble ensured absolute perfection on our landmark project.",
+            "text": "From selecting rare Dark Emperador and Statuario blocks at their Abu Dhabi yard to final polish and on-site fixing, the technical expertise of Arab Marble ensured absolute perfection on our landmark project.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          }
+        ]
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "hero-home",
+      "type": "hero",
+      "props": {
+        "heading": {
+          "en": "Create.\nBuild.\nDesign."
+        },
+        "subheading": {
+          "en": ""
+        },
+        "backgroundImage": "/images/home-hero.jpg",
+        "cta": {
+          "label": {
+            "en": ""
+          },
+          "href": "/shop"
+        }
+      }
+    },
+    {
+      "id": "who-we-are",
+      "type": "about-story",
+      "props": {
+        "tag": {
+          "en": ""
+        },
+        "heading": {
+          "en": "Who We are"
+        },
+        "paragraphs": [
+          "Arab Marble was established in Abu Dhabi in 1973.\nEver since its inception, Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite. Arab Marble engages in the wholesale and retail distribution and fixing of marble and granite for special decorative works, palaces, hotels, villas and high-rise prestigious and commercial buildings. Our supplier's network encompasses more than 350 stone processing factories worldwide.",
+          "We are an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain area."
+        ],
+        "image": "/images/who-we-are.jpg",
+        "imageAlt": {
+          "en": "Arab Marble Stonework Sculpture"
+        }
+      }
+    },
+    {
+      "id": "statement-section",
+      "type": "statement",
+      "props": {
+        "text": "Arab Marble has completed and executed works in Abu Dhabi, Dubai, Sharjah, Al Ain, Ajman, Kuwait, Bahrain and Qatar."
+      }
+    },
+    {
+      "id": "home-tiles-section",
+      "type": "home-tiles",
+      "props": {
+        "leftLabel": "PRODUCTS",
+        "leftHref": "/shop",
+        "leftImage": "/images/products-tile.jpg",
+        "rightLabel": "PROJECTS",
+        "rightHref": "/projects/latest",
+        "rightImage": "/images/projects-tile.jpg"
+      }
+    },
+    {
+      "id": "home-testimonials",
+      "type": "testimonials",
+      "isReferenced": true,
+      "references": {
+        "testimonialIds": [
+          "6aeac100ce653d9e935b2a6c",
+          "6aeac100ce653d9e935b2a6d",
+          "6aeac100ce653d9e935b2a6e",
+          "6aeac100ce653d9e935b2a6f"
+        ]
+      },
+      "props": {
+        "tag": "CLIENT TESTIMONIALS",
+        "heading": "WHAT OUR CLIENTS SAY",
+        "subheading": "Trusted by leading architects, interior designers, and luxury developers across the UAE since 1973.",
+        "showCta": false,
+        "testimonialIds": [
+          "6aeac100ce653d9e935b2a6c",
+          "6aeac100ce653d9e935b2a6d",
+          "6aeac100ce653d9e935b2a6e",
+          "6aeac100ce653d9e935b2a6f"
+        ],
+        "items": [
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6c",
+            "id": "6aeac100ce653d9e935b2a6c",
+            "name": "Eng. Tariq Al Hashimi",
+            "author": "Eng. Tariq Al Hashimi",
+            "role": "Managing Director, Al Hashimi Architecture & Engineering",
+            "quote": "Arab Marble supplied and installed over 4,500 sqm of book-matched Calacatta Oro and Crema Marfil for our luxury villa project in Emirates Hills. The precision waterjet cutting and seamless vein matching were world-class.",
+            "text": "Arab Marble supplied and installed over 4,500 sqm of book-matched Calacatta Oro and Crema Marfil for our luxury villa project in Emirates Hills. The precision waterjet cutting and seamless vein matching were world-class.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6d",
+            "id": "6aeac100ce653d9e935b2a6d",
+            "name": "Elena Rostova",
+            "author": "Elena Rostova",
+            "role": "Head of Interior Design, Studio Luxe Abu Dhabi",
+            "quote": "Finding consistent, high-grade Omani Beige slabs for large-scale hotel lobbies used to be our biggest challenge until we partnered with Arab Marble. Their direct quarry access and on-time delivery set the gold standard in the UAE.",
+            "text": "Finding consistent, high-grade Omani Beige slabs for large-scale hotel lobbies used to be our biggest challenge until we partnered with Arab Marble. Their direct quarry access and on-time delivery set the gold standard in the UAE.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6e",
+            "id": "6aeac100ce653d9e935b2a6e",
+            "name": "Rashid Bin Butti Al Qubaisi",
+            "author": "Rashid Bin Butti Al Qubaisi",
+            "role": "Project Director, Al Qubaisi Developments",
+            "quote": "Having collaborated with Arab Marble across several commercial towers in Mussafah and Abu Dhabi Downtown, their craftsmanship, stone calibration, and dry-lay fixing capabilities are simply unmatched.",
+            "text": "Having collaborated with Arab Marble across several commercial towers in Mussafah and Abu Dhabi Downtown, their craftsmanship, stone calibration, and dry-lay fixing capabilities are simply unmatched.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          },
+          {
+            "testimonialId": "6aeac100ce653d9e935b2a6f",
+            "id": "6aeac100ce653d9e935b2a6f",
+            "name": "Marcus Vance",
+            "author": "Marcus Vance",
+            "role": "Principal Architect, Vance & Associates International",
+            "quote": "From selecting rare Dark Emperador and Statuario blocks at their Abu Dhabi yard to final polish and on-site fixing, the technical expertise of Arab Marble ensured absolute perfection on our landmark project.",
+            "text": "From selecting rare Dark Emperador and Statuario blocks at their Abu Dhabi yard to final polish and on-site fixing, the technical expertise of Arab Marble ensured absolute perfection on our landmark project.",
+            "rating": 5,
+            "verified": true,
+            "avatar": ""
+          }
+        ]
+      }
+    }
+  ]
+}

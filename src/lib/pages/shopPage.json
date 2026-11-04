@@ -1,0 +1,46 @@
+{
+  "title": {
+    "en": "Products"
+  },
+  "slug": "shop",
+  "metaTitle": {
+    "en": "Products | Arab Marble"
+  },
+  "metaDescription": {
+    "en": "Explore our full catalog of premium marble, granite, natural stones and artificial stones in Abu Dhabi, UAE."
+  },
+  "isPublished": true,
+  "status": "published",
+  "content": [
+    {
+      "id": "shop-main",
+      "type": "product-grid",
+      "layout": "full",
+      "adminTitle": "Shop Product Grid",
+      "props": {
+        "heading": {
+          "en": "Our Stone Products"
+        },
+        "subheading": {
+          "en": "Explore our complete collection of marble, granite, and natural stones."
+        }
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "shop-main",
+      "type": "product-grid",
+      "layout": "full",
+      "adminTitle": "Shop Product Grid",
+      "props": {
+        "heading": {
+          "en": "Our Stone Products"
+        },
+        "subheading": {
+          "en": "Explore our complete collection of marble, granite, and natural stones."
+        }
+      }
+    }
+  ]
+}

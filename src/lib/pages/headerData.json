@@ -1,0 +1,91 @@
+{
+  "logo": {
+    "text": {
+      "en": "Arab Marble",
+      "ar": "العربي للرخام"
+    },
+    "tagline": {
+      "en": "Natural Stones & Marble",
+      "ar": "رخام وأحجار طبيعية"
+    },
+    "imageUrl": "/images/arab-marble-logo.svg"
+  },
+  "navigation": [
+    {
+      "label": {
+        "en": "HOME"
+      },
+      "href": "/"
+    },
+    {
+      "label": {
+        "en": "PRODUCTS"
+      },
+      "href": "/shop",
+      "children": [
+        {
+          "label": {
+            "en": "Marble"
+          },
+          "href": "/category/marble"
+        },
+        {
+          "label": {
+            "en": "Granite"
+          },
+          "href": "/category/granite"
+        },
+        {
+          "label": {
+            "en": "Natural Stones"
+          },
+          "href": "/category/natural-stones"
+        },
+        {
+          "label": {
+            "en": "Artificial Stones"
+          },
+          "href": "/category/artificial-stones"
+        }
+      ]
+    },
+    {
+      "label": {
+        "en": "PROJECTS"
+      },
+      "href": "/projects/latest",
+      "children": [
+        {
+          "label": {
+            "en": "Iconic"
+          },
+          "href": "/projects/iconic"
+        },
+        {
+          "label": {
+            "en": "Latest Projects"
+          },
+          "href": "/projects/latest"
+        },
+        {
+          "label": {
+            "en": "Custom Projects"
+          },
+          "href": "/projects/custom"
+        }
+      ]
+    },
+    {
+      "label": {
+        "en": "PROMOTIONS"
+      },
+      "href": "/promotions"
+    },
+    {
+      "label": {
+        "en": "CONTACT US"
+      },
+      "href": "/contact"
+    }
+  ]
+}

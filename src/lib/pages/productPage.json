@@ -1,0 +1,35 @@
+{
+  "title": {
+    "en": "Product Details"
+  },
+  "slug": "product",
+  "route": "/shop/:slug",
+  "route_path": "/shop/:slug",
+  "type": "product-template",
+  "status": "published",
+  "isPublished": true,
+  "metaTitle": {
+    "en": "Product Details | Arab Marble"
+  },
+  "metaDescription": {
+    "en": "Material specifications, color, country of origin, and stone finishes."
+  },
+  "content": [
+    {
+      "id": "product-main-001",
+      "type": "product-section",
+      "layout": "full-width",
+      "adminTitle": "Stone Product Specifications",
+      "props": {
+        "breadcrumbs": {
+          "home": {
+            "en": "Home"
+          },
+          "shop": {
+            "en": "Products"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "slug": "promotions",
+  "title": {
+    "en": "Promotions"
+  },
+  "metaTitle": {
+    "en": "Promotions | Arab Marble"
+  },
+  "metaDescription": {
+    "en": "Exclusive offers on premium marble, granite and natural stones in Abu Dhabi, UAE."
+  },
+  "isPublished": true,
+  "status": "published",
+  "content": [
+    {
+      "id": "promotions-hero",
+      "type": "hero",
+      "props": {
+        "title": "PROMOTIONS",
+        "heading": "PROMOTIONS",
+        "align": "center",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    },
+    {
+      "id": "promotions-grid",
+      "type": "promotions",
+      "props": {
+        "items": [
+          {
+            "productId": "6ae848555cd44cc45b374c5e",
+            "productSlug": "light-emperador",
+            "title": "Light Emperador – Spain",
+            "price": "AED 175/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-light-emperador.jpg"
+          },
+          {
+            "productId": "6ae8484e5cd44cc45b374c5c",
+            "productSlug": "crema-marfil",
+            "title": "Crema Marfil",
+            "price": "AED 100/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-crema-marfil.jpg"
+          },
+          {
+            "productId": "6ae8486d5cd44cc45b374c65",
+            "productSlug": "cats-eye",
+            "title": "Cat’s Eye",
+            "price": "AED 60/m2",
+            "size": "600x300x20mm",
+            "image": "/images/products/promo-cats-eye.jpg"
+          },
+          {
+            "productId": "6ae848715cd44cc45b374c66",
+            "productSlug": "aegean-cream",
+            "title": "Aegean Cream",
+            "price": "AED 60/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-aegean-cream.jpg"
+          },
+          {
+            "productId": "6ae848745cd44cc45b374c67",
+            "productSlug": "black-opal-quartz",
+            "title": "Black Opal Quartz",
+            "price": "AED 60/m2",
+            "size": "Slabs & Cut to size",
+            "image": "/images/products/promo-black-opal.jpg"
+          },
+          {
+            "productId": "6ae848605cd44cc45b374c61",
+            "productSlug": "calacatta-oro",
+            "title": "Calacatta Oro",
+            "price": "AED 150-250/m2",
+            "size": "Slabs & Custom Tiles",
+            "image": "/images/products/promo-calacatta-oro.jpg"
+          }
+        ]
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "promotions-hero",
+      "type": "hero",
+      "props": {
+        "title": "PROMOTIONS",
+        "heading": "PROMOTIONS",
+        "align": "center",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    },
+    {
+      "id": "promotions-grid",
+      "type": "promotions",
+      "props": {
+        "items": [
+          {
+            "productId": "6ae848555cd44cc45b374c5e",
+            "productSlug": "light-emperador",
+            "title": "Light Emperador – Spain",
+            "price": "AED 175/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-light-emperador.jpg"
+          },
+          {
+            "productId": "6ae8484e5cd44cc45b374c5c",
+            "productSlug": "crema-marfil",
+            "title": "Crema Marfil",
+            "price": "AED 100/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-crema-marfil.jpg"
+          },
+          {
+            "productId": "6ae8486d5cd44cc45b374c65",
+            "productSlug": "cats-eye",
+            "title": "Cat’s Eye",
+            "price": "AED 60/m2",
+            "size": "600x300x20mm",
+            "image": "/images/products/promo-cats-eye.jpg"
+          },
+          {
+            "productId": "6ae848715cd44cc45b374c66",
+            "productSlug": "aegean-cream",
+            "title": "Aegean Cream",
+            "price": "AED 60/m2",
+            "size": "600x600x20mm",
+            "image": "/images/products/promo-aegean-cream.jpg"
+          },
+          {
+            "productId": "6ae848745cd44cc45b374c67",
+            "productSlug": "black-opal-quartz",
+            "title": "Black Opal Quartz",
+            "price": "AED 60/m2",
+            "size": "Slabs & Cut to size",
+            "image": "/images/products/promo-black-opal.jpg"
+          },
+          {
+            "productId": "6ae848605cd44cc45b374c61",
+            "productSlug": "calacatta-oro",
+            "title": "Calacatta Oro",
+            "price": "AED 150-250/m2",
+            "size": "Slabs & Custom Tiles",
+            "image": "/images/products/promo-calacatta-oro.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "contact",
+  "title": {
+    "en": "Contact Us"
+  },
+  "metaTitle": {
+    "en": "Contact Us | Arab Marble"
+  },
+  "metaDescription": {
+    "en": "Contact Arab Marble in Musaffah Abu Dhabi UAE for premium marble, granite supply and installation."
+  },
+  "isPublished": true,
+  "status": "published",
+  "content": [
+    {
+      "id": "contact-hero",
+      "type": "hero",
+      "props": {
+        "heading": "CONTACT US",
+        "align": "center",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    },
+    {
+      "id": "contact-form-block",
+      "type": "contact-form",
+      "references": {
+        "formId": "6ae9791d21b18b0fa642e1dc",
+        "formSlug": "contact-inquiry-form"
+      },
+      "props": {
+        "contactHeading": "Contact Us",
+        "formHeading": "Email Us",
+        "mapImage": "/images/contact-map.jpg",
+        "phone": "+971 2 555 4008",
+        "phoneHeading": "Phone",
+        "fax": "+971 2 555 4005",
+        "faxHeading": "FAX",
+        "email": "am@arabmarble.ae",
+        "emailHeading": "Email",
+        "address": "Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835",
+        "addressHeading": "Address",
+        "formId": "6ae9791d21b18b0fa642e1dc",
+        "formSlug": "contact-inquiry-form",
+        "submitButtonText": "SEND MESSAGE"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "contact-hero",
+      "type": "hero",
+      "props": {
+        "heading": "CONTACT US",
+        "align": "center",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    },
+    {
+      "id": "contact-form-block",
+      "type": "contact-form",
+      "references": {
+        "formId": "6ae9791d21b18b0fa642e1dc",
+        "formSlug": "contact-inquiry-form"
+      },
+      "props": {
+        "contactHeading": "Contact Us",
+        "formHeading": "Email Us",
+        "mapImage": "/images/contact-map.jpg",
+        "phone": "+971 2 555 4008",
+        "phoneHeading": "Phone",
+        "fax": "+971 2 555 4005",
+        "faxHeading": "FAX",
+        "email": "am@arabmarble.ae",
+        "emailHeading": "Email",
+        "address": "Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835",
+        "addressHeading": "Address",
+        "formId": "6ae9791d21b18b0fa642e1dc",
+        "formSlug": "contact-inquiry-form",
+        "submitButtonText": "SEND MESSAGE"
+      }
+    }
+  ]
+}

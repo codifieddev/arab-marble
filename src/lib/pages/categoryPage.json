@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Categories"
+  },
+  "slug": "category",
+  "metaTitle": {
+    "en": "Stone Categories | Arab Marble"
+  },
+  "metaDescription": {
+    "en": "Browse our marble, granite, natural stone and artificial stone collections."
+  },
+  "isPublished": true,
+  "status": "published",
+  "content": [
+    {
+      "id": "category-hero",
+      "type": "hero",
+      "props": {
+        "heading": "STONE COLLECTION",
+        "subheading": "Marble, Granite, Natural Stones and Engineered Quartz in Abu Dhabi.",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "category-hero",
+      "type": "hero",
+      "props": {
+        "heading": "STONE COLLECTION",
+        "subheading": "Marble, Granite, Natural Stones and Engineered Quartz in Abu Dhabi.",
+        "backgroundImage": "/images/page-banner.jpg"
+      }
+    }
+  ]
+}

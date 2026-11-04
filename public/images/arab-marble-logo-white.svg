@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="280" height="60">
+  <g fill="#FFFFFF">
+    <!-- Stylized Chevron Peaks Motif -->
+    <path d="M12 44 L28 14 L42 38 L34 38 L28 26 L19 44 Z" />
+    <path d="M36 44 L50 18 L64 44 L55 44 L50 32 L44 44 Z" />
+    <path d="M26 44 L36 28 L46 44 Z" />
+    <!-- Arabic Text: العربي للرخام -->
+    <text x="76" y="26" font-family="'Segoe UI', 'Tajawal', sans-serif" font-weight="700" font-size="16" letter-spacing="0.5">العربي للرخام</text>
+    <!-- English Text: Arab Marble -->
+    <text x="76" y="44" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="15" letter-spacing="0.8">Arab Marble</text>
+  </g>
+</svg>
+

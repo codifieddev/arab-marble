@@ -1,0 +1,103 @@
+{
+  "name": "Arab Marble Main Footer",
+  "status": true,
+  "tenant_slug": "arab-marble",
+  "document_key": "footer.default",
+  "brand": {
+    "name": {
+      "en": "Arab Marble"
+    },
+    "description": {
+      "en": "Arab Marble was established in Abu Dhabi in 1973. Exclusive distributor of Omani Beige marble, Italian marble, and natural stone solutions across the UAE."
+    }
+  },
+  "logo": {
+    "imageUrl": "/images/arab-marble-logo-white.svg",
+    "alt": "Arab Marble"
+  },
+  "socialLinks": [
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com"
+    }
+  ],
+  "quickLinksColumns": [
+    {
+      "title": { "en": "Products" },
+      "links": [
+        { "label": { "en": "Marble" }, "href": "/category/marble", "permalinkType": "category", "permalinkTarget": "marble" },
+        { "label": { "en": "Granite" }, "href": "/category/granite", "permalinkType": "category", "permalinkTarget": "granite" },
+        { "label": { "en": "Natural Stones" }, "href": "/category/natural-stones", "permalinkType": "category", "permalinkTarget": "natural-stones" },
+        { "label": { "en": "Artificial Stones" }, "href": "/category/artificial-stones", "permalinkType": "category", "permalinkTarget": "artificial-stones" }
+      ]
+    },
+    {
+      "title": { "en": "Projects" },
+      "links": [
+        { "label": { "en": "Latest Projects" }, "href": "/projects/latest", "permalinkType": "custom" },
+        { "label": { "en": "Iconic Projects" }, "href": "/projects/iconic", "permalinkType": "custom" },
+        { "label": { "en": "Custom Projects" }, "href": "/projects/custom", "permalinkType": "custom" }
+      ]
+    },
+    {
+      "title": { "en": "Company" },
+      "links": [
+        { "label": { "en": "About Us" }, "href": "/about", "permalinkType": "page", "permalinkTarget": "about" },
+        { "label": { "en": "Promotions" }, "href": "/promotions", "permalinkType": "page", "permalinkTarget": "promotions" },
+        { "label": { "en": "Contact Us" }, "href": "/contact", "permalinkType": "page", "permalinkTarget": "contact" }
+      ]
+    }
+  ],
+  "columns": [
+    {
+      "title": "Products",
+      "links": [
+        { "label": "Marble", "path": "/category/marble" },
+        { "label": "Granite", "path": "/category/granite" },
+        { "label": "Natural Stones", "path": "/category/natural-stones" },
+        { "label": "Artificial Stones", "path": "/category/artificial-stones" }
+      ]
+    },
+    {
+      "title": "Projects",
+      "links": [
+        { "label": "Latest Projects", "path": "/projects/latest" },
+        { "label": "Iconic Projects", "path": "/projects/iconic" },
+        { "label": "Custom Projects", "path": "/projects/custom" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us", "path": "/about" },
+        { "label": "Promotions", "path": "/promotions" },
+        { "label": "Contact Us", "path": "/contact" }
+      ]
+    }
+  ],
+  "contact": {
+    "title": "Contact Us",
+    "phone": "+971 2 555 4008",
+    "fax": "+971 2 555 4005",
+    "email": "am@arabmarble.ae",
+    "address": { "en": "Arab Marble, Musaffah Abu Dhabi – UAE P.O.Box: 3835" },
+    "tagline": { "en": "Natural stone and marble solutions in UAE" }
+  },
+  "bottomBar": {
+    "copyright": { "en": "Copyright © 2025 | ARAB MARBLE | All Rights Reserved" },
+    "credits": "Designed & Managed by CODIFIED",
+    "links": [
+      { "label": { "en": "Privacy Policy" }, "href": "/privacy", "permalinkType": "page", "permalinkTarget": "privacy" },
+      { "label": { "en": "Terms of Service" }, "href": "/terms", "permalinkType": "page", "permalinkTarget": "terms" }
+    ]
+  },
+  "copyright": "Copyright © 2025 | ARAB MARBLE | All Rights Reserved"
+}

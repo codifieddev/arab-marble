@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "enhance-prompt": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/stitch-utilities/skills/enhance-prompt/SKILL.md",
+      "computedHash": "28c47bcbc0e8d81f48fbbbe41d227efe4018a32c5d4674b0d052a70d215072d3"
+    },
+    "expo-tailwind-setup": {
+      "source": "expo/skills",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-tailwind-setup/SKILL.md",
+      "computedHash": "16c53e80cacd65369acfd8a4f5cf06a60083cc6d980127b4b2e384b81ce0e547"
+    },
+    "next-best-practices": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "skillPath": "skills/next-best-practices/SKILL.md",
+      "computedHash": "f4678aef4ffc10a5ea64a91e57abe5a5081af813b06d58d565caf3e8ef56e26c"
+    },
+    "stitch-nextjs-components": {
+      "source": "gabelul/stitch-kit",
+      "sourceType": "github",
+      "skillPath": "skills/stitch-nextjs-components/SKILL.md",
+      "computedHash": "689be58db3eadf4e0614a145e93433bd61d289f8ad14ba7b2b8be4ffcd87d5fc"
+    }
+  }
+}
