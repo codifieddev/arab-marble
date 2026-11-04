@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -49,11 +49,21 @@ export default function TenantAdminLoginSection() {
       return prodUrl;
     }
     if (process.env.NODE_ENV === 'production') {
-      return prodUrl;
+      return prodUrl.replace(/^http:\/\//i, 'https://');
     }
     return configuredUrl || 'http://localhost:5177';
   };
   const adminBaseUrl = getAdminBaseUrl().replace(/\/+$/, '');
+
+  useEffect(() => {
+    if (
+      typeof window !== 'undefined' &&
+      window.location.protocol === 'http:' &&
+      !['localhost', '127.0.0.1'].includes(window.location.hostname)
+    ) {
+      window.location.replace(window.location.href.replace(/^http:/, 'https:'));
+    }
+  }, []);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !password) return;

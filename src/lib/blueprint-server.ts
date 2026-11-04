@@ -53,7 +53,11 @@ export async function fetchBlueprintPayload(
     return inFlightBlueprintFetches.get(tenantDb);
   }
 
-  const apiUrl = (process.env.FASTAPI_URL || 'http://127.0.0.1:8000').replace(/\/$/, '');
+  let rawApiUrl = (process.env.FASTAPI_URL || 'http://127.0.0.1:8000').trim().replace(/\/$/, '');
+if (!rawApiUrl.includes('localhost') && !rawApiUrl.includes('127.0.0.1') && rawApiUrl.startsWith('http://')) {
+  rawApiUrl = rawApiUrl.replace(/^http:\/\//i, 'https://');
+}
+const apiUrl = rawApiUrl;
 
   const fetchPromise = (async () => {
     let lastError: any = null;

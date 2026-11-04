@@ -328,13 +328,19 @@ export default function CategoryPageComponent({
         className="relative py-20 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-brightness-90" />
+        <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
         <div className="relative z-10 max-w-[1240px] mx-auto px-6">
-          <h1 className="text-3xl md:text-5xl font-light tracking-widest text-white uppercase drop-shadow-md mb-3">
+          <h1
+            className="text-3xl md:text-5xl font-light tracking-widest !text-white uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] mb-3"
+            style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+          >
             {categoryTitle}
           </h1>
           {categoryDescription && (
-            <p className="text-sm md:text-base text-neutral-200 font-light max-w-2xl mx-auto drop-shadow">
+            <p
+              className="text-sm md:text-base !text-neutral-100 font-light max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+              style={{ color: '#f5f5f5', textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}
+            >
               {categoryDescription}
             </p>
           )}

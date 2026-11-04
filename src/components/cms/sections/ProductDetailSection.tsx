@@ -13,6 +13,7 @@ import { t } from '@/lib/i18n';
 import { toast } from 'sonner';
 import { usePathname, useRouter } from 'next/navigation';
 import { ReferenceEditButton } from '@/components/cms/reference-editor';
+import { selectIsCartEnabled } from '@/lib/store/blueprint';
 
 
 interface ProductDetailSectionProps {
@@ -26,6 +27,7 @@ interface ProductDetailSectionProps {
 export default function ProductDetailSection({ block, locale = 'en', localePrefix = '', isEditable, onSave }: ProductDetailSectionProps) {
   const props = block.props || {};
   const dispatch = useAppDispatch();
+  const isCartEnabled = useAppSelector(selectIsCartEnabled);
   const router = useRouter();
   const pathname = usePathname();
   const product = block.props?.productData;
@@ -281,20 +283,34 @@ export default function ProductDetailSection({ block, locale = 'en', localePrefi
                 onClick={handleAddToCart}
                 className={`btn-primary flex-1 flex items-center justify-center gap-2 ${addedToCart ? 'bg-green-600' : ''}`}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
-                </svg>
-                {addedToCart ? (
-                  onSave && isEditable ? (
-                    <EditableText value={t(props.addedToCartLabel, locale) || 'Added!'} onSave={(val) => onSave(block.id, 'props.addedToCartLabel', val)} isEditable={isEditable} tag="span" placeholder="Added label..." />
+                {isCartEnabled ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                )}
+                {isCartEnabled ? (
+                  addedToCart ? (
+                    onSave && isEditable ? (
+                      <EditableText value={t(props.addedToCartLabel, locale) || 'Added!'} onSave={(val) => onSave(block.id, 'props.addedToCartLabel', val)} isEditable={isEditable} tag="span" placeholder="Added label..." />
+                    ) : (
+                      t(props.addedToCartLabel, locale) || 'Added!'
+                    )
                   ) : (
-                    t(props.addedToCartLabel, locale) || 'Added!'
+                    onSave && isEditable ? (
+                      <EditableText value={t(props.addToCartLabel, locale) || 'Add to Cart'} onSave={(val) => onSave(block.id, 'props.addToCartLabel', val)} isEditable={isEditable} tag="span" placeholder="Add to cart..." />
+                    ) : (
+                      t(props.addToCartLabel, locale) || 'Add to Cart'
+                    )
                   )
                 ) : (
                   onSave && isEditable ? (
-                    <EditableText value={t(props.addToCartLabel, locale) || 'Add to Cart'} onSave={(val) => onSave(block.id, 'props.addToCartLabel', val)} isEditable={isEditable} tag="span" placeholder="Add to cart..." />
+                    <EditableText value={t(props.enquireLabel, locale) || 'Enquire Now'} onSave={(val) => onSave(block.id, 'props.enquireLabel', val)} isEditable={isEditable} tag="span" placeholder="Enquiry label..." />
                   ) : (
-                    t(props.addToCartLabel, locale) || 'Add to Cart'
+                    t(props.enquireLabel, locale) || 'Enquire Now'
                   )
                 )}
               </button>
@@ -319,11 +335,20 @@ export default function ProductDetailSection({ block, locale = 'en', localePrefi
                 )}
               </div>
               <div className="flex items-center gap-1.5">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                {onSave && isEditable ? (
-                  <EditableText value={t(props.secureCheckoutLabel, locale) || 'Secure Checkout'} onSave={(val) => onSave(block.id, 'props.secureCheckoutLabel', val)} isEditable={isEditable} tag="span" placeholder="Secure checkout..." />
+                {isCartEnabled ? (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                    {onSave && isEditable ? (
+                      <EditableText value={t(props.secureCheckoutLabel, locale) || 'Secure Checkout'} onSave={(val) => onSave(block.id, 'props.secureCheckoutLabel', val)} isEditable={isEditable} tag="span" placeholder="Secure checkout..." />
+                    ) : (
+                      t(props.secureCheckoutLabel, locale) || 'Secure Checkout'
+                    )}
+                  </>
                 ) : (
-                  t(props.secureCheckoutLabel, locale) || 'Secure Checkout'
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                    <span>Direct Quarry Supply</span>
+                  </>
                 )}
               </div>
             </div>

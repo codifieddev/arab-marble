@@ -137,6 +137,21 @@ export const selectBlueprintError = (state: { blueprint: BlueprintState }) => st
 export const selectBlueprintLastFetched = (state: { blueprint: BlueprintState }) => state.blueprint.lastFetched;
 export const selectHeaderConfig = (state: { blueprint: BlueprintState }) => (state.blueprint.payload as any)?.header || null;
 export const selectFooterConfig = (state: { blueprint: BlueprintState }) => (state.blueprint.payload as any)?.footer || null;
+export const selectEnabledFeatures = (state: { blueprint: BlueprintState }): string[] => {
+  const payload = state.blueprint.payload as any;
+  return Array.isArray(payload?.enabled_features) ? payload.enabled_features : [];
+};
+
+export const selectIsCartEnabled = (state: { blueprint: BlueprintState }): boolean => {
+  const payload = state.blueprint.payload as any;
+  if (!payload) return false;
+  const featuresGated = payload.features_gated === true;
+  const features = Array.isArray(payload.enabled_features) ? payload.enabled_features : [];
+  if (featuresGated) {
+    return features.includes('cart') || features.includes('checkout') || features.includes('orders') || features.includes('ecommerce_transactions');
+  }
+  return false;
+};
 
 export const { setBlueprint, setThemeContext, applyColorOverride, clearBlueprintError, resetBlueprint } = blueprintSlice.actions;
 export default blueprintSlice.reducer;

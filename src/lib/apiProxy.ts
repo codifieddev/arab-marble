@@ -1,10 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getConfiguredDatabaseName } from "@/lib/database-authority";
 
-const FASTAPI_URL = (
-  process.env.FASTAPI_URL ||
-  "http://127.0.0.1:8000"
-).replace(/\/$/, "");
+export function resolveBackendBaseUrl(): string {
+  let url = (process.env.FASTAPI_URL || "http://127.0.0.1:8000").trim().replace(/\/$/, "");
+  if (
+    !url.includes("localhost") &&
+    !url.includes("127.0.0.1") &&
+    url.startsWith("http://")
+  ) {
+    url = url.replace(/^http:\/\//i, "https://");
+  }
+  return url;
+}
+
+const FASTAPI_URL = resolveBackendBaseUrl();
 
 async function getTenantHeaders(): Promise<Record<string, string>> {
   return { "Content-Type": "application/json" };
@@ -83,6 +92,7 @@ export async function proxyRequest(
   const fetchOptions: RequestInit = {
     method: req.method,
     headers: headers,
+    redirect: "manual",
   };
 
   if (["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) {
@@ -98,7 +108,16 @@ export async function proxyRequest(
   }
 
   try {
-    const response = await fetch(url, fetchOptions);
+    let response = await fetch(url, fetchOptions);
+
+    if ([301, 302, 307, 308].includes(response.status) && response.headers.get("location")) {
+      const redirectLocation = response.headers.get("location")!;
+      const redirectUrl = new URL(redirectLocation, url).toString();
+      response = await fetch(redirectUrl, {
+        ...fetchOptions,
+        redirect: "follow",
+      });
+    }
     let nextResponse: NextResponse;
     const contentType = response.headers.get("content-type");
     if (contentType?.includes("application/json")) {
