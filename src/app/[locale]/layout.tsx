@@ -80,7 +80,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   setRuntimePermalinkConfig(permalinkConfig);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
         <link rel="icon" href={brandAssets.faviconUrl || '/images/arab-marble-logo.svg'} />
         <link rel="shortcut icon" href={brandAssets.faviconUrl || '/images/arab-marble-logo.svg'} />

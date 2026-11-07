@@ -144,6 +144,60 @@
           }
         ]
       }
+    },
+    {
+      "id": "home-enquiry-section",
+      "type": "contact-form",
+      "enabled": true,
+      "references": {
+        "formId": "6aeef9218e395ff6f9746dd6",
+        "formSlug": "home-enquiry-form",
+        "formName": "Project Enquiry & Estimation Form",
+        "forms": [
+          "6aeef9218e395ff6f9746dd6"
+        ]
+      },
+      "props": {
+        "contactHeading": {
+          "en": "Request a Quote & Consultation",
+          "ar": "طلب عرض أسعار واستشارة"
+        },
+        "formHeading": {
+          "en": "Project Enquiry Form",
+          "ar": "نموذج استفسار المشاريع"
+        },
+        "phone": "+971 2 555 4008",
+        "phoneHeading": {
+          "en": "Phone",
+          "ar": "الهاتف"
+        },
+        "fax": "+971 2 555 4005",
+        "faxHeading": {
+          "en": "FAX",
+          "ar": "الفاكس"
+        },
+        "email": "am@arabmarble.ae",
+        "emailHeading": {
+          "en": "Email",
+          "ar": "البريد الإلكتروني"
+        },
+        "address": {
+          "en": "Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835",
+          "ar": "الرخام العربي، مصفح أبوظبي - الإمارات\nص.ب: 3835"
+        },
+        "addressHeading": {
+          "en": "Address",
+          "ar": "العنوان"
+        },
+        "formId": "6aeef9218e395ff6f9746dd6",
+        "formSlug": "home-enquiry-form",
+        "hideMap": true,
+        "showMap": false,
+        "submitButtonText": {
+          "en": "SUBMIT ENQUIRY",
+          "ar": "إرسال الاستفسار"
+        }
+      }
     }
   ],
   "blocks": [
@@ -278,6 +332,60 @@
             "avatar": ""
           }
         ]
+      }
+    },
+    {
+      "id": "home-enquiry-section",
+      "type": "contact-form",
+      "enabled": true,
+      "references": {
+        "formId": "6aeef9218e395ff6f9746dd6",
+        "formSlug": "home-enquiry-form",
+        "formName": "Project Enquiry & Estimation Form",
+        "forms": [
+          "6aeef9218e395ff6f9746dd6"
+        ]
+      },
+      "props": {
+        "contactHeading": {
+          "en": "Request a Quote & Consultation",
+          "ar": "طلب عرض أسعار واستشارة"
+        },
+        "formHeading": {
+          "en": "Project Enquiry Form",
+          "ar": "نموذج استفسار المشاريع"
+        },
+        "phone": "+971 2 555 4008",
+        "phoneHeading": {
+          "en": "Phone",
+          "ar": "الهاتف"
+        },
+        "fax": "+971 2 555 4005",
+        "faxHeading": {
+          "en": "FAX",
+          "ar": "الفاكس"
+        },
+        "email": "am@arabmarble.ae",
+        "emailHeading": {
+          "en": "Email",
+          "ar": "البريد الإلكتروني"
+        },
+        "address": {
+          "en": "Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835",
+          "ar": "الرخام العربي، مصفح أبوظبي - الإمارات\nص.ب: 3835"
+        },
+        "addressHeading": {
+          "en": "Address",
+          "ar": "العنوان"
+        },
+        "formId": "6aeef9218e395ff6f9746dd6",
+        "formSlug": "home-enquiry-form",
+        "hideMap": true,
+        "showMap": false,
+        "submitButtonText": {
+          "en": "SUBMIT ENQUIRY",
+          "ar": "إرسال الاستفسار"
+        }
       }
     }
   ]

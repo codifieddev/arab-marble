@@ -19,7 +19,7 @@ export default function AboutStorySection({
   onSave,
 }: AboutStorySectionProps) {
   const props = block.props || {};
-  const paragraphs: string[] = props.paragraphs || [
+  const paragraphs: any[] = props.paragraphs || [
     "Arab Marble was established in Abu Dhabi in 1973.\nEver since its inception, Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite. Arab Marble engages in the wholesale and retail distribution and fixing of marble and granite for special decorative works, palaces, hotels, villas and high-rise prestigious and commercial buildings. Our supplier's network encompasses more than 350 stone processing factories worldwide.",
     'We are an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain area.',
   ];
@@ -47,22 +47,25 @@ export default function AboutStorySection({
             )}
 
             <div className="space-y-6 text-neutral-600 font-normal text-sm md:text-base leading-relaxed">
-              {paragraphs.map((para, idx) => (
-                <div key={idx}>
-                  {onSave && isEditable ? (
-                    <EditableText
-                      value={para}
-                      onSave={(val) => onSave(block.id, `props.paragraphs[${idx}]`, val)}
-                      isEditable={isEditable}
-                      tag="p"
-                      className="whitespace-pre-line"
-                      placeholder="Paragraph text..."
-                    />
-                  ) : (
-                    <p className="whitespace-pre-line">{para}</p>
-                  )}
-                </div>
-              ))}
+              {paragraphs.map((para, idx) => {
+                const paraText = t(para, locale) || (typeof para === 'string' ? para : '');
+                return (
+                  <div key={idx}>
+                    {onSave && isEditable ? (
+                      <EditableText
+                        value={paraText}
+                        onSave={(val) => onSave(block.id, `props.paragraphs[${idx}]`, val)}
+                        isEditable={isEditable}
+                        tag="p"
+                        className="whitespace-pre-line"
+                        placeholder="Paragraph text..."
+                      />
+                    ) : (
+                      <p className="whitespace-pre-line">{paraText}</p>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 

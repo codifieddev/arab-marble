@@ -10,8 +10,28 @@ import {
   selectBlueprint,
 } from '@/lib/store/blueprint';
 import { resolveBrandLogo, resolveBrandName } from '@/lib/brand/brand-resolver';
+import LanguageSwitcher from './LanguageSwitcher';
 import headerData from '@/lib/pages/headerData.json';
 import { resolveHrefWithPermalinks } from '@/lib/permalink/url-helper';
+
+const DEFAULT_FALLBACK_LABELS: Record<string, Record<string, string>> = {
+  home: { en: 'Home', ar: 'الرئيسية' },
+  products: { en: 'Products', ar: 'المنتجات' },
+  shop: { en: 'Shop', ar: 'المنتجات' },
+  projects: { en: 'Projects', ar: 'المشاريع' },
+  'about us': { en: 'About Us', ar: 'من نحن' },
+  about: { en: 'About', ar: 'من نحن' },
+  'contact us': { en: 'Contact Us', ar: 'اتصل بنا' },
+  contact: { en: 'Contact', ar: 'اتصل بنا' },
+  marble: { en: 'Marble', ar: 'رخام' },
+  granite: { en: 'Granite', ar: 'جرانيت' },
+  'natural stones': { en: 'Natural Stones', ar: 'أحجار طبيعية' },
+  'artificial stones': { en: 'Artificial Stones', ar: 'أحجار صناعية' },
+  'latest projects': { en: 'Latest Projects', ar: 'أحدث المشاريع' },
+  'iconic projects': { en: 'Iconic Projects', ar: 'مشاريع مميزة' },
+  'commercial projects': { en: 'Commercial Projects', ar: 'مشاريع تجارية' },
+  'custom projects': { en: 'Custom Projects', ar: 'مشاريع مخصصة' },
+};
 
 export function getItemLabel(item: any, locale = 'en'): string {
   if (!item) return '';
@@ -21,15 +41,51 @@ export function getItemLabel(item: any, locale = 'en'): string {
   if (item.title && typeof item.title === 'object') {
     return item.title[locale] || item.title.en || Object.values(item.title)[0] || '';
   }
-  if (typeof item.label === 'string') return item.label;
-  if (typeof item.title === 'string') return item.title;
+  if (typeof item.label === 'string') {
+    if (locale !== 'en') {
+      const match = DEFAULT_FALLBACK_LABELS[item.label.trim().toLowerCase()]?.[locale];
+      if (match) return match;
+    }
+    return item.label;
+  }
+  if (typeof item.title === 'string') {
+    if (locale !== 'en') {
+      const match = DEFAULT_FALLBACK_LABELS[item.title.trim().toLowerCase()]?.[locale];
+      if (match) return match;
+    }
+    return item.title;
+  }
   return '';
 }
 
-export function getItemHref(item: any, locale = 'en'): string {
-  if (!item) return '/';
+export function buildLocalizedHref(localePrefix: string, href: any, locale = 'en'): string {
+  if (!href) return localePrefix || '/';
+  if (typeof href === 'object') {
+    href = href[locale] || href.en || href.value || href.url || href.href || href.path || '/';
+    if (typeof href !== 'string') href = '/';
+  }
+  if (typeof href !== 'string') return localePrefix || '/';
+  if (
+    href.startsWith('http://') ||
+    href.startsWith('https://') ||
+    href.startsWith('tel:') ||
+    href.startsWith('mailto:')
+  ) {
+    return href;
+  }
+  if (href.startsWith('/#')) return localePrefix ? `${localePrefix}${href.slice(1)}` : href;
+  if (href.startsWith('#')) return href;
+  if (localePrefix && (href === localePrefix || href.startsWith(`${localePrefix}/`))) return href;
+  const resolved = resolveHrefWithPermalinks(href, locale);
+  if (resolved !== href) return resolved;
+  if (href === '/') return localePrefix || '/';
+  return `${localePrefix}${href.startsWith('/') ? '' : '/'}${href}`;
+}
+
+export function getItemHref(item: any, locale = 'en', localePrefix = ''): string {
+  if (!item) return localePrefix || '/';
   const rawHref = item.path || item.href || item.url || '/';
-  return resolveHrefWithPermalinks(rawHref, locale);
+  return buildLocalizedHref(localePrefix, rawHref, locale);
 }
 
 export function getSubMenuColumns(item: any) {
@@ -42,7 +98,13 @@ export function getSubMenuColumns(item: any) {
   return [];
 }
 
-export default function Header() {
+export default function Header({
+  locale: propLocale,
+  localePrefix: propLocalePrefix,
+}: {
+  locale?: string;
+  localePrefix?: string;
+} = {}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(null);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
@@ -53,7 +115,8 @@ export default function Header() {
 
   const params = useParams();
   const pathname = usePathname();
-  const locale = (params?.locale as string) || 'en';
+  const pathLocale = (pathname || '').split('/').filter(Boolean)[0]?.toLowerCase();
+  const locale = propLocale || (params?.locale as string) || (pathLocale === 'ar' ? 'ar' : 'en');
 
   const headerConfig = useAppSelector(selectHeaderConfig);
   const blueprintNav = useAppSelector(selectPublicNavigation);
@@ -89,9 +152,10 @@ export default function Header() {
   }, [fetchLiveHeader]);
 
   const activeHeader = liveHeader || headerConfig;
+  const isLanguageSwitcherEnabled = activeHeader?.language?.enabled !== false;
 
   const defaultLanguage = (blueprint?.localization?.defaultLanguage || 'en').toLowerCase();
-  const localePrefix = locale === defaultLanguage ? '' : `/${locale}`;
+  const localePrefix = propLocalePrefix ?? (locale === defaultLanguage ? '' : `/${locale}`);
 
   const navigationItems = useMemo(() => {
     let items: any[] = [];
@@ -169,12 +233,11 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-8">
             {navigationItems.map((item, index) => {
               const label = getItemLabel(item, locale);
-              const href = getItemHref(item, locale);
+              const fullHref = buildLocalizedHref(localePrefix, item.path || item.href || item.url || '/', locale);
               const subItems = getSubMenuColumns(item);
               const hasSub = subItems.length > 0;
               const isOpen = openDropdown === index;
-              const fullHref = localePrefix ? `${localePrefix}${href}` : href;
-              const isActive = pathname === fullHref || pathname === href;
+              const isActive = pathname === fullHref || pathname === (item.path || item.href || item.url);
 
               return (
                 <div
@@ -207,8 +270,7 @@ export default function Header() {
                     <div className="absolute top-full left-0 w-52 bg-white border border-gray-100 rounded-sm shadow-xl py-2 z-50">
                       {subItems.map((sub: any, subIdx: number) => {
                         const subLabel = getItemLabel(sub, locale);
-                        const subHref = getItemHref(sub, locale);
-                        const subFullHref = localePrefix ? `${localePrefix}${subHref}` : subHref;
+                        const subFullHref = buildLocalizedHref(localePrefix, sub.path || sub.href || sub.url || '/', locale);
 
                         return (
                           <Link
@@ -227,24 +289,31 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Mobile Hamburger */}
-          <div className="md:hidden flex items-center">
-            <button
-              ref={hamburgerRef}
-              onClick={isMobileMenuOpen ? closeMobile : openMobile}
-              aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-              className="p-2 text-gray-700 hover:text-black focus:outline-none"
-            >
-              {isMobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+          {/* Right Controls: Language Switcher & Mobile Hamburger */}
+          <div className="flex items-center gap-3">
+            {isLanguageSwitcherEnabled && (
+              <LanguageSwitcher currentLocale={locale} className="hidden sm:inline-block" />
+            )}
+
+            {/* Mobile Hamburger */}
+            <div className="md:hidden flex items-center">
+              <button
+                ref={hamburgerRef}
+                onClick={isMobileMenuOpen ? closeMobile : openMobile}
+                aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+                className="p-2 text-gray-700 hover:text-black focus:outline-none"
+              >
+                {isMobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -258,11 +327,10 @@ export default function Header() {
           <div className="flex flex-col divide-y divide-gray-100">
             {navigationItems.map((item, index) => {
               const label = getItemLabel(item, locale);
-              const href = getItemHref(item, locale);
+              const fullHref = buildLocalizedHref(localePrefix, item.path || item.href || item.url || '/', locale);
               const subItems = getSubMenuColumns(item);
               const hasSub = subItems.length > 0;
               const isExpanded = mobileExpandedIndex === index;
-              const fullHref = localePrefix ? `${localePrefix}${href}` : href;
 
               return (
                 <div key={index} className="py-3">
@@ -296,8 +364,7 @@ export default function Header() {
                     <div className="pl-4 pt-2 pb-1 flex flex-col gap-2">
                       {subItems.map((sub: any, subIdx: number) => {
                         const subLabel = getItemLabel(sub, locale);
-                        const subHref = getItemHref(sub, locale);
-                        const subFullHref = localePrefix ? `${localePrefix}${subHref}` : subHref;
+                        const subFullHref = buildLocalizedHref(localePrefix, sub.path || sub.href || sub.url || '/', locale);
 
                         return (
                           <Link
@@ -316,6 +383,13 @@ export default function Header() {
               );
             })}
           </div>
+
+          {isLanguageSwitcherEnabled && (
+            <div className="pt-4 mt-2 flex items-center justify-between border-t border-gray-100">
+              <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Language</span>
+              <LanguageSwitcher currentLocale={locale} />
+            </div>
+          )}
         </div>
       )}
     </>

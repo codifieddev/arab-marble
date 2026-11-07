@@ -53,6 +53,10 @@ export default function TestimonialsSection({
   const rawItems = sourceItems.map((item: any) => {
     const id = item._id || item.id || item.testimonialId || '';
     const name = item.name || item.author || 'Verified Client';
+    const nameStr =
+      typeof name === 'string'
+        ? name
+        : (typeof name === 'object' && name !== null ? (name[locale] || name.en || Object.values(name)[0]) : '') || 'Verified Client';
     const role = item.role || 'Architect / Luxury Developer';
     const text = item.quote || item.text || item.content || '';
     const rating = typeof item.rating === 'number' ? item.rating : 5;
@@ -60,9 +64,10 @@ export default function TestimonialsSection({
     const avatar = item.avatar || item.image || '';
     const initials =
       item.initials ||
-      (name
-        ? name
-            .split(' ')
+      (typeof nameStr === 'string' && nameStr.trim()
+        ? nameStr
+            .trim()
+            .split(/\s+/)
             .map((p: string) => p[0])
             .join('')
             .slice(0, 2)
@@ -177,7 +182,7 @@ export default function TestimonialsSection({
                 <div className="absolute top-4 right-4 z-20">
                   <ReferenceEditButton
                     type="testimonial"
-                    title={`Edit Testimonial: ${item.name}`}
+                    title={`Edit Testimonial: ${typeof item.name === 'string' ? item.name : t(item.name, locale)}`}
                     data={{
                       id: item.id,
                       _id: item.id,
@@ -226,7 +231,7 @@ export default function TestimonialsSection({
               <div className="pt-4 border-t border-neutral-100 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold tracking-wider shrink-0 overflow-hidden shadow-xs">
                   {item.avatar ? (
-                    <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={item.avatar} alt={t(item.name, locale)} className="w-full h-full object-cover" />
                   ) : (
                     item.initials
                   )}

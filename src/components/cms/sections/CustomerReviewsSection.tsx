@@ -647,14 +647,17 @@ export default function CustomerReviewsSection({
               {filteredReviews.map((review) => {
                 const effectiveHelpful = helpfulOverrides[review.id] ?? review.helpful ?? 0;
                 const isVoted = votedMap[review.id];
+                const reviewNameStr = typeof review.name === 'string' ? review.name : t(review.name, locale) || 'VP';
                 const initials =
-                  review.name
-                    .split(' ')
-                    .map((p) => p[0])
-                    .filter(Boolean)
-                    .slice(0, 2)
-                    .join('')
-                    .toUpperCase() || 'VP';
+                  typeof reviewNameStr === 'string'
+                    ? reviewNameStr
+                        .split(' ')
+                        .map((p) => p[0])
+                        .filter(Boolean)
+                        .slice(0, 2)
+                        .join('')
+                        .toUpperCase() || 'VP'
+                    : 'VP';
 
                 return (
                   <div

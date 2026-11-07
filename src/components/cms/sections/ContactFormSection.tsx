@@ -23,11 +23,14 @@ export default function ContactFormSection({
 }: ContactFormSectionProps) {
   const props = block.props || {};
 
-  const mapImage = props.mapImage || '/images/contact-map.jpg';
-  const phone = props.phone || '+971 2 555 4008';
-  const fax = props.fax || '+971 2 555 4005';
-  const email = props.email || 'am@arabmarble.ae';
-  const address = props.address || 'Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835';
+  const showMap =
+    props.showMap === true ||
+    (props.showMap !== false && props.hideMap !== true && Boolean(props.mapImage) && props.mapImage !== 'none');
+  const mapImage = showMap ? (props.mapImage || '/images/contact-map.jpg') : null;
+  const phone = t(props.phone, locale) || '+971 2 555 4008';
+  const fax = t(props.fax, locale) || '+971 2 555 4005';
+  const email = t(props.email, locale) || 'am@arabmarble.ae';
+  const address = t(props.address, locale) || 'Arab Marble, Mussafah Abu Dhabi - UAE\nP.O.Box: 3835';
 
   const formSlug = (block as any).references?.formSlug || props.formSlug || 'contact-inquiry-form';
   const formId = (block as any).references?.formId || props.formId || undefined;
@@ -132,7 +135,7 @@ export default function ContactFormSection({
           {/* Left Column: Contact Details */}
           <div className="space-y-8">
             <EditableText
-              value={t(props.contactHeading, locale) || 'Contact Us'}
+              value={t(props.contactHeading, locale) || t(props.heading, locale) || 'Contact Us'}
               onSave={(val) => onSave?.(block.id, 'props.contactHeading', val)}
               isEditable={isEditable}
               tag="h2"
@@ -247,7 +250,7 @@ export default function ContactFormSection({
           <div>
             <div className="flex items-center justify-between mb-6">
               <EditableText
-                value={t(props.formHeading, locale) || 'Email Us'}
+                value={t(props.formHeading, locale) || t(props.subheading, locale) || 'Email Us'}
                 onSave={(val) => onSave?.(block.id, 'props.formHeading', val)}
                 isEditable={isEditable}
                 tag="h2"
@@ -275,7 +278,7 @@ export default function ContactFormSection({
               formId={formId || formDef?._id || formDef?.id}
               heading=""
               subheading=""
-              submitButtonText={props.submitButtonText || 'SEND MESSAGE'}
+              submitButtonText={t(props.submitButtonText, locale) || 'SEND MESSAGE'}
               theme="plain"
             />
           </div>

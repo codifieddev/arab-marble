@@ -49,11 +49,11 @@ export default function StoreLayoutShell({
     <ReferenceEditorProvider>
       <LocaleNotice />
       <AdminBar />
-      <Header />
+      <Header locale={locale} localePrefix={localePrefix} />
       <main id="main-content" className="flex-grow">
         {children}
       </main>
-      <Footer />
+      <Footer locale={locale} localePrefix={localePrefix} />
       <EditModeToggle />
       <ReferenceEditorDrawer />
     </ReferenceEditorProvider>

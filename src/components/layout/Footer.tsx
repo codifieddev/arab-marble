@@ -8,6 +8,7 @@ import { selectBlueprint, selectFooterConfig } from '@/lib/store/blueprint';
 import { resolveBrandLogo, resolveBrandName } from '@/lib/brand/brand-resolver';
 import footerData from '@/lib/pages/footerData.json';
 import { resolveHrefWithPermalinks } from '@/lib/permalink/url-helper';
+import { buildLocalizedHref } from './Header';
 
 export function getFooterLocalizedText(val: any, locale = 'en'): string {
   if (!val) return '';
@@ -20,10 +21,17 @@ export function getFooterLocalizedText(val: any, locale = 'en'): string {
   return String(val);
 }
 
-export default function Footer() {
+export default function Footer({
+  locale: propLocale,
+  localePrefix: propLocalePrefix,
+}: {
+  locale?: string;
+  localePrefix?: string;
+} = {}) {
   const params = useParams();
   const pathname = usePathname();
-  const locale = (params?.locale as string) || 'en';
+  const pathLocale = (pathname || '').split('/').filter(Boolean)[0]?.toLowerCase();
+  const locale = propLocale || (params?.locale as string) || (pathLocale === 'ar' ? 'ar' : 'en');
   const blueprint = useAppSelector(selectBlueprint);
   const footerConfig = useAppSelector(selectFooterConfig);
 
@@ -58,7 +66,7 @@ export default function Footer() {
   const activeFooter = liveFooter || footerConfig || footerData;
 
   const defaultLanguage = (blueprint?.localization?.defaultLanguage || 'en').toLowerCase();
-  const localePrefix = locale === defaultLanguage ? '' : `/${locale}`;
+  const localePrefix = propLocalePrefix ?? (locale === defaultLanguage ? '' : `/${locale}`);
 
   if (
     pathname?.includes('/login') ||
@@ -189,10 +197,7 @@ export default function Footer() {
                     {links.map((link: any, lIdx: number) => {
                       const label = getFooterLocalizedText(link.label || link.title, locale);
                       const rawHref = getFooterLocalizedText(link.href || link.path, locale) || '#';
-                      const fullHref =
-                        rawHref.startsWith('http') || rawHref.startsWith('tel:') || rawHref.startsWith('mailto:')
-                          ? rawHref
-                          : resolveHrefWithPermalinks(rawHref, locale);
+                      const fullHref = buildLocalizedHref(localePrefix, rawHref, locale);
                       return (
                         <li key={lIdx}>
                           <Link href={fullHref} className="hover:text-white transition-colors">
@@ -211,26 +216,32 @@ export default function Footer() {
         )}
 
         {/* Right Column: Contact Us */}
-        <div className="md:col-span-3 space-y-3 text-left">
+        <div className="md:col-span-3 space-y-3 rtl:text-right ltr:text-left">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-200">
-            {getFooterLocalizedText(contactData?.title, locale) || 'Contact Us'}
+            {getFooterLocalizedText(contactData?.title, locale) || (locale === 'ar' ? 'اتصل بنا' : 'Contact Us')}
           </h3>
           <div className="flex flex-col gap-2 text-xs text-neutral-300 font-light">
             <p className="flex items-center gap-2">
-              <span className="font-medium text-neutral-400">Phone:</span>
-              <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+              <span className="font-medium text-neutral-400">
+                {getFooterLocalizedText(contactData?.phoneLabel, locale) || (locale === 'ar' ? 'الهاتف:' : 'Phone:')}
+              </span>
+              <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors" dir="ltr">
                 {phone}
               </a>
             </p>
             {fax && (
               <p className="flex items-center gap-2">
-                <span className="font-medium text-neutral-400">Fax:</span>
-                <span>{fax}</span>
+                <span className="font-medium text-neutral-400">
+                  {getFooterLocalizedText(contactData?.faxLabel, locale) || (locale === 'ar' ? 'الفاكس:' : 'Fax:')}
+                </span>
+                <span dir="ltr">{fax}</span>
               </p>
             )}
             <p className="flex items-center gap-2">
-              <span className="font-medium text-neutral-400">Email:</span>
-              <a href={`mailto:${email}`} className="hover:text-white transition-colors">
+              <span className="font-medium text-neutral-400">
+                {getFooterLocalizedText(contactData?.emailLabel, locale) || (locale === 'ar' ? 'البريد الإلكتروني:' : 'Email:')}
+              </span>
+              <a href={`mailto:${email}`} className="hover:text-white transition-colors" dir="ltr">
                 {email}
               </a>
             </p>

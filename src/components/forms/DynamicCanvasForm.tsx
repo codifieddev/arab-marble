@@ -66,6 +66,18 @@ const DEFAULT_CONTACT_FIELDS: FormField[] = [
   { name: 'message', label: 'Message', type: 'textarea', required: true, placeholder: 'Message' },
 ];
 
+function resolveSafeText(val: any, fallback = ''): string {
+  if (val === null || val === undefined) return fallback;
+  if (typeof val === 'string') return val;
+  if (typeof val === 'number' || typeof val === 'boolean') return String(val);
+  if (typeof val === 'object') {
+    const candidate = val.en || Object.values(val)[0];
+    if (typeof candidate === 'string') return candidate;
+    return fallback;
+  }
+  return String(val);
+}
+
 export default function DynamicCanvasForm({
   formSlug = 'contact-inquiry-form',
   formId,
@@ -196,9 +208,9 @@ export default function DynamicCanvasForm({
     }
   };
 
-  const resolvedHeading = heading !== undefined ? heading : (formConfig?.name || 'Send Us a Message');
-  const resolvedSubmitButtonText = submitButtonText || formConfig?.settings?.submitButtonText || 'SEND MESSAGE';
-  const resolvedSuccessMessage = successMessage || formConfig?.settings?.successMessage || 'Thank you for reaching out to Arab Marble. Your inquiry has been received and our team will get in touch shortly.';
+  const resolvedHeading = resolveSafeText(heading !== undefined ? heading : (formConfig?.name || 'Send Us a Message'));
+  const resolvedSubmitButtonText = resolveSafeText(submitButtonText || formConfig?.settings?.submitButtonText, 'SEND MESSAGE');
+  const resolvedSuccessMessage = resolveSafeText(successMessage || formConfig?.settings?.successMessage, 'Thank you for reaching out to Arab Marble. Your inquiry has been received and our team will get in touch shortly.');
 
   if (loading) {
     return (
@@ -288,7 +300,7 @@ export default function DynamicCanvasForm({
                     name={field.name}
                     required={field.required}
                     rows={5}
-                    placeholder={field.placeholder || field.label || 'Message'}
+                    placeholder={resolveSafeText(field.placeholder || field.label, 'Message')}
                     value={formData[field.name] || ''}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 bg-white transition-colors min-h-[140px] resize-y"
@@ -302,7 +314,7 @@ export default function DynamicCanvasForm({
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 focus:outline-none focus:border-neutral-900 bg-white transition-colors"
                   >
-                    <option value="">{field.placeholder || field.label || 'Select an option'}</option>
+                    <option value="">{resolveSafeText(field.placeholder || field.label, 'Select an option')}</option>
                     {(field.options || []).map((opt, i) => {
                       const val = typeof opt === 'string' ? opt : opt.value;
                       const lbl = typeof opt === 'string' ? opt : opt.label;
@@ -319,7 +331,7 @@ export default function DynamicCanvasForm({
                     name={field.name}
                     type={field.type || 'text'}
                     required={field.required}
-                    placeholder={field.placeholder || field.label || ''}
+                    placeholder={resolveSafeText(field.placeholder || field.label, '')}
                     value={formData[field.name] || ''}
                     onChange={(e) => handleChange(field.name, e.target.value)}
                     className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 bg-white transition-colors"

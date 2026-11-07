@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { usePathname, useParams, useRouter } from 'next/navigation';
 import { useAppSelector } from '@/lib/store/hooks';
-import { selectLocalization } from '@/lib/store/blueprint';
+import { selectLocalization, selectHeaderConfig } from '@/lib/store/blueprint';
 
 const LANGUAGE_LABELS: Record<string, { label: string }> = {
   en: { label: 'EN' },
@@ -22,7 +22,13 @@ const LANGUAGE_LABELS: Record<string, { label: string }> = {
   ko: { label: 'KO' },
 };
 
-export default function LanguageSwitcher({ className = '' }: { className?: string }) {
+export default function LanguageSwitcher({
+  className = '',
+  currentLocale: propLocale,
+}: {
+  className?: string;
+  currentLocale?: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -30,6 +36,7 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
   const params = useParams();
 
   const localization = useAppSelector(selectLocalization);
+  const headerConfig = useAppSelector(selectHeaderConfig);
   const defaultLanguage = (localization?.defaultLanguage || 'en').toLowerCase();
 
   // Extract all enabled languages
@@ -47,7 +54,13 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
     supportedLanguages.unshift(defaultLanguage);
   }
 
-  const currentLocale = ((params?.locale as string) || defaultLanguage).toLowerCase();
+  const pathSegments = (pathname || '').split('/').filter(Boolean);
+  const pathLocale = pathSegments.length > 0 ? pathSegments[0].toLowerCase() : '';
+  const detectedLocale =
+    propLocale ||
+    (params?.locale as string) ||
+    (supportedLanguages.includes(pathLocale) ? pathLocale : defaultLanguage);
+  const currentLocale = (detectedLocale || defaultLanguage).toLowerCase();
 
   // Close dropdown on outside click - MUST be before any return to satisfy React Rules of Hooks
   useEffect(() => {
@@ -64,9 +77,9 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
     setIsOpen(false);
     if (targetLang === currentLocale) return;
 
-    // Remove any current locale prefix from current pathname
-    const segments = pathname.split('/').filter(Boolean);
-    if (segments.length > 0 && segments[0].toLowerCase() === currentLocale) {
+    // Remove any and all supported locale prefixes from current pathname
+    const segments = (pathname || '').split('/').filter(Boolean);
+    while (segments.length > 0 && supportedLanguages.includes(segments[0].toLowerCase())) {
       segments.shift();
     }
     const cleanPath = segments.length > 0 ? `/${segments.join('/')}` : '/';
@@ -78,13 +91,13 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
         ? `/${targetLang}`
         : `/${targetLang}${cleanPath}`;
 
-    const search = window.location.search || '';
-    const hash = window.location.hash || '';
+    const search = typeof window !== 'undefined' ? window.location.search || '' : '';
+    const hash = typeof window !== 'undefined' ? window.location.hash || '' : '';
     router.push(`${newPath}${search}${hash}`);
   };
 
-  // If single language tenant, don't show the switcher (checked AFTER all hooks)
-  if (supportedLanguages.length <= 1) {
+  // If single language tenant or language switcher turned off in header config, don't show the switcher (checked AFTER all hooks)
+  if (supportedLanguages.length <= 1 || headerConfig?.language?.enabled === false) {
     return null;
   }
 

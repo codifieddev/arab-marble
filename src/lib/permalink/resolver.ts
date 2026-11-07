@@ -107,22 +107,27 @@ export async function getTenantPermalinkConfig(
 }
 
 async function fetchFromApi<T>(path: string, tenantDb: string): Promise<T | null> {
-  try {
-    const response = await fetch(`${FASTAPI_URL}/${path}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-tenant-db': tenantDb,
-      },
-      signal: AbortSignal.timeout(15000),
-      next: { revalidate: 60 },
-    });
-    if (!response.ok) return null;
-    const body = await response.json();
-    if (!body) return null;
-    return (body.data !== undefined ? body.data : body) as T;
-  } catch (error) {
-    return null;
+  const cleanPath = path.replace(/^\/?(api\/)?/, '');
+  const candidatePaths = [cleanPath, `api/${cleanPath}`];
+  for (const p of candidatePaths) {
+    try {
+      const response = await fetch(`${FASTAPI_URL}/${p}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-tenant-db': tenantDb,
+        },
+        signal: AbortSignal.timeout(3000),
+        next: { revalidate: 60 },
+      });
+      if (!response.ok) continue;
+      const body = await response.json();
+      if (!body) continue;
+      return (body.data !== undefined ? body.data : body) as T;
+    } catch {
+      continue;
+    }
   }
+  return null;
 }
 
 /**
@@ -231,7 +236,7 @@ async function resolvePermalinkInternal(
     (firstSegment === defaultLanguage || supportedLanguages.includes(firstSegment));
   const hasLocale = !knownBases.has(firstSegment) && isKnownLocale;
 
-  let currentLocale = defaultLanguage;
+  let currentLocale = (options?.locale || defaultLanguage).toLowerCase();
   let cleanSegments = [...segments];
 
   if (hasLocale) {
@@ -549,8 +554,11 @@ async function resolvePermalinkInternal(
   // Single segment path: /{slug} or root homepage ''
   if (cleanSegments.length === 1 || cleanSegments.length === 0) {
     const slugKey = cleanSegments[0] || 'home';
-    const cmsData = await fetchFromApi<any>(`api/cms/pages?slug=${encodeURIComponent(slugKey)}`, tenantDb);
-    const page = Array.isArray(cmsData) ? cmsData.find((p) => p.slug === slugKey) : cmsData;
+    const cmsData = await fetchFromApi<any>(`cms/pages?slug=${encodeURIComponent(slugKey)}`, tenantDb);
+    const rawPage = Array.isArray(cmsData)
+      ? cmsData.find((p) => p.slug === slugKey || p.document_key === slugKey)
+      : (cmsData?.data || cmsData);
+    const page = rawPage?.data || rawPage;
 
     if (page) {
       const isPreview = search.includes('studio_preview=true') || search.includes('preview=true');
@@ -564,10 +572,11 @@ async function resolvePermalinkInternal(
         };
       }
 
+      const pageSlug = page.slug || page.document_key || slugKey;
       const canonicalPath = getEntityUrl(
         {
           type: 'cms_page',
-          slug: page.slug,
+          slug: pageSlug,
         },
         currentLocale,
         permalinkConfig,
@@ -578,7 +587,7 @@ async function resolvePermalinkInternal(
         status: 'match',
         type: 'cms_page',
         entityId: String(page.id || page._id),
-        slug: page.slug,
+        slug: pageSlug,
         canonicalPath,
         cleanPath: cleanPathname,
         locale: currentLocale,

@@ -39,7 +39,7 @@ export async function fetchBlueprintPayload(
     tenantDbOverride ||
     process.env.TENANT_DB_NAME ||
     process.env.NEXT_PUBLIC_TENANT_DB ||
-    'kp_peekeeper'
+    'kp_arab_marble'
   ).trim();
 
   const now = Date.now();
@@ -147,13 +147,25 @@ const SPECIAL_TENANTS: Record<string, TenantLocalization> = {
     defaultCurrency: 'EUR',
     supportedCurrencies: [{ code: 'EUR', symbol: '€' }],
   },
+  kp_arab_marble: {
+    defaultLanguage: 'en',
+    supportedLanguages: ['en', 'ar'],
+    defaultCurrency: 'AED',
+    supportedCurrencies: [
+      { code: 'USD', symbol: '$' },
+      { code: 'AED', symbol: 'د.إ' },
+    ],
+  },
 };
 
 const FALLBACK_LOCALIZATION: TenantLocalization = {
   defaultLanguage: 'en',
-  supportedLanguages: ['en', 'hi'],
-  defaultCurrency: 'INR',
-  supportedCurrencies: [{ code: 'USD', symbol: '$' }],
+  supportedLanguages: ['en', 'ar'],
+  defaultCurrency: 'AED',
+  supportedCurrencies: [
+    { code: 'USD', symbol: '$' },
+    { code: 'AED', symbol: 'د.إ' },
+  ],
 };
 
 export function getBlueprintLocalizationSync(
@@ -163,7 +175,7 @@ export function getBlueprintLocalizationSync(
     tenantDbOverride ||
     process.env.TENANT_DB_NAME ||
     process.env.NEXT_PUBLIC_TENANT_DB ||
-    'kp_peekeeper'
+    'kp_arab_marble'
   ).trim();
 
   if (SPECIAL_TENANTS[tenantDb]) {
@@ -185,7 +197,7 @@ export async function getBlueprintLocalization(
     tenantDbOverride ||
     process.env.TENANT_DB_NAME ||
     process.env.NEXT_PUBLIC_TENANT_DB ||
-    'kp_peekeeper'
+    'kp_arab_marble'
   ).trim();
 
   // If special tenant configured for testing/demo
@@ -218,7 +230,7 @@ export async function getBlueprintLocalization(
       }
 
       if (supportedLanguages.length === 0) {
-        supportedLanguages = [defaultLanguage, 'hi'];
+        supportedLanguages = [defaultLanguage, 'ar'];
       }
 
       if (!supportedLanguages.includes(defaultLanguage)) {
