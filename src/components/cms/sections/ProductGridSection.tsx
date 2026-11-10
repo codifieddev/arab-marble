@@ -40,10 +40,10 @@ export default function ProductGridSection({
   const { allProducts: catalogProducts, hasFetched, loading } = useAppSelector((state) => state.products);
 
   useEffect(() => {
-    if (!hasFetched && !loading) {
+    if ((!hasFetched || catalogProducts.length === 0) && !loading) {
       dispatch(fetchProducts());
     }
-  }, [hasFetched, loading, dispatch]);
+  }, [hasFetched, catalogProducts.length, loading, dispatch]);
 
   const props = block.props || {};
   const heading = props.heading || 'Our Stone Products';
@@ -103,7 +103,17 @@ export default function ProductGridSection({
           )}
         </div>
 
-        {products.length === 0 ? (
+        {loading || (!hasFetched && products.length === 0) ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className="flex flex-col space-y-3">
+                <div className="aspect-square bg-stone-100 border border-stone-200 animate-pulse" />
+                <div className="h-4 w-3/4 bg-stone-200 mx-auto animate-pulse" />
+                <div className="h-3 w-1/2 bg-stone-100 mx-auto animate-pulse" />
+              </div>
+            ))}
+          </div>
+        ) : products.length === 0 ? (
           <div className="text-center py-16 text-neutral-400 font-light">
             No products in catalog.
           </div>

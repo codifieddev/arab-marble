@@ -75,9 +75,22 @@ export function buildLocalizedHref(localePrefix: string, href: any, locale = 'en
   }
   if (href.startsWith('/#')) return localePrefix ? `${localePrefix}${href.slice(1)}` : href;
   if (href.startsWith('#')) return href;
+
+  // Clean duplicate locale prefixes like /ar/ar/...
+  const cleanHref = href.replace(/^(\/[a-z]{2})\/\1(\/|$)/i, '$1$2');
+  if (cleanHref !== href) href = cleanHref;
+
+  // If href already starts with current locale, do not prepend again
+  const segments = href.split('/').filter(Boolean);
+  if (segments.length > 0 && segments[0].toLowerCase() === locale.toLowerCase()) {
+    return href;
+  }
   if (localePrefix && (href === localePrefix || href.startsWith(`${localePrefix}/`))) return href;
+
   const resolved = resolveHrefWithPermalinks(href, locale);
-  if (resolved !== href) return resolved;
+  if (resolved !== href) {
+    return resolved.replace(/^(\/[a-z]{2})\/\1(\/|$)/i, '$1$2');
+  }
   if (href === '/') return localePrefix || '/';
   return `${localePrefix}${href.startsWith('/') ? '' : '/'}${href}`;
 }

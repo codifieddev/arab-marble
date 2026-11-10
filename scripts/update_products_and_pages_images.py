@@ -473,3 +473,4 @@ if __name__ == '__main__':
     update_categories()
     update_site_pages()
     print("\nALL UPDATES COMPLETED SUCCESSFULLY!")
+

@@ -35,6 +35,13 @@ export async function generateMetadata({
     notFound();
   }
 
+  // Prevent double locale segments in path (e.g. /ar/ar/shop -> /ar/shop)
+  if (slug[0] === locale) {
+    const cleanRemaining = slug.slice(1).join('/');
+    const targetUrl = cleanRemaining ? `/${locale}/${cleanRemaining}` : `/${locale}`;
+    permanentRedirect(targetUrl);
+  }
+
   const rawPath = '/' + slug.join('/');
   const resolved = await resolvePermalinkAsync(rawPath, { locale });
 
@@ -213,6 +220,13 @@ export default async function DynamicPage({
     notFound();
   }
 
+  // Prevent double locale segments in path (e.g. /ar/ar/shop -> /ar/shop)
+  if (slug[0] === locale) {
+    const cleanRemaining = slug.slice(1).join('/');
+    const targetUrl = cleanRemaining ? `/${locale}/${cleanRemaining}` : `/${locale}`;
+    permanentRedirect(targetUrl);
+  }
+
   const rawPathname = '/' + slug.join('/');
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
@@ -238,11 +252,11 @@ export default async function DynamicPage({
         return <TenantAdminLoginSection />;
       case 'category': {
         const catSlug =
-          resolved.slug && resolved.slug !== 'all'
+          resolved.slug
             ? resolved.slug
             : slug.length > 1
             ? slug[slug.length - 1]
-            : undefined;
+            : 'all';
         return (
           <Suspense fallback={<PageLoader text="Loading Category" />}>
             <GetProductCategoryWise categorySlug={catSlug} />

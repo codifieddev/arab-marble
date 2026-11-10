@@ -213,7 +213,20 @@ export default function CategoryPageComponent({
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  const slug = categorySlug || (params?.id as string) || (params?.slug as string) || 'marble';
+  const rawSlug =
+    categorySlug ||
+    (params?.id as string) ||
+    (Array.isArray(params?.slug)
+      ? params.slug.length > 1
+        ? params.slug[params.slug.length - 1]
+        : ['product-category', 'category'].includes(params.slug[0])
+        ? 'all'
+        : params.slug[0]
+      : typeof params?.slug === 'string'
+      ? params.slug
+      : 'all');
+
+  const slug = (typeof rawSlug === 'string' && rawSlug ? rawSlug : 'all');
 
   // Read filter query params directly from URL
   const selectedColor = searchParams.get('f_color') || 'all';
@@ -264,7 +277,7 @@ export default function CategoryPageComponent({
     dispatch(fetchCategories());
     dispatch(
       fetchProductsByCategory({
-        category: slug,
+        category: slug || 'all',
         filters: activeFilters,
         offset: 0,
         limit: 50,
@@ -279,11 +292,38 @@ export default function CategoryPageComponent({
 
   // Find category details from DB
   const currentCategory = useMemo(() => {
+    if (!slug || slug === 'all') return null;
     return categories.find((c: any) => c.slug === slug || c.id === slug || c._id === slug);
   }, [categories, slug]);
 
-  const categoryTitle = currentCategory?.name || slug.replace(/-/g, ' ').toUpperCase();
-  const categoryDescription = currentCategory?.description || `Explore our premium ${categoryTitle.toLowerCase()} collection.`;
+  const locale = (params?.locale as string) || 'en';
+  const rawCatName = currentCategory?.name || currentCategory?.title;
+  const currentCategoryName =
+    typeof rawCatName === 'object' && rawCatName !== null
+      ? (rawCatName as any)[locale] || (rawCatName as any).en || ''
+      : typeof rawCatName === 'string'
+      ? rawCatName
+      : '';
+
+  const categoryTitle =
+    currentCategoryName ||
+    (slug && slug !== 'all' && typeof slug === 'string'
+      ? slug.replace(/-/g, ' ').toUpperCase()
+      : 'ALL PRODUCTS');
+
+  const rawCatDesc = currentCategory?.description;
+  const currentCategoryDesc =
+    typeof rawCatDesc === 'object' && rawCatDesc !== null
+      ? (rawCatDesc as any)[locale] || (rawCatDesc as any).en || ''
+      : typeof rawCatDesc === 'string'
+      ? rawCatDesc
+      : '';
+
+  const categoryDescription =
+    currentCategoryDesc ||
+    (slug === 'all'
+      ? 'Explore our full luxury collection of fine marble, granite, and natural stones.'
+      : `Explore our premium ${categoryTitle.toLowerCase()} collection.`);
 
   // Pagination state (Load More)
   const [visibleCount, setVisibleCount] = useState(16);

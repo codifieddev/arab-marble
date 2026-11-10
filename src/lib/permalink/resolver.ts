@@ -256,6 +256,20 @@ async function resolvePermalinkInternal(
     if (supportedLanguages.includes(firstSegment)) {
       currentLocale = firstSegment;
       cleanSegments = segments.slice(1);
+
+      // Guard against repeated or duplicate locale prefixes (e.g. /ar/ar/shop -> /ar/shop)
+      if (cleanSegments.length > 0 && supportedLanguages.includes(cleanSegments[0].toLowerCase())) {
+        while (cleanSegments.length > 0 && supportedLanguages.includes(cleanSegments[0].toLowerCase())) {
+          cleanSegments.shift();
+        }
+        const cleanPath = cleanSegments.length > 0 ? `/${currentLocale}/${cleanSegments.join('/')}` : `/${currentLocale}`;
+        return {
+          status: 'redirect',
+          locale: currentLocale,
+          redirectUrl: `${cleanPath}${search}`,
+          statusCode: 301,
+        };
+      }
     } else {
       // 3c. Unsupported language prefix -> 307 Temporary Redirect to clean path
       const remaining = segments.slice(1);

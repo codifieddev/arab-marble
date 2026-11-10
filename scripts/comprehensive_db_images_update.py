@@ -69,3 +69,4 @@ if remaining == 0:
     print("SUCCESS: 0 old /images/ or unsplash URLs remaining in ANY collection in kp_arab_marble!")
 else:
     print(f"WARNING: {remaining} remaining old URLs.")
+
