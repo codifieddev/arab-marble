@@ -18,9 +18,15 @@ const FALLBACK_STONES: Record<string, CatalogProduct> = {
     slug: 'omani-beige',
     description:
       'Arab Marble is an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain. Renowned for its uniform warm beige tones, excellent crystalline density, and natural durability, it is the premier choice for palaces, luxury villas, and commercial complexes across the UAE.',
-    primaryImage: '/images/products/stone-1.jpg',
-    allImages: ['/images/products/stone-1.jpg', '/images/products/stone-2.jpg'],
-    gallery: ['/images/products/stone-1.jpg', '/images/products/stone-2.jpg'],
+    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
+    allImages: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Diamond-Beige.jpg'
+    ],
+    gallery: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Diamond-Beige.jpg'
+    ],
     color: 'Beige',
     country: 'Oman',
     sizes: ['Gang-saw Slabs (20mm / 30mm)', 'Tiles 600x600x20mm', 'Tiles 600x300x20mm', 'Custom Cut-to-Size'],
@@ -40,9 +46,15 @@ const FALLBACK_STONES: Record<string, CatalogProduct> = {
     slug: 'crema-marfil',
     description:
       'Quarried in Spain, Crema Marfil is celebrated globally for its creamy yellowish-beige background and subtle golden veining. It imparts timeless warmth and luxury to high-end residential and hospitality developments.',
-    primaryImage: '/images/products/stone-2.jpg',
-    allImages: ['/images/products/stone-2.jpg', '/images/products/stone-1.jpg'],
-    gallery: ['/images/products/stone-2.jpg', '/images/products/stone-1.jpg'],
+    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
+    allImages: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg'
+    ],
+    gallery: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg'
+    ],
     color: 'Cream',
     country: 'Spain',
     sizes: ['Slabs 20mm', '600x600x20mm', 'Cut to size'],
@@ -62,9 +74,15 @@ const FALLBACK_STONES: Record<string, CatalogProduct> = {
     slug: 'light-emperador',
     description:
       'A refined Spanish marble with soft toffee, cafe-au-lait, and caramel tones interlaced with light calcite web veins. Ideal for classic and transitional interior architectural projects.',
-    primaryImage: '/images/products/stone-3.jpg',
-    allImages: ['/images/products/stone-3.jpg', '/images/products/stone-4.jpg'],
-    gallery: ['/images/products/stone-3.jpg'],
+    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
+    allImages: [
+      'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg'
+    ],
+    gallery: [
+      'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg'
+    ],
     color: 'Brown',
     country: 'Spain',
     sizes: ['600x600x20mm', 'Slabs 20mm', 'Cut to size'],
@@ -84,9 +102,15 @@ const FALLBACK_STONES: Record<string, CatalogProduct> = {
     slug: 'calacatta-oro',
     description:
       'An extraordinarily rare Italian luxury marble featuring bold, dramatic warm grey and honey-golden veins meandering across a crystalline white canvas. Highly desired for bookmatched feature walls and statement islands.',
-    primaryImage: '/images/products/stone-7.jpg',
-    allImages: ['/images/products/stone-7.jpg', '/images/products/stone-6.jpg'],
-    gallery: ['/images/products/stone-7.jpg'],
+    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
+    allImages: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x60-1-768x768-1.jpeg'
+    ],
+    gallery: [
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
+      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x60-1-768x768-1.jpeg'
+    ],
     color: 'White',
     country: 'Italy',
     sizes: ['Bookmatched Slabs 20mm', 'Custom Cut-to-Size'],

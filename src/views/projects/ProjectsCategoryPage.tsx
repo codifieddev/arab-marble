@@ -27,7 +27,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Boulevard Heights",
       location: "Dubai",
       category: "Latest Projects",
-      image: "/images/project-boulevard-heights.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2025/06/Boulevard-Heights-01.jpg",
       description:
         "Luxury architectural marble flooring and cladding installation for prestigious high-rise towers in Downtown Dubai.",
     },
@@ -36,7 +36,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Burj Vista",
       location: "Dubai",
       category: "Latest Projects",
-      image: "/images/project-burj-vista.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2026/03/Burj-Vista-01.jpg",
       description:
         "Custom marble facades and bespoke decorative stone works tailored for prime metropolitan residential residences.",
     },
@@ -45,7 +45,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Clemenceau Medical Center",
       location: "Dubai",
       category: "Latest Projects",
-      image: "/images/project-clemenceau.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2026/03/CMC-01.jpg",
       description:
         "High-density hygienic stone cladding and elegant lobby marble surfaces engineered for modern healthcare spaces.",
     },
@@ -54,7 +54,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "The Address - Fountain Views",
       location: "Dubai",
       category: "Latest Projects",
-      image: "/images/project-fountain-views.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2023/03/Park-Hyatt-001.jpg",
       description:
         "Five-star hospitality marble application featuring custom bookmatched slabs and intricate waterjet patterns.",
     },
@@ -65,7 +65,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Emirates Palace Luxury Suites",
       location: "Abu Dhabi",
       category: "Iconic",
-      image: "/images/home-hero.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2023/03/Qasr-Al-Sarab-001.jpg",
       description:
         "Royal presidential suite marble fit-out, featuring rare onyx and opulent Mediterranean marble in Abu Dhabi.",
     },
@@ -74,7 +74,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Royal Presidential Villa",
       location: "Abu Dhabi",
       category: "Iconic",
-      image: "/images/who-we-are.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg",
       description:
         "Monumental private villa stonework, showcasing bespoke Omani beige marble columns and pristine exterior cladding.",
     },
@@ -85,7 +85,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Saadiyat Island Private Villa",
       location: "Abu Dhabi",
       category: "Custom Projects",
-      image: "/images/products-tile.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
       description:
         "Execution of bespoke stonework, high-precision fixing, and premium marble installation for prominent architectural landmarks in the UAE.",
     },
@@ -94,7 +94,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Al Reem Waterfront Penthouse",
       location: "Abu Dhabi",
       category: "Custom Projects",
-      image: "/images/projects-tile.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2022/07/Armani-Grey-Vanity-1.jpg",
       description:
         "Contemporary penthouse renovation featuring imported Italian marble kitchen islands and seamless bathroom vanities.",
     },

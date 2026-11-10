@@ -22,7 +22,7 @@
         "subheading": {
           "en": ""
         },
-        "backgroundImage": "/images/home-hero.jpg",
+        "backgroundImage": "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
         "cta": {
           "label": {
             "en": ""
@@ -45,7 +45,7 @@
           "Arab Marble was established in Abu Dhabi in 1973.\nEver since its inception, Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite. Arab Marble engages in the wholesale and retail distribution and fixing of marble and granite for special decorative works, palaces, hotels, villas and high-rise prestigious and commercial buildings. Our supplier's network encompasses more than 350 stone processing factories worldwide.",
           "We are an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain area."
         ],
-        "image": "/images/who-we-are.jpg",
+        "image": "https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg",
         "imageAlt": {
           "en": "Arab Marble Stonework Sculpture"
         }
@@ -64,10 +64,10 @@
       "props": {
         "leftLabel": "PRODUCTS",
         "leftHref": "/shop",
-        "leftImage": "/images/products-tile.jpg",
+        "leftImage": "https://arabmarble.ae/wp-content/uploads/2023/03/Marble-1024x1024-1.jpeg",
         "rightLabel": "PROJECTS",
         "rightHref": "/projects/latest",
-        "rightImage": "/images/projects-tile.jpg"
+        "rightImage": "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg"
       }
     },
     {
@@ -211,7 +211,7 @@
         "subheading": {
           "en": ""
         },
-        "backgroundImage": "/images/home-hero.jpg",
+        "backgroundImage": "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
         "cta": {
           "label": {
             "en": ""
@@ -234,7 +234,7 @@
           "Arab Marble was established in Abu Dhabi in 1973.\nEver since its inception, Arab Marble has played a pivotal role in the Abu Dhabi Market for Marble and Granite. Arab Marble engages in the wholesale and retail distribution and fixing of marble and granite for special decorative works, palaces, hotels, villas and high-rise prestigious and commercial buildings. Our supplier's network encompasses more than 350 stone processing factories worldwide.",
           "We are an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain area."
         ],
-        "image": "/images/who-we-are.jpg",
+        "image": "https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg",
         "imageAlt": {
           "en": "Arab Marble Stonework Sculpture"
         }
@@ -253,10 +253,10 @@
       "props": {
         "leftLabel": "PRODUCTS",
         "leftHref": "/shop",
-        "leftImage": "/images/products-tile.jpg",
+        "leftImage": "https://arabmarble.ae/wp-content/uploads/2023/03/Marble-1024x1024-1.jpeg",
         "rightLabel": "PROJECTS",
         "rightHref": "/projects/latest",
-        "rightImage": "/images/projects-tile.jpg"
+        "rightImage": "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg"
       }
     },
     {
