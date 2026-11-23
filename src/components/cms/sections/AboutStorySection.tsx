@@ -4,6 +4,7 @@ import React from 'react';
 import type { PageBlock } from '@/lib/store/pages/pageType';
 import EditableText from '@/components/shared/EditableText';
 import { t } from '@/lib/i18n';
+import { ParallaxImage, Reveal, GoldDivider, MaskImage, SplitReveal } from '@/components/motion';
 
 interface AboutStorySectionProps {
   block: PageBlock;
@@ -26,25 +27,32 @@ export default function AboutStorySection({
   const imageSrc = props.image || '/images/who-we-are.jpg';
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-20 md:py-28 bg-white overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column: Who We are text */}
-          <div className="flex flex-col justify-center">
+          <Reveal direction="up" duration={0.9} className="flex flex-col justify-center">
             {onSave && isEditable ? (
-              <EditableText
-                value={t(props.heading, locale) || 'Who We are'}
-                onSave={(val) => onSave(block.id, 'props.heading', val)}
-                isEditable={isEditable}
-                tag="h2"
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-800 mb-6 tracking-tight"
-                placeholder="Section Heading..."
-              />
+              <div className="mb-4">
+                <EditableText
+                  value={t(props.heading, locale) || 'Who We are'}
+                  onSave={(val) => onSave(block.id, 'props.heading', val)}
+                  isEditable={isEditable}
+                  tag="h2"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-800 tracking-tight"
+                  placeholder="Section Heading..."
+                />
+              </div>
             ) : (
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-800 mb-6 tracking-tight">
+              <SplitReveal
+                as="h2"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-2 tracking-tight font-serif"
+              >
                 {t(props.heading, locale) || 'Who We are'}
-              </h2>
+              </SplitReveal>
             )}
+
+            <GoldDivider delay={0.3} className="!mb-6 !mt-2" />
 
             <div className="space-y-6 text-neutral-600 font-normal text-sm md:text-base leading-relaxed">
               {paragraphs.map((para, idx) => {
@@ -67,15 +75,16 @@ export default function AboutStorySection({
                 );
               })}
             </div>
-          </div>
+          </Reveal>
 
-          {/* Right Column: Sculpture / pedestals image */}
+          {/* Right Column: Sculpture / pedestals image with architectural curtain wipe */}
           <div className="flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[500px] overflow-hidden rounded-sm shadow-sm border border-neutral-100">
-              <img
+            <div className="w-full max-w-[500px]" data-cursor="Stone">
+              <MaskImage
                 src={imageSrc}
                 alt={t(props.imageAlt, locale) || 'Arab Marble Sculptures & Stonework'}
-                className="w-full h-auto object-cover max-h-[500px]"
+                aspectRatio="4/3"
+                containerClassName="rounded-sm shadow-xl border border-neutral-200/80"
               />
             </div>
           </div>

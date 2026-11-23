@@ -6,6 +6,7 @@ import type { PageBlock } from '@/lib/store/pages/pageType';
 import EditableText from '@/components/shared/EditableText';
 import { t } from '@/lib/i18n';
 import { ReferenceEditButton } from '@/components/cms/reference-editor';
+import { Reveal, GoldDivider, SplitReveal } from '@/components/motion';
 
 interface TestimonialsSectionProps {
   block: PageBlock;
@@ -108,10 +109,10 @@ export default function TestimonialsSection({
   if (!rawItems.length) return null;
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-[#fbfbfb] border-t border-neutral-200/60 relative">
+    <section id="testimonials" className="py-20 md:py-28 bg-[#fbfbfb] border-t border-neutral-200/60 relative overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <Reveal direction="up" duration={0.9} className="text-center max-w-3xl mx-auto mb-16">
           {onSave && isEditable ? (
             <EditableText
               value={tag}
@@ -137,10 +138,12 @@ export default function TestimonialsSection({
               placeholder="Heading..."
             />
           ) : (
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">
+            <SplitReveal as="h2" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-4 font-serif">
               {heading}
-            </h2>
+            </SplitReveal>
           )}
+
+          <GoldDivider centered delay={0.25} className="!my-4" />
 
           {onSave && isEditable ? (
             <EditableText
@@ -168,15 +171,16 @@ export default function TestimonialsSection({
               />
             </div>
           )}
-        </div>
+        </Reveal>
 
         {/* Testimonials Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {visibleItems.map((item: any, i: number) => (
-            <div
-              key={item.id || i}
-              className="bg-white border border-neutral-200/90 shadow-sm hover:shadow-md transition-all duration-300 p-7 flex flex-col justify-between relative group rounded-sm"
-            >
+            <Reveal key={item.id || i} direction="up" delay={0.1 + (i % 4) * 0.1} duration={0.9} className="h-full">
+              <div
+                data-cursor="Review"
+                className="bg-white border border-neutral-200/90 hover:border-[#C9A96E]/50 shadow-sm hover:shadow-2xl transition-all duration-500 p-7 flex flex-col justify-between relative group rounded-sm h-full"
+              >
               {/* Reference Edit Button for this specific testimonial */}
               {isEditable && (
                 <div className="absolute top-4 right-4 z-20">
@@ -246,6 +250,7 @@ export default function TestimonialsSection({
                 </div>
               </div>
             </div>
+          </Reveal>
           ))}
         </div>
 

@@ -13,6 +13,7 @@ import { resolveBrandLogo, resolveBrandName } from '@/lib/brand/brand-resolver';
 import LanguageSwitcher from './LanguageSwitcher';
 import headerData from '@/lib/pages/headerData.json';
 import { resolveHrefWithPermalinks } from '@/lib/permalink/url-helper';
+import { Magnetic } from '@/components/motion';
 
 const DEFAULT_FALLBACK_LABELS: Record<string, Record<string, string>> = {
   home: { en: 'Home', ar: 'الرئيسية' },
@@ -193,8 +194,25 @@ export default function Header({
     document.body.classList.add('scroll-locked');
   }, []);
 
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 15);
+
+      if (currentScrollY > 120) {
+        if (currentScrollY > lastScrollYRef.current + 6) {
+          setIsHeaderVisible(false); // scrolling down -> hide
+        } else if (currentScrollY < lastScrollYRef.current - 6) {
+          setIsHeaderVisible(true); // scrolling up -> reveal
+        }
+      } else {
+        setIsHeaderVisible(true);
+      }
+      lastScrollYRef.current = currentScrollY;
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -218,29 +236,34 @@ export default function Header({
     (headerLogoImage && !headerLogoImage.startsWith('media://') ? headerLogoImage : null) ||
     (resolvedLogo && !resolvedLogo.startsWith('media://') ? resolvedLogo : null) ||
     headerData.logo?.imageUrl ||
-    '/images/arab-marble-logo.svg';
+    'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-01.png';
   const brandName = activeHeader?.logo?.text || activeHeader?.name || resolveBrandName(blueprint) || 'Arab Marble';
 
   return (
     <>
       <header
-        className="sticky top-0 z-50 bg-white border-b border-gray-200 transition-shadow duration-200"
-        style={{
-          boxShadow: isScrolled ? '0 2px 10px rgba(0,0,0,0.06)' : 'none',
-        }}
+        className={`sticky top-0 z-50 transition-all duration-500 will-change-transform ${
+          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+        } ${
+          isScrolled
+            ? 'bg-white/85 backdrop-blur-md border-b border-[#C9A96E]/25 shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
+            : 'bg-white border-b border-gray-200 shadow-none'
+        }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link href={localePrefix || '/'} className="flex items-center">
-            <img
-              src={dynamicLogo}
-              alt={brandName}
-              className="h-14 w-auto object-contain"
-              onError={(e) => {
-                e.currentTarget.src = '/images/arab-marble-logo.svg';
-              }}
-            />
-          </Link>
+          {/* Brand Logo with Magnetic interaction */}
+          <Magnetic strength={0.25}>
+            <Link href={localePrefix || '/'} className="flex items-center outline-none focus:outline-none" data-cursor="Arab Marble">
+              <img
+                src={dynamicLogo}
+                alt={brandName}
+                className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                onError={(e) => {
+                  e.currentTarget.src = '/images/arab-marble-logo.svg';
+                }}
+              />
+            </Link>
+          </Magnetic>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -250,7 +273,10 @@ export default function Header({
               const subItems = getSubMenuColumns(item);
               const hasSub = subItems.length > 0;
               const isOpen = openDropdown === index;
-              const isActive = pathname === fullHref || pathname === (item.path || item.href || item.url);
+              const isHome = fullHref === '/' || fullHref === `/${locale}` || item.path === '/' || item.href === '/';
+              const isActive = isHome
+                ? pathname === '/' || pathname === `/${locale}` || pathname === ''
+                : pathname === fullHref || (fullHref !== '/' && pathname.startsWith(fullHref));
 
               return (
                 <div
@@ -261,8 +287,8 @@ export default function Header({
                 >
                   <Link
                     href={fullHref}
-                    className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors uppercase ${
-                      isActive || isOpen ? 'text-black' : 'text-gray-600 hover:text-black'
+                    className={`group relative flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors uppercase outline-none focus:outline-none focus:ring-0 ${
+                      isActive ? 'text-[#C9A96E]' : isOpen ? 'text-black' : 'text-neutral-700 hover:text-black'
                     }`}
                   >
                     <span>{label}</span>
@@ -276,6 +302,14 @@ export default function Header({
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
+                    {/* Elegant Gold Active & Hover Indicator */}
+                    <span
+                      className={`absolute -bottom-1 left-0 right-0 h-[2px] bg-[#C9A96E] rounded-full transition-all duration-300 ${
+                        isActive
+                          ? 'opacity-100 scale-x-100'
+                          : 'opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100'
+                      }`}
+                    />
                   </Link>
 
                   {/* Dropdown Menu */}

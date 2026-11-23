@@ -5,6 +5,7 @@ import type { PageBlock } from '@/lib/store/pages/pageType';
 import { t } from '@/lib/i18n';
 import EditableText from '@/components/shared/EditableText';
 import { motion } from 'motion/react';
+import { Reveal, GoldDivider, Magnetic, SplitReveal } from '@/components/motion';
 
 const decorativeShapes = [
   { size: 20, x: '10%', y: '20%', color: 'var(--primary)', delay: 0, animation: 'float' as const },
@@ -75,46 +76,57 @@ export default function CTASection({ block, locale = 'en', localePrefix = '', is
         />
       ))}
       <div className="container-custom text-center" style={{ position: 'relative', zIndex: 1 }}>
-        {title && (onSave && isEditable ? (
-          <EditableText
-            value={t(title, locale)}
-            onSave={(val) => onSave(block.id, 'props.title', val)}
-            isEditable={isEditable}
-            tag="h2"
-            className="section-title"
-            placeholder="Title..."
-          />
-        ) : (
-          <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t(title, locale) }} />
-        ))}
-        {subtitle && (onSave && isEditable ? (
-          <EditableText
-            value={t(subtitle, locale)}
-            onSave={(val) => onSave(block.id, 'props.subtitle', val)}
-            isEditable={isEditable}
-            tag="p"
-            className="text-[var(--text-secondary)] mt-3 max-w-xl mx-auto"
-            placeholder="Subtitle..."
-          />
-        ) : (
-          <p className="text-[var(--text-secondary)] mt-4 max-w-xl mx-auto text-[15px] leading-relaxed" dangerouslySetInnerHTML={{ __html: t(subtitle, locale) }} />
-        ))}
-        {buttonText && (
-          <Link href={safeButtonLink} className="btn-primary mt-8 inline-block" style={{paddingLeft:"34px", paddingRight:"34px"}}>
-            {onSave && isEditable ? (
-              <EditableText
-                value={t(buttonText, locale)}
-                onSave={(val) => onSave(block.id, 'props.buttonText', val)}
-                isEditable={isEditable}
-                tag="span"
-                className=""
-                placeholder="Button Text..."
-              />
-            ) : (
-              <>{t(buttonText, locale)}</>
-            )}
-          </Link>
-        )}
+        <Reveal direction="up" duration={0.9}>
+          {title && (onSave && isEditable ? (
+            <EditableText
+              value={t(title, locale)}
+              onSave={(val) => onSave(block.id, 'props.title', val)}
+              isEditable={isEditable}
+              tag="h2"
+              className="section-title"
+              placeholder="Title..."
+            />
+          ) : (
+            <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t(title, locale) }} />
+          ))}
+          <GoldDivider centered delay={0.2} className="!my-4" />
+          {subtitle && (onSave && isEditable ? (
+            <EditableText
+              value={t(subtitle, locale)}
+              onSave={(val) => onSave(block.id, 'props.subtitle', val)}
+              isEditable={isEditable}
+              tag="p"
+              className="text-[var(--text-secondary)] mt-3 max-w-xl mx-auto"
+              placeholder="Subtitle..."
+            />
+          ) : (
+            <p className="text-[var(--text-secondary)] mt-4 max-w-xl mx-auto text-[15px] leading-relaxed" dangerouslySetInnerHTML={{ __html: t(subtitle, locale) }} />
+          ))}
+          {buttonText && (
+            <div className="mt-8">
+              <Magnetic strength={0.38}>
+                <Link
+                  href={safeButtonLink}
+                  data-cursor="Connect"
+                  className="btn-primary inline-flex items-center justify-center px-10 py-4 shadow-xl hover:shadow-[0_0_30px_rgba(201,169,110,0.4)] transition-all duration-300 font-medium tracking-widest text-xs uppercase"
+                >
+                  {onSave && isEditable ? (
+                    <EditableText
+                      value={t(buttonText, locale)}
+                      onSave={(val) => onSave(block.id, 'props.buttonText', val)}
+                      isEditable={isEditable}
+                      tag="span"
+                      className=""
+                      placeholder="Button Text..."
+                    />
+                  ) : (
+                    <span>{t(buttonText, locale)}</span>
+                  )}
+                </Link>
+              </Magnetic>
+            </div>
+          )}
+        </Reveal>
       </div>
     </div>
   );

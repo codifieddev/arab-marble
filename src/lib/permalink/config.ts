@@ -193,10 +193,35 @@ const categorySlugsCache = new Map<string, { slugs: Set<string>; timestamp: numb
 
 const DEFAULT_KNOWN_PRODUCT_SLUGS: Record<string, string[]> = {
   kp_peekeeper: ['peekeeper', 'peekeeper-net-bag'],
+  kp_arab_marble: [
+    'carrara-white',
+    'omani-beige',
+    'crema-marfil',
+    'light-emperador',
+    'calacatta-oro',
+    'dark-emperador',
+    'statutario',
+    'nero-marquina',
+    'botticino',
+    'travertino-romano',
+    'rosa-portugal',
+    'calacatta-gold-quartz',
+    'pure-white-quartz',
+    'kashmir-white',
+    'tan-brown',
+    'black-absolute',
+    'silver-travertine',
+    'travertino-navona',
+    'black-marquina-gold',
+    'rosso-levanto',
+    'rosa-portogallo',
+    'silver-wave',
+  ],
 };
 
 const DEFAULT_KNOWN_CATEGORY_SLUGS: Record<string, string[]> = {
   kp_peekeeper: ['peekeeper'],
+  kp_arab_marble: ['marble', 'granite', 'natural-stones', 'artificial-stones', 'general'],
 };
 
 /**
@@ -216,13 +241,42 @@ export async function isValidProductSlug(tenantDb: string, slug: string): Promis
   const now = Date.now();
   const cached = productSlugsCache.get(tenantDb);
   if (cached && now - cached.timestamp < 60000) {
-    return cached.slugs.has(cleanSlug);
+    if (cached.slugs.has(cleanSlug)) {
+      return true;
+    }
   }
 
+  // 1. Direct slug endpoint lookup (fast and accurate regardless of pagination)
   try {
-    const res = await fetch(`${FASTAPI_URL}/commerce/products`, {
+    const slugRes = await fetch(`${FASTAPI_URL}/commerce/products/slug/${encodeURIComponent(cleanSlug)}`, {
       headers: { 'x-tenant-db': tenantDb },
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(12000),
+      cache: 'no-store',
+    });
+    if (slugRes.ok) {
+      const data = await slugRes.json();
+      const product = data?.data !== undefined ? data.data : data;
+      if (product && (product.slug || product._id || product.id)) {
+        if (!cached) {
+          productSlugsCache.set(tenantDb, {
+            slugs: new Set([...(known || []), cleanSlug]),
+            timestamp: now,
+          });
+        } else {
+          cached.slugs.add(cleanSlug);
+        }
+        return true;
+      }
+    }
+  } catch {
+    // Fallback to list query
+  }
+
+  // 2. Fetch all products with perPage=100 to populate cache
+  try {
+    const res = await fetch(`${FASTAPI_URL}/commerce/products?perPage=100`, {
+      headers: { 'x-tenant-db': tenantDb },
+      signal: AbortSignal.timeout(15000),
       cache: 'no-store',
     });
     if (res.ok) {
@@ -267,7 +321,7 @@ export async function isValidCategorySlug(tenantDb: string, slug: string): Promi
   try {
     const res = await fetch(`${FASTAPI_URL}/commerce/categories`, {
       headers: { 'x-tenant-db': tenantDb },
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(12000),
       cache: 'no-store',
     });
     if (res.ok) {

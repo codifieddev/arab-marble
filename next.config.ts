@@ -6,6 +6,26 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "arabmarble.ae",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "arabmarble.ae",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.arabmarble.ae",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "**.arabmarble.ae",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "res.cloudinary.com",
         pathname: "/**",
       },

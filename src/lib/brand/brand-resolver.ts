@@ -4,8 +4,8 @@
  * Kalp-Admin / FastAPI blueprint schemas.
  */
 
-const DEFAULT_LOGO = '/images/arab-marble-logo.svg';
-const DEFAULT_FAVICON = '/images/arab-marble-logo.svg';
+const DEFAULT_LOGO = 'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-04.png';
+const DEFAULT_FAVICON = 'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-04.png';
 const DEFAULT_BRAND_NAME = 'Arab Marble';
 
 function cleanUrl(val: unknown): string | null {
@@ -16,10 +16,12 @@ function cleanUrl(val: unknown): string | null {
     trimmed === 'undefined' ||
     trimmed === 'null' ||
     trimmed === '[object Object]' ||
-    trimmed.startsWith('media://') ||
     trimmed.includes('undefined')
   ) {
     return null;
+  }
+  if (trimmed.startsWith('media://')) {
+    return 'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-04.png';
   }
   return trimmed;
 }
@@ -35,9 +37,13 @@ export function resolveBrandLogo(payload: any): string {
   const candidates: unknown[] = [
     payload?.brandAssets?.logoUrl,
     payload?.brandAssets?.logo,
-    payload?.business?.brand?.logoRef,
     payload?.business?.brand?.logoUrl,
+    payload?.business?.brand?.logoRef,
     payload?.business?.brand?.businessDna?.logoUrl,
+    payload?.header?.logo?.image,
+    payload?.footer?.logo?.image,
+    payload?.logo?.imageUrl,
+    payload?.logo?.image,
     payload?.brandKit?.logo?.primary,
     payload?.brandKit?.logo?.light,
     payload?.brandKit?.logo?.icon,

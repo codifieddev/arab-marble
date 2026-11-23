@@ -40,16 +40,20 @@ export default function ProductGridSection({
   const { allProducts: catalogProducts, hasFetched, loading } = useAppSelector((state) => state.products);
 
   useEffect(() => {
-    if ((!hasFetched || catalogProducts.length === 0) && !loading) {
-      dispatch(fetchProducts());
-    }
-  }, [hasFetched, catalogProducts.length, loading, dispatch]);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const props = block.props || {};
   const heading = props.heading || 'Our Stone Products';
   const subheading = props.subheading || 'Explore our complete collection of marble, granite, and natural stones.';
 
-  const products = (catalogProducts as CatalogProduct[]).filter((p) => {
+  const sourceProducts = catalogProducts.length > 0
+    ? catalogProducts
+    : Array.isArray(props.compiledProducts) && props.compiledProducts.length > 0
+    ? props.compiledProducts
+    : [];
+
+  const products = (sourceProducts as CatalogProduct[]).filter((p) => {
     if (p.status === 'archived' || p.status === 'inactive') return false;
     return true;
   });

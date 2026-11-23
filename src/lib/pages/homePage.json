@@ -52,13 +52,6 @@
       }
     },
     {
-      "id": "statement-section",
-      "type": "statement",
-      "props": {
-        "text": "Arab Marble has completed and executed works in Abu Dhabi, Dubai, Sharjah, Al Ain, Ajman, Kuwait, Bahrain and Qatar."
-      }
-    },
-    {
       "id": "home-tiles-section",
       "type": "home-tiles",
       "props": {
@@ -238,13 +231,6 @@
         "imageAlt": {
           "en": "Arab Marble Stonework Sculpture"
         }
-      }
-    },
-    {
-      "id": "statement-section",
-      "type": "statement",
-      "props": {
-        "text": "Arab Marble has completed and executed works in Abu Dhabi, Dubai, Sharjah, Al Ain, Ajman, Kuwait, Bahrain and Qatar."
       }
     },
     {

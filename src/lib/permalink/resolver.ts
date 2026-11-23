@@ -116,7 +116,7 @@ async function fetchFromApi<T>(path: string, tenantDb: string): Promise<T | null
           'Content-Type': 'application/json',
           'x-tenant-db': tenantDb,
         },
-        signal: AbortSignal.timeout(3000),
+        signal: AbortSignal.timeout(12000),
         next: { revalidate: 60 },
       });
       if (!response.ok) continue;

@@ -6,10 +6,10 @@ export const BATCH_SIZE = 50;
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchAll",
-  async (_, { rejectWithValue }) => {
-    // const slug = "peekeeper-escape-proof-dog-diaper";
+  async (arg: { perPage?: number } | undefined = undefined, { rejectWithValue }) => {
     try {
-      const res = await fetch(`/api/commerce/products`, { credentials: "include" });
+      const perPage = arg?.perPage ?? 100;
+      const res = await fetch(`/api/commerce/products?perPage=${perPage}`, { credentials: "include" });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to fetch products");
       return {

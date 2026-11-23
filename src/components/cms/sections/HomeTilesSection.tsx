@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { PageBlock } from '@/lib/store/pages/pageType';
 import EditableText from '@/components/shared/EditableText';
 import { t } from '@/lib/i18n';
+import { ParallaxImage, Reveal, Magnetic } from '@/components/motion';
 
 interface HomeTilesSectionProps {
   block?: PageBlock;
@@ -34,74 +35,90 @@ export default function HomeTilesSection({
   const rightHref = rawRightHref.startsWith('/') ? `${localePrefix}${rawRightHref}` : rawRightHref;
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Tile: PRODUCTS */}
-          <Link
-            href={leftHref}
-            className="group relative h-[360px] md:h-[440px] overflow-hidden border border-neutral-200 block shadow-sm"
-          >
-            <img
-              src={leftImage}
-              alt={leftLabel}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-              {onSave && isEditable && block?.id ? (
-                <div onClick={(e) => e.stopPropagation()}>
-                  <EditableText
-                    value={leftLabel}
-                    onSave={(val) => onSave(block.id, 'props.leftLabel', val)}
-                    isEditable={isEditable}
-                    tag="span"
-                    className="px-8 py-3 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs shadow-lg"
-                    placeholder="Tile Label..."
-                  />
-                </div>
-              ) : (
-                <span
-                  className="px-8 py-3 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs transition-transform duration-300 group-hover:scale-105 shadow-lg"
-                  style={{ color: '#ffffff' }}
-                >
-                  {leftLabel}
-                </span>
-              )}
-            </div>
-          </Link>
+          <Reveal direction="up" delay={0.1} duration={0.9} className="w-full">
+            <Link
+              href={leftHref}
+              data-cursor="Products"
+              className="group relative h-[380px] md:h-[460px] overflow-hidden border border-neutral-200/80 block shadow-sm hover:shadow-2xl transition-all duration-500 rounded-sm"
+            >
+              <ParallaxImage
+                src={leftImage}
+                alt={leftLabel}
+                speed={0.16}
+                scale={1.14}
+                containerClassName="w-full h-full"
+                className="transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center z-10">
+                {onSave && isEditable && block?.id ? (
+                  <div onClick={(e) => e.stopPropagation()}>
+                    <EditableText
+                      value={leftLabel}
+                      onSave={(val) => onSave(block.id, 'props.leftLabel', val)}
+                      isEditable={isEditable}
+                      tag="span"
+                      className="px-8 py-3.5 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs shadow-lg"
+                      placeholder="Tile Label..."
+                    />
+                  </div>
+                ) : (
+                  <Magnetic strength={0.3}>
+                    <span
+                      className="inline-block px-9 py-3.5 border-2 border-white !text-white font-medium tracking-[0.2em] text-xs md:text-sm uppercase bg-black/50 backdrop-blur-xs transition-transform duration-500 group-hover:scale-105 shadow-xl group-hover:border-[#C9A96E]"
+                      style={{ color: '#ffffff' }}
+                    >
+                      {leftLabel}
+                    </span>
+                  </Magnetic>
+                )}
+              </div>
+            </Link>
+          </Reveal>
 
           {/* Right Tile: PROJECTS */}
-          <Link
-            href={rightHref}
-            className="group relative h-[360px] md:h-[440px] overflow-hidden border border-neutral-200 block shadow-sm"
-          >
-            <img
-              src={rightImage}
-              alt={rightLabel}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-              {onSave && isEditable && block?.id ? (
-                <div onClick={(e) => e.stopPropagation()}>
-                  <EditableText
-                    value={rightLabel}
-                    onSave={(val) => onSave(block.id, 'props.rightLabel', val)}
-                    isEditable={isEditable}
-                    tag="span"
-                    className="px-8 py-3 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs shadow-lg"
-                    placeholder="Tile Label..."
-                  />
-                </div>
-              ) : (
-                <span
-                  className="px-8 py-3 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs transition-transform duration-300 group-hover:scale-105 shadow-lg"
-                  style={{ color: '#ffffff' }}
-                >
-                  {rightLabel}
-                </span>
-              )}
-            </div>
-          </Link>
+          <Reveal direction="up" delay={0.25} duration={0.9} className="w-full">
+            <Link
+              href={rightHref}
+              data-cursor="Projects"
+              className="group relative h-[380px] md:h-[460px] overflow-hidden border border-neutral-200/80 block shadow-sm hover:shadow-2xl transition-all duration-500 rounded-sm"
+            >
+              <ParallaxImage
+                src={rightImage}
+                alt={rightLabel}
+                speed={0.16}
+                scale={1.14}
+                containerClassName="w-full h-full"
+                className="transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center z-10">
+                {onSave && isEditable && block?.id ? (
+                  <div onClick={(e) => e.stopPropagation()}>
+                    <EditableText
+                      value={rightLabel}
+                      onSave={(val) => onSave(block.id, 'props.rightLabel', val)}
+                      isEditable={isEditable}
+                      tag="span"
+                      className="px-8 py-3.5 border-2 border-white !text-white font-medium tracking-widest text-sm md:text-base uppercase bg-black/50 backdrop-blur-xs shadow-lg"
+                      placeholder="Tile Label..."
+                    />
+                  </div>
+                ) : (
+                  <Magnetic strength={0.3}>
+                    <span
+                      className="inline-block px-9 py-3.5 border-2 border-white !text-white font-medium tracking-[0.2em] text-xs md:text-sm uppercase bg-black/50 backdrop-blur-xs transition-transform duration-500 group-hover:scale-105 shadow-xl group-hover:border-[#C9A96E]"
+                      style={{ color: '#ffffff' }}
+                    >
+                      {rightLabel}
+                    </span>
+                  </Magnetic>
+                )}
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>

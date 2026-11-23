@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { PageBlock } from '@/lib/store/pages/pageType';
 import EditableText from '@/components/shared/EditableText';
 import { t } from '@/lib/i18n';
+import { Reveal, GoldDivider } from '@/components/motion';
 
 interface FAQSectionProps {
   block: PageBlock;
@@ -36,10 +37,10 @@ export default function FAQSection({ block, locale = 'en', isEditable = false, o
   if (!items.length && !sectionTitle) return null;
 
   return (
-    <div className="section-padding py-16 md:py-24 bg-[var(--background)]">
+    <div className="section-padding py-16 md:py-24 bg-[var(--background)] overflow-hidden">
       <div className="container-custom">
         {sectionTitle && (
-          <div className="text-center mb-10 md:mb-14">
+          <Reveal direction="up" duration={0.9} className="text-center mb-10 md:mb-14">
             <div className="inline-block mb-3">
               <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--primary)] bg-[var(--accent-soft)] px-4 py-2 rounded-full inline-block">
                 <EditableText
@@ -65,13 +66,13 @@ export default function FAQSection({ block, locale = 'en', isEditable = false, o
                 {sectionTitle}
               </h2>
             )}
-            <div className="w-16 h-1 bg-[var(--accent)] mx-auto mt-4 rounded-full" />
+            <GoldDivider centered delay={0.25} className="!my-4" />
             {sectionSubtitle && (
               <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
                 {sectionSubtitle}
               </p>
             )}
-          </div>
+          </Reveal>
         )}
 
         <div style={{ maxWidth: 820, margin: '0 auto' }} className="space-y-4">
@@ -82,55 +83,56 @@ export default function FAQSection({ block, locale = 'en', isEditable = false, o
             const a = t(item.props?.answer, locale) || t(item.answer, locale);
 
             return (
-              <div
-                key={itemId}
-                className="border border-[var(--border)] rounded-[var(--radius-xl)] bg-[var(--white)] overflow-hidden shadow-sm hover:border-[var(--border-hover)] transition-all"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleItem(itemId)}
-                  className="w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg text-[var(--text)] hover:bg-[var(--surface)]/50 transition-colors cursor-pointer gap-4"
-                  aria-expanded={isOpen}
+              <Reveal key={itemId} direction="up" delay={0.1 + (idx % 5) * 0.08} duration={0.8}>
+                <div
+                  className="border border-[var(--border)] rounded-[var(--radius-xl)] bg-[var(--white)] overflow-hidden shadow-sm hover:border-[var(--border-hover)] transition-all"
                 >
-                  {onSave && isEditable ? (
-                    <EditableText
-                      value={q}
-                      onSave={(val) => onSave(block.id, `content.${idx}.props.question`, val)}
-                      isEditable={isEditable}
-                      tag="span"
-                      className="flex-1 pr-2"
-                      placeholder="Question..."
-                    />
-                  ) : (
-                    <span className="flex-1 pr-2">{q}</span>
-                  )}
-                  <span className={`w-8 h-8 rounded-full bg-[var(--surface)] flex items-center justify-center shrink-0 text-[var(--primary)] transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[var(--primary)] text-white' : ''}`}>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="px-5 pb-6 md:px-6 md:pb-6 pt-0 animate-in fade-in duration-200 border-t border-[var(--border)]/60 mt-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(itemId)}
+                    className="w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-base md:text-lg text-[var(--text)] hover:bg-[var(--surface)]/50 transition-colors cursor-pointer gap-4"
+                    aria-expanded={isOpen}
+                  >
                     {onSave && isEditable ? (
                       <EditableText
-                        value={a}
-                        onSave={(val) => onSave(block.id, `content.${idx}.props.answer`, val)}
+                        value={q}
+                        onSave={(val) => onSave(block.id, `content.${idx}.props.question`, val)}
                         isEditable={isEditable}
-                        tag="p"
-                        className="body-text text-sm md:text-[15px] leading-relaxed text-[var(--text-muted)] pt-3"
-                        placeholder="Answer..."
-                        multiline
-                        rows={3}
+                        tag="span"
+                        className="flex-1 pr-2"
+                        placeholder="Question..."
                       />
                     ) : (
-                      <p className="body-text text-sm md:text-[15px] leading-relaxed text-[var(--text-muted)] pt-3">
-                        {a}
-                      </p>
+                      <span className="flex-1 pr-2">{q}</span>
                     )}
-                  </div>
-                )}
-              </div>
+                    <span className={`w-8 h-8 rounded-full bg-[var(--surface)] flex items-center justify-center shrink-0 text-[var(--primary)] transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[var(--primary)] text-white' : ''}`}>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-6 md:px-6 md:pb-6 pt-0 animate-in fade-in duration-200 border-t border-[var(--border)]/60 mt-1">
+                      {onSave && isEditable ? (
+                        <EditableText
+                          value={a}
+                          onSave={(val) => onSave(block.id, `content.${idx}.props.answer`, val)}
+                          isEditable={isEditable}
+                          tag="p"
+                          className="body-text text-sm md:text-[15px] leading-relaxed text-[var(--text-muted)] pt-3"
+                          placeholder="Answer..."
+                          multiline
+                          rows={3}
+                        />
+                      ) : (
+                        <p className="body-text text-sm md:text-[15px] leading-relaxed text-[var(--text-muted)] pt-3">
+                          {a}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </Reveal>
             );
           })}
         </div>

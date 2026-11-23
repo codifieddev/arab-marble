@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import EditModeToggle from '@/components/layout/EditModeToggle/EditModeToggle';
 import LocaleNotice from '@/components/locale-notice/LocaleNotice';
 import { ReferenceEditorProvider, ReferenceEditorDrawer } from '@/components/cms/reference-editor';
+import { SmoothScroll, Preloader, Cursor, NoiseGrain } from '@/components/motion';
 
 interface StoreLayoutShellProps {
   children: React.ReactNode;
@@ -47,13 +48,18 @@ export default function StoreLayoutShell({
 
   return (
     <ReferenceEditorProvider>
+      <Preloader />
+      <Cursor />
+      <NoiseGrain />
       <LocaleNotice />
       <AdminBar />
       <Header locale={locale} localePrefix={localePrefix} />
-      <main id="main-content" className="flex-grow">
-        {children}
-      </main>
-      <Footer locale={locale} localePrefix={localePrefix} />
+      <SmoothScroll>
+        <main id="main-content" className="flex-grow">
+          {children}
+        </main>
+        <Footer locale={locale} localePrefix={localePrefix} />
+      </SmoothScroll>
       <EditModeToggle />
       <ReferenceEditorDrawer />
     </ReferenceEditorProvider>

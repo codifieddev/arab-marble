@@ -22,7 +22,9 @@ export default function StatementSection({
   const statement =
     t(props.text, locale) ||
     t(props.content, locale) ||
-    'Arab Marble has completed and executed works in Abu Dhabi, Dubai, Sharjah, Al Ain, Ajman, Kuwait, Bahrain and Qatar.';
+    '';
+
+  if (!statement) return null;
 
   return (
     <section className="py-16 md:py-20 bg-white text-center">
@@ -48,3 +50,4 @@ export default function StatementSection({
     </section>
   );
 }
+
