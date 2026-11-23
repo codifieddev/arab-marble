@@ -289,18 +289,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-white,
-.text-white *,
-[class*="text-white"] {
+[class~="text-white"],
+.\!text-white {
   color: #ffffff !important;
 }
 
 .text-neutral-100,
-.text-neutral-100 * {
+[class~="text-neutral-100"],
+.\!text-neutral-100 {
   color: #f5f5f5 !important;
 }
 
 .text-neutral-200,
-.text-neutral-200 * {
+[class~="text-neutral-200"],
+.\!text-neutral-200 {
   color: #e5e5e5 !important;
 }
 

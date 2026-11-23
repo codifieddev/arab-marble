@@ -1,44 +1,47 @@
 {
   "title": {
-    "en": "Products"
+    "en": "Products",
+    "ar": "المنتجات"
   },
   "slug": "shop",
   "metaTitle": {
-    "en": "Products | Arab Marble"
+    "en": "Products | Arab Marble",
+    "ar": "المنتجات | الرخام العربي"
   },
   "metaDescription": {
-    "en": "Explore our full catalog of premium marble, granite, natural stones and artificial stones in Abu Dhabi, UAE."
+    "en": "Explore our full catalog of premium marble, granite, natural stones and artificial stones in Abu Dhabi, UAE.",
+    "ar": "استكشف كتالوجنا الكامل من الرخام والجرانيت والأحجار الطبيعية والأحجار الصناعية الفاخرة في أبوظبي، الإمارات."
   },
   "isPublished": true,
   "status": "published",
   "content": [
     {
-      "id": "shop-main",
-      "type": "product-grid",
+      "id": "shop-categories-showcase",
+      "type": "categories-showcase",
       "layout": "full",
-      "adminTitle": "Shop Product Grid",
+      "adminTitle": "Categories Showcase",
       "props": {
-        "heading": {
-          "en": "Our Stone Products"
-        },
-        "subheading": {
-          "en": "Explore our complete collection of marble, granite, and natural stones."
+        "showBanner": true,
+        "bannerImage": "https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png",
+        "title": {
+          "en": "Products",
+          "ar": "المنتجات"
         }
       }
     }
   ],
   "blocks": [
     {
-      "id": "shop-main",
-      "type": "product-grid",
+      "id": "shop-categories-showcase",
+      "type": "categories-showcase",
       "layout": "full",
-      "adminTitle": "Shop Product Grid",
+      "adminTitle": "Categories Showcase",
       "props": {
-        "heading": {
-          "en": "Our Stone Products"
-        },
-        "subheading": {
-          "en": "Explore our complete collection of marble, granite, and natural stones."
+        "showBanner": true,
+        "bannerImage": "https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png",
+        "title": {
+          "en": "Products",
+          "ar": "المنتجات"
         }
       }
     }

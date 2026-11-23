@@ -26,3 +26,4 @@ export { default as MeasureGuideSection } from './MeasureGuideSection';
 export { default as TipsSection } from './TipsSection';
 export { default as ReviewsStatsSection } from './ReviewsStatsSection';
 export { default as CustomerReviewsSection } from './CustomerReviewsSection';
+export { default as CategoriesShowcaseSection } from './CategoriesShowcaseSection';

@@ -531,9 +531,10 @@ export default function CategoryPageComponent({
           <div className="mt-14 text-center">
             <button
               onClick={() => setVisibleCount((prev) => prev + 16)}
-              className="px-8 py-2.5 border border-neutral-400 text-xs font-semibold uppercase tracking-widest text-neutral-700 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-colors cursor-pointer"
+              className="px-9 py-3 border border-neutral-900 bg-neutral-900 hover:bg-[#C9A96E] hover:border-[#C9A96E] text-white text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 rounded-xs shadow-sm cursor-pointer inline-flex items-center justify-center gap-2"
+              style={{ color: '#ffffff', backgroundColor: '#171717' }}
             >
-              Load More
+              <span style={{ color: '#ffffff' }}>Load More</span>
             </button>
           </div>
         )}

@@ -34,6 +34,7 @@ import AboutStorySection from '@/components/cms/sections/AboutStorySection';
 import PromotionsSection from '@/components/cms/sections/PromotionsSection';
 import HomeTilesSection from '@/components/cms/sections/HomeTilesSection';
 import StatementSection from '@/components/cms/sections/StatementSection';
+import CategoriesShowcaseSection from '@/components/cms/sections/CategoriesShowcaseSection';
 
 export const blockRegistry: Record<string, ComponentType<any>> = {
   hero: HeroSection,
@@ -87,6 +88,12 @@ export const blockRegistry: Record<string, ComponentType<any>> = {
   'home-tiles': HomeTilesSection,
   homeTiles: HomeTilesSection,
   statement: StatementSection,
+  'categories-showcase': CategoriesShowcaseSection,
+  'categoriesShowcase': CategoriesShowcaseSection,
+  'category-showcase': CategoriesShowcaseSection,
+  'category-grid': CategoriesShowcaseSection,
+  'categoryGrid': CategoriesShowcaseSection,
+  categories: CategoriesShowcaseSection,
 };
 
 export type BlockType = keyof typeof blockRegistry;

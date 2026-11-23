@@ -1337,8 +1337,8 @@ const ProductDetailPage = ({ currentProduct }: { currentProduct: any }) => {
                     Based on customer reviews
                   </p>
                 </div>
-                <button className="w-full h-14 rounded-full border border-secondary text-secondary font-black text-xs uppercase tracking-[2px] hover:bg-secondary hover:text-white transition-all">
-                  Write a Review
+                <button className="w-full h-14 rounded-full border border-secondary text-secondary font-black text-xs uppercase tracking-[2px] hover:bg-secondary hover:text-white transition-all" style={{ color: "var(--secondary)" }}>
+                  <span>Write a Review</span>
                 </button>
               </div>
               <div className="space-y-8">

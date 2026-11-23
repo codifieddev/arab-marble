@@ -27,6 +27,13 @@ const TYPE_ALIASES: Record<string, string> = {
 
 export function BlockRenderer({ block, isReferenced: isReferencedProp, ...rest }: BlockRendererProps) {
   if (!block) return null;
+  if (block.enabled === false || block.hidden === true || block.isActive === false) {
+    return null;
+  }
+  // Hide testimonials section from rendering
+  if (block.type === 'testimonials' || block.id === 'home-testimonials') {
+    return null;
+  }
   const isReferenced = isReferencedProp ?? isBlockReferenced(block);
 
 
