@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { ReferenceEditButton } from "@/components/cms/reference-editor";
 import EditableText from "@/components/shared/EditableText";
+import ProjectImageSlider from "@/components/shared/ProjectImageSlider";
 import { useAppSelector } from "@/lib/store/hooks";
 import { toast } from "sonner";
 import { Building2, Plus } from "lucide-react";
@@ -28,6 +29,11 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Dubai",
       category: "Latest Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2025/06/Boulevard-Heights-01.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2025/06/Boulevard-Heights-01.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2025/06/Boulevard-Heights-02.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2025/06/Boulevard-Heights-03.jpg",
+      ],
       description:
         "Luxury architectural marble flooring and cladding installation for prestigious high-rise towers in Downtown Dubai.",
     },
@@ -37,6 +43,10 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Dubai",
       category: "Latest Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2026/03/Burj-Vista-01.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2026/03/Burj-Vista-01.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2026/03/Burj-Vista-02.jpg",
+      ],
       description:
         "Custom marble facades and bespoke decorative stone works tailored for prime metropolitan residential residences.",
     },
@@ -46,6 +56,11 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Dubai",
       category: "Latest Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2026/03/CMC-01.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2026/03/CMC-01.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2026/03/CMC-02.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2026/03/CMC-03.jpg",
+      ],
       description:
         "High-density hygienic stone cladding and elegant lobby marble surfaces engineered for modern healthcare spaces.",
     },
@@ -55,6 +70,11 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Dubai",
       category: "Latest Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2023/03/Park-Hyatt-001.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Park-Hyatt-001.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Park-Hyatt-002.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Park-Hyatt-003.jpg",
+      ],
       description:
         "Five-star hospitality marble application featuring custom bookmatched slabs and intricate waterjet patterns.",
     },
@@ -66,6 +86,10 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Abu Dhabi",
       category: "Iconic",
       image: "https://arabmarble.ae/wp-content/uploads/2023/03/Qasr-Al-Sarab-001.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Qasr-Al-Sarab-001.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Qasr-Al-Sarab-002.jpg",
+      ],
       description:
         "Royal presidential suite marble fit-out, featuring rare onyx and opulent Mediterranean marble in Abu Dhabi.",
     },
@@ -75,6 +99,10 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Abu Dhabi",
       category: "Iconic",
       image: "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-002.jpg",
+      ],
       description:
         "Monumental private villa stonework, showcasing bespoke Omani beige marble columns and pristine exterior cladding.",
     },
@@ -86,6 +114,10 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Abu Dhabi",
       category: "Custom Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg",
+      ],
       description:
         "Execution of bespoke stonework, high-precision fixing, and premium marble installation for prominent architectural landmarks in the UAE.",
     },
@@ -95,6 +127,10 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       location: "Abu Dhabi",
       category: "Custom Projects",
       image: "https://arabmarble.ae/wp-content/uploads/2022/07/Armani-Grey-Vanity-1.jpg",
+      gallery: [
+        "https://arabmarble.ae/wp-content/uploads/2022/07/Armani-Grey-Vanity-1.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+      ],
       description:
         "Contemporary penthouse renovation featuring imported Italian marble kitchen islands and seamless bathroom vanities.",
     },
@@ -165,21 +201,39 @@ export default function ProjectsCategoryPage({
           });
           if (filtered.length > 0) {
             setProjects(
-              filtered.map((p: any) => ({
-                id: p._id || p.id,
-                _id: p._id || p.id,
-                title: p.title || p.name,
-                location: p.location || "Abu Dhabi, UAE",
-                category: p.category,
-                description: p.description,
-                image:
+              filtered.map((p: any) => {
+                const defaultMatch = Object.values(DEFAULT_PROJECTS)
+                  .flat()
+                  .find(
+                    (dp) =>
+                      dp.id === (p._id || p.id) ||
+                      dp.title?.toLowerCase() === (p.title || p.name)?.toLowerCase(),
+                  );
+                const rawGallery =
+                  Array.isArray(p.gallery) && p.gallery.length > 0
+                    ? p.gallery
+                    : Array.isArray(p.images) && p.images.length > 0
+                      ? p.images
+                      : defaultMatch?.gallery;
+                const singleImg =
                   p.image ||
                   p.imageUrl ||
                   p.primaryImage?.url ||
-                  p.gallery?.[0] ||
-                  "/images/project-boulevard-heights.jpg",
-                ctaLabel: p.ctaLabel || "Inquire on this Project →",
-              })),
+                  rawGallery?.[0] ||
+                  "/images/project-boulevard-heights.jpg";
+
+                return {
+                  id: p._id || p.id,
+                  _id: p._id || p.id,
+                  title: p.title || p.name,
+                  location: p.location || "Abu Dhabi, UAE",
+                  category: p.category,
+                  description: p.description,
+                  image: singleImg,
+                  gallery: rawGallery && rawGallery.length > 0 ? rawGallery : [singleImg],
+                  ctaLabel: p.ctaLabel || "Inquire on this Project →",
+                };
+              }),
             );
           }
         }
@@ -426,18 +480,20 @@ export default function ProjectsCategoryPage({
                   </div>
                 </div>
 
-                {/* Project Image with Zoom Effect */}
+                {/* Project Image Slider with Gallery & Touch Support */}
                 <div
-                  className={`relative h-[320px] md:h-[420px] bg-neutral-100 overflow-hidden ${
+                  className={`relative ${
                     isEven ? "order-2" : "order-2 md:order-1"
                   }`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  <ProjectImageSlider
+                    images={
+                      project.gallery && project.gallery.length > 0
+                        ? project.gallery
+                        : [project.image || ""]
+                    }
+                    title={project.title}
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors pointer-events-none" />
                 </div>
               </div>
             );

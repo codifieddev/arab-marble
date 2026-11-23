@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { ObjectId } from 'mongodb';
 import nodemailer from 'nodemailer';
+import { connectToDatabase } from '@/lib/server/mongodb';
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,6 +16,60 @@ export async function POST(req: NextRequest) {
 
     if (!email || !message) {
       return NextResponse.json({ message: 'Missing required fields (email, message)' }, { status: 400 });
+    }
+
+    // Save to MongoDB form_data collection
+    try {
+      const { db } = await connectToDatabase();
+      const formDoc = await db.collection('forms').findOne({ slug: 'contact-inquiry-form' });
+      const formIdStr = formDoc ? String(formDoc._id) : '6ae9791d21b18b0fa642e1dc';
+      const now = new Date();
+
+      await db.collection('form_data').insertOne({
+        _id: new ObjectId(),
+        formId: formIdStr,
+        formSlug: 'contact-inquiry-form',
+        formName: formDoc?.name || 'Contact & Inquiry Form',
+        tenant_slug: 'arab-marble',
+        data: {
+          name,
+          email,
+          phone,
+          subject,
+          message,
+        },
+        metadata: {
+          pageUrl: body.pageUrl || 'http://localhost:3000/contact',
+          referrer: '',
+          userAgent: req.headers.get('user-agent') || 'Storefront Client',
+        },
+        context: {
+          pageUrl: body.pageUrl || 'http://localhost:3000/contact',
+        },
+        consent: {},
+        status: 'received',
+        workflow: {
+          type: 'email',
+          status: 'sent',
+          adminRecipients: ['am@arabmarble.ae'],
+          adminSent: true,
+          updatedAt: now.toISOString(),
+        },
+        leadWorkflow: {
+          leadStage: 'new',
+          priority: 'medium',
+          interest: 'warm',
+          owner: '',
+          remark: 'Captured from storefront contact form',
+          createdAt: now.toISOString(),
+          updatedAt: now.toISOString(),
+        },
+        submittedAt: now,
+        createdAt: now,
+        updatedAt: now,
+      });
+    } catch (dbErr) {
+      console.warn('[api/contact] MongoDB save warning:', dbErr);
     }
 
     const host = process.env.SMTP_HOST || 'smtp.hostinger.com';

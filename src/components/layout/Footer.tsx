@@ -80,9 +80,9 @@ export default function Footer({
   const footerLogoImage = activeFooter?.logo?.image || activeFooter?.logo?.imageUrl;
   const resolvedLogo = resolveBrandLogo(blueprint);
   const dynamicLogo =
-    (footerLogoImage && !footerLogoImage.startsWith('media://') ? footerLogoImage : null) ||
-    (resolvedLogo && !resolvedLogo.startsWith('media://') ? resolvedLogo : null) ||
-    'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-04.png';
+    (footerLogoImage && !footerLogoImage.startsWith('media://') && !footerLogoImage.includes('Arab-Marble-Final-All-04.png') ? footerLogoImage : null) ||
+    (resolvedLogo && !resolvedLogo.startsWith('media://') && !resolvedLogo.includes('Arab-Marble-Final-All-04.png') ? resolvedLogo : null) ||
+    '/images/arab-marble-footer-logo.png';
 
   const brandDescription =
     getFooterLocalizedText(activeFooter?.brand?.description, locale) || '';
@@ -141,15 +141,14 @@ export default function Footer({
       <Reveal direction="up" duration={1.1} distance={20} className="w-full">
         <div className="max-w-[1240px] mx-auto px-6 py-12 md:py-16 flex flex-col md:flex-row justify-between items-start gap-10">
           {/* Left Column: Brand Logo */}
-          <div className="space-y-3">
-            <Link href={localePrefix || '/'}>
+          <div className="space-y-3 flex flex-col items-start rtl:items-end">
+            <Link href={localePrefix || '/'} className="inline-block">
               <img
                 src={dynamicLogo}
                 alt={getFooterLocalizedText(activeFooter?.brand?.name, locale) || 'Arab Marble'}
-                className="h-32 md:h-44 w-auto object-contain transition-transform duration-300 hover:scale-[1.02]"
-                style={{ mixBlendMode: 'lighten', backgroundColor: '#505050' }}
+                className="h-20 md:h-24 w-auto object-contain object-left rtl:object-right transition-transform duration-300 hover:scale-[1.02]"
                 onError={(e) => {
-                  e.currentTarget.src = 'https://arabmarble.ae/wp-content/uploads/2022/07/Arab-Marble-Final-All-04.png';
+                  e.currentTarget.src = '/images/arab-marble-footer-logo.png';
                 }}
               />
             </Link>

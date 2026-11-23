@@ -28,14 +28,14 @@ export default function CurrencySwitcher({ className = '' }: { className?: strin
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="hdr-btn inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold text-foreground/80 hover:text-foreground border border-border/60 hover:border-border transition-all"
+        className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xs text-xs font-semibold tracking-wider text-neutral-800 hover:text-[#C9A96E] border border-neutral-300/80 hover:border-[#C9A96E] bg-white transition-all duration-300 shadow-2xs cursor-pointer select-none"
         aria-label="Switch currency"
         aria-expanded={isOpen}
       >
-        <span className="font-bold opacity-80">{symbol}</span>
-        <span className="uppercase font-bold tracking-wider">{currency}</span>
+        <span className="font-bold text-[#C9A96E]">{symbol}</span>
+        <span className="uppercase font-semibold tracking-[0.15em] text-[11px]">{currency}</span>
         <svg
-          className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-3 h-3 text-neutral-400 group-hover:text-[#C9A96E] transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#C9A96E]' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -45,7 +45,12 @@ export default function CurrencySwitcher({ className = '' }: { className?: strin
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 rounded-xl bg-card border border-border shadow-xl z-50 py-1.5 overflow-hidden backdrop-blur-sm animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute right-0 mt-2 w-40 rounded-xs bg-white border border-neutral-200 shadow-2xl z-50 py-1.5 overflow-hidden border-t-2 border-t-[#C9A96E] animate-in fade-in zoom-in-95 duration-150">
+          <div className="px-3.5 py-1.5 border-b border-neutral-100 mb-1">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[#C9A96E] font-semibold">
+              Currency
+            </span>
+          </div>
           {enabledCurrencies.map((c) => {
             const isSelected = c.code === currency;
             return (
@@ -56,19 +61,19 @@ export default function CurrencySwitcher({ className = '' }: { className?: strin
                   setCurrency(c.code);
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-3.5 py-2 text-xs font-medium flex items-center justify-between transition-colors ${
+                className={`w-full text-left px-3.5 py-2.5 text-xs flex items-center justify-between transition-colors duration-200 cursor-pointer ${
                   isSelected
-                    ? 'bg-primary/10 text-primary font-bold'
-                    : 'text-foreground/80 hover:bg-muted hover:text-foreground'
+                    ? 'bg-[#C9A96E]/12 text-[#9E7D42] font-semibold border-l-2 border-[#C9A96E]'
+                    : 'text-neutral-700 hover:bg-neutral-50 hover:text-black border-l-2 border-transparent'
                 }`}
               >
                 <span className="flex items-center gap-2">
-                  <span className="font-bold text-muted-foreground w-4 text-center">{c.symbol}</span>
-                  <span>{c.code}</span>
+                  <span className="font-bold text-neutral-400 w-4 text-center">{c.symbol}</span>
+                  <span className="tracking-wider">{c.code}</span>
                 </span>
                 {isSelected && (
                   <svg
-                    className="w-3.5 h-3.5 text-primary"
+                    className="w-4 h-4 text-[#C9A96E]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

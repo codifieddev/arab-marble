@@ -34,28 +34,29 @@
 
 :root {
 
-  /* ── Functional Tokens ── */
-  --primary: #D9547A;
-  --primary-light: #E8899F;
-  --primary-dark: #B83A60;
-  --primary-hover: #C04A6E;
-  --secondary: #5A8C54;
-  --accent: #C4B5D4;
-  --accent-hover: #B09CC4;
-  --accent-soft: #FDF7EF;
-  --background: #FDF7EF;
+  /* ── Functional Tokens (Arab Marble Luxury Palette) ── */
+  --primary: #C9A96E;
+  --primary-light: #E0CFA6;
+  --primary-dark: #A68748;
+  --primary-hover: #B89758;
+  --secondary: #171717;
+  --secondary-hover: #262626;
+  --accent: #C9A96E;
+  --accent-hover: #B89758;
+  --accent-soft: #FAF8F5;
+  --background: #FFFFFF;
   --surface: #FFFFFF;
   --card: #FFFFFF;
-  --text: #3D2E2E;
-  --text-secondary: #6B5555;
-  --text-muted: #A49090;
-  --border: #F5EDE0;
-  --border-hover: #E0D8EC;
-  --success: #5A8C54;
-  --warning: #E8899F;
-  --error: #D9547A;
-  --info: #C4B5D4;
-  --overlay: rgba(61,46,46,0.65);
+  --text: #171717;
+  --text-secondary: #525252;
+  --text-muted: #737373;
+  --border: #E5E5E5;
+  --border-hover: #C9A96E;
+  --success: #4D7C0F;
+  --warning: #D97706;
+  --error: #DC2626;
+  --info: #0284C7;
+  --overlay: rgba(23, 23, 23, 0.65);
 
   
   --font-body: 'Nunito', sans-serif;
@@ -336,14 +337,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--surface); }
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 999px;
+/* Arab Marble Luxury Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C9A96E #f5f5f4;
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+  border-radius: 4px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-hover);
+  background: #a88950;
 }
 
 .container-custom {

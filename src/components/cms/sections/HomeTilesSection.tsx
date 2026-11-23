@@ -24,12 +24,12 @@ export default function HomeTilesSection({
 }: HomeTilesSectionProps) {
   const props = block?.props || {};
 
-  const leftImage = props.leftImage || '/images/products-tile.jpg';
+  const leftImage = props.leftImage || '/images/Colored_ArabMarble_-4-1-3.png';
   const leftLabel = t(props.leftLabel, locale) || 'PRODUCTS';
   const rawLeftHref = props.leftHref || '/shop';
   const leftHref = rawLeftHref.startsWith('/') ? `${localePrefix}${rawLeftHref}` : rawLeftHref;
 
-  const rightImage = props.rightImage || '/images/projects-tile.jpg';
+  const rightImage = props.rightImage || '/images/Colored_ArabMarble_-5-1-3.png';
   const rightLabel = t(props.rightLabel, locale) || 'PROJECTS';
   const rawRightHref = props.rightHref || '/projects/latest';
   const rightHref = rawRightHref.startsWith('/') ? `${localePrefix}${rawRightHref}` : rawRightHref;
