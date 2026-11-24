@@ -10,7 +10,7 @@ import gsap from 'gsap';
  * - Dual split-curtain wipe (clip-path / slide) unveiling the hero
  */
 export default function Preloader() {
-  const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -19,10 +19,27 @@ export default function Preloader() {
 
   useEffect(() => {
     // Only show once per session
-    const seen = sessionStorage.getItem('arab_marble_preloader_seen');
-    if (seen) return;
+    if (typeof window !== 'undefined') {
+      const seen = sessionStorage.getItem('arab_marble_preloader_seen');
+      if (seen) return;
+      setMounted(true);
+    }
+  }, []);
 
-    setVisible(true);
+  useEffect(() => {
+    if (!mounted) return;
+
+    const container = containerRef.current;
+    const counterEl = counterRef.current;
+    const progressEl = progressBarRef.current;
+    const topCurtain = topCurtainRef.current;
+    const bottomCurtain = bottomCurtainRef.current;
+
+    // Strict guard: all refs must be mounted in DOM before invoking GSAP
+    if (!container || !counterEl || !progressEl || !topCurtain || !bottomCurtain) {
+      return;
+    }
+
     document.body.style.overflow = 'hidden';
 
     const ctx = gsap.context(() => {
@@ -33,7 +50,7 @@ export default function Preloader() {
           sessionStorage.setItem('arab_marble_preloader_seen', 'true');
           document.body.style.overflow = '';
           window.dispatchEvent(new CustomEvent('arab-marble:preloader-done'));
-          setVisible(false);
+          setMounted(false);
         },
       });
 
@@ -43,15 +60,15 @@ export default function Preloader() {
         duration: 1.8,
         ease: 'power3.inOut',
         onUpdate: () => {
-          if (counterRef.current) {
-            counterRef.current.textContent = String(Math.floor(counterObj.val)).padStart(2, '0');
+          if (counterEl) {
+            counterEl.textContent = String(Math.floor(counterObj.val)).padStart(2, '0');
           }
         },
       });
 
       // 2. Gold line fill
       tl.to(
-        progressBarRef.current,
+        progressEl,
         {
           scaleX: 1,
           duration: 1.8,
@@ -62,7 +79,7 @@ export default function Preloader() {
 
       // 3. Fade out counter & text
       tl.to(
-        [counterRef.current, progressBarRef.current],
+        [counterEl, progressEl],
         {
           opacity: 0,
           y: -20,
@@ -74,7 +91,7 @@ export default function Preloader() {
 
       // 4. Split curtain reveal (top slides up, bottom slides down)
       tl.to(
-        topCurtainRef.current,
+        topCurtain,
         {
           yPercent: -100,
           duration: 1.0,
@@ -84,7 +101,7 @@ export default function Preloader() {
       );
 
       tl.to(
-        bottomCurtainRef.current,
+        bottomCurtain,
         {
           yPercent: 100,
           duration: 1.0,
@@ -92,15 +109,15 @@ export default function Preloader() {
         },
         '<'
       );
-    }, containerRef);
+    }, container);
 
     return () => {
       ctx.revert();
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [mounted]);
 
-  if (!visible) return null;
+  if (!mounted) return null;
 
   return (
     <div
