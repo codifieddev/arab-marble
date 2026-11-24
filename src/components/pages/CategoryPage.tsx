@@ -430,8 +430,39 @@ export default function CategoryPageComponent({
     return enquiryItems.some((item) => item.id === stoneId);
   };
 
-  // Step 1: Validate Email & Phone, then generate verification code
-  const handleRequestVerification = (e: React.FormEvent) => {
+  // Step 1: Validate Email (Required), Phone (Optional), then send verification code via kalp-business-api platform email
+  const sendVerificationEmail = async (email: string, name: string, code: string) => {
+    return fetch('/api/platform/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: email.trim(),
+        subject: `[Arab Marble] Your Verification Code: ${code}`,
+        html: `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 28px; border: 1px solid #e0e0e0; border-radius: 6px; background: #ffffff;">
+          <div style="text-align: center; border-bottom: 2px solid #C9A96E; padding-bottom: 16px;">
+            <h2 style="margin: 0; color: #171717; letter-spacing: 2px;">ARAB MARBLE</h2>
+            <p style="margin: 4px 0 0; font-size: 11px; color: #777; text-transform: uppercase;">Natural Stone & Marble Abu Dhabi</p>
+          </div>
+          <div style="padding: 24px 0; text-align: center;">
+            <p style="font-size: 14px; color: #333; margin-bottom: 16px;">Dear <strong>${name.trim() || 'Client'}</strong>,</p>
+            <p style="font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px;">
+              Please use the verification code below to confirm your stone inquiry request on Arab Marble:
+            </p>
+            <div style="display: inline-block; background: #faf8f5; border: 2px dashed #C9A96E; padding: 12px 30px; border-radius: 4px; font-family: monospace; font-size: 30px; font-weight: bold; letter-spacing: 6px; color: #171717;">
+              ${code}
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 18px;">This code is valid for 10 minutes. If you did not request this, please ignore this email.</p>
+          </div>
+          <div style="border-top: 1px solid #eee; padding-top: 14px; text-align: center; font-size: 11px; color: #999;">
+            Arab Marble LLC • Musaffah, Abu Dhabi, UAE • Phone: +971 2 555 4008
+          </div>
+        </div>`,
+        tenantSlug: 'arab-marble',
+      }),
+    });
+  };
+
+  const handleRequestVerification = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!enquiryName.trim()) {
       toast.error('Please enter your full name.');
@@ -442,26 +473,32 @@ export default function CategoryPageComponent({
       toast.error('Please enter a valid email address.');
       return;
     }
-    const cleanPhone = enquiryPhone.replace(/[\s-]/g, '');
-    if (cleanPhone.length < 7) {
-      toast.error('Please enter a valid phone or WhatsApp number.');
-      return;
-    }
 
     // Generate 4-digit verification code
     const code = Math.floor(1000 + Math.random() * 9000).toString();
     setGeneratedOtp(code);
     setEnteredOtp('');
     setOtpError('');
-    setVerificationStep('verify');
+    setIsSubmitting(true);
 
-    // Display simulated verification code delivery
-    toast.info(`Verification code sent to ${enquiryPhone}: ${code}`, {
-      duration: 10000,
-    });
+    try {
+      const res = await sendVerificationEmail(enquiryEmail, enquiryName, code);
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && (data.success !== false)) {
+        setVerificationStep('verify');
+        toast.success(`Verification code sent to ${enquiryEmail.trim()}. Please check your email inbox.`);
+      } else {
+        toast.error(data.error || data.message || 'Could not send verification email. Please check your email.');
+      }
+    } catch {
+      toast.error('Network error while sending verification email. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Step 2: Confirm OTP & Submit Inquiry
+  // Step 2: Confirm OTP & Submit Inquiry to kalp-business-api public forms endpoint
   const handleConfirmAndSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (enteredOtp.trim() !== generatedOtp.trim()) {
@@ -473,23 +510,31 @@ export default function CategoryPageComponent({
     setOtpError('');
 
     try {
-      const res = await fetch('/api/enquiry', {
+      const stonesSummary = enquiryItems
+        .map((s, idx) => `${idx + 1}. ${s.name} (${s.country || 'Natural Stone'}, ${s.color || 'Standard'})`)
+        .join(', ');
+
+      const payloadData: Record<string, string> = {
+        name: enquiryName.trim(),
+        email: enquiryEmail.trim(),
+        stones: stonesSummary || 'Selected Stone Products',
+      };
+      if (enquiryPhone.trim()) {
+        payloadData.phone = enquiryPhone.trim();
+      }
+      if (enquiryNotes.trim()) {
+        payloadData.message = enquiryNotes.trim();
+      }
+
+      const res = await fetch('/api/forms/public/arab-marble/product-catalog-enquiry-form/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: enquiryName,
-          email: enquiryEmail,
-          phone: enquiryPhone,
-          notes: enquiryNotes,
-          stones: enquiryItems.map((s) => ({
-            id: s.id,
-            name: s.name,
-            country: s.country,
-            color: s.color,
-            primaryImage: s.primaryImage,
-          })),
-          verified: true,
-          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+          data: payloadData,
+          context: {
+            pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+            verified: true,
+          },
         }),
       });
 
@@ -498,7 +543,8 @@ export default function CategoryPageComponent({
         saveEnquiryItems([]);
         toast.success('Inquiry submitted and recorded in admin dashboard!');
       } else {
-        toast.error('Could not submit inquiry. Please try again.');
+        const errData = await res.json().catch(() => ({}));
+        toast.error(errData.detail?.message || 'Could not submit inquiry. Please try again.');
       }
     } catch {
       toast.error('Network error. Please try again.');
@@ -936,16 +982,15 @@ export default function CategoryPageComponent({
                           </div>
                         </div>
 
-                        {/* Phone */}
+                        {/* Phone - Optional */}
                         <div>
                           <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
-                            Phone / WhatsApp *
+                            Phone / WhatsApp (Optional)
                           </label>
                           <div className="relative">
                             <Phone className="w-3 h-3 text-neutral-400 absolute left-2 top-2" />
                             <input
                               type="tel"
-                              required
                               value={enquiryPhone}
                               onChange={(e) => setEnquiryPhone(e.target.value)}
                               placeholder="+971 50 123 4567"
@@ -954,7 +999,7 @@ export default function CategoryPageComponent({
                           </div>
                         </div>
 
-                        {/* Email */}
+                        {/* Email - Required */}
                         <div className="col-span-2">
                           <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
                             Email Address *
@@ -989,10 +1034,11 @@ export default function CategoryPageComponent({
 
                       <button
                         type="submit"
-                        className="w-full h-8 mt-1.5 bg-neutral-900 hover:bg-[#C9A96E] hover:text-neutral-950 text-white text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                        disabled={isSubmitting}
+                        className="w-full h-8 mt-1.5 bg-neutral-900 hover:bg-[#C9A96E] hover:text-neutral-950 text-white text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-60"
                       >
                         <ShieldCheck className="w-3.5 h-3.5" />
-                        <span>Verify & Submit Enquiry</span>
+                        <span>{isSubmitting ? 'Sending Code to Email...' : 'Verify & Submit Enquiry'}</span>
                       </button>
                     </form>
                   )}
@@ -1002,11 +1048,10 @@ export default function CategoryPageComponent({
                       <div className="p-2 bg-amber-50 border border-amber-200 rounded-2xs">
                         <div className="flex items-center gap-1.5 text-amber-900 font-semibold text-xs mb-0.5">
                           <ShieldCheck className="w-3.5 h-3.5 text-[#C9A96E]" />
-                          <span>Verification Code Sent</span>
+                          <span>Verification Code Sent to Email</span>
                         </div>
                         <p className="text-[10px] text-amber-800 leading-snug font-light">
-                          We sent a 4-digit code to <strong>{enquiryPhone}</strong> and{' '}
-                          <strong>{enquiryEmail}</strong>. Enter code below:
+                          We sent a 4-digit code to <strong>{enquiryEmail}</strong>. Please check your email inbox and enter the code below:
                         </p>
                       </div>
 
@@ -1049,10 +1094,20 @@ export default function CategoryPageComponent({
                       <div className="text-center pt-1">
                         <button
                           type="button"
-                          onClick={() => {
+                          onClick={async () => {
                             const newCode = Math.floor(1000 + Math.random() * 9000).toString();
                             setGeneratedOtp(newCode);
-                            toast.info(`New verification code sent: ${newCode}`, { duration: 10000 });
+                            toast.info(`Sending new verification code to ${enquiryEmail}...`);
+                            try {
+                              const res = await sendVerificationEmail(enquiryEmail, enquiryName, newCode);
+                              if (res.ok) {
+                                toast.success(`New code sent to ${enquiryEmail}`);
+                              } else {
+                                toast.error('Failed to resend email code');
+                              }
+                            } catch {
+                              toast.error('Failed to resend email code');
+                            }
                           }}
                           className="text-[10px] text-neutral-500 hover:text-black underline cursor-pointer"
                         >
