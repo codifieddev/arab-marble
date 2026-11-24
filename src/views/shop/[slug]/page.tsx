@@ -10,122 +10,6 @@ import {
 } from '@/lib/commerce/catalog-product-adapter';
 import { ReferenceEditButton } from '@/components/cms/reference-editor';
 
-// Rich fallback stones with high-resolution marble textures
-const FALLBACK_STONES: Record<string, CatalogProduct> = {
-  'omani-beige': {
-    id: 'omani-beige',
-    name: 'Omani Beige Marble',
-    slug: 'omani-beige',
-    description:
-      'Arab Marble is an exclusive distributor of Omani Beige marble in Abu Dhabi & Al Ain. Renowned for its uniform warm beige tones, excellent crystalline density, and natural durability, it is the premier choice for palaces, luxury villas, and commercial complexes across the UAE.',
-    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
-    allImages: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Diamond-Beige.jpg'
-    ],
-    gallery: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Beige.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Diamond-Beige.jpg'
-    ],
-    color: 'Beige',
-    country: 'Oman',
-    sizes: ['Gang-saw Slabs (20mm / 30mm)', 'Tiles 600x600x20mm', 'Tiles 600x300x20mm', 'Custom Cut-to-Size'],
-    finish: 'Polished / Honed / Brushed / Bush-hammered',
-    options: [],
-    attributes: {
-      Color: 'Beige',
-      'Country of Origin': 'Oman',
-      Finish: 'Polished / Honed',
-      Application: 'Interior Flooring, Wall Cladding, Stairs & Countertops',
-    },
-    status: 'active',
-  },
-  'crema-marfil': {
-    id: 'crema-marfil',
-    name: 'Crema Marfil',
-    slug: 'crema-marfil',
-    description:
-      'Quarried in Spain, Crema Marfil is celebrated globally for its creamy yellowish-beige background and subtle golden veining. It imparts timeless warmth and luxury to high-end residential and hospitality developments.',
-    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
-    allImages: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg'
-    ],
-    gallery: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg'
-    ],
-    color: 'Cream',
-    country: 'Spain',
-    sizes: ['Slabs 20mm', '600x600x20mm', 'Cut to size'],
-    finish: 'Polished / Honed',
-    options: [],
-    attributes: {
-      Color: 'Cream',
-      'Country of Origin': 'Spain',
-      Finish: 'Polished',
-      Application: 'Flooring, Bathrooms, Wall Cladding',
-    },
-    status: 'active',
-  },
-  'light-emperador': {
-    id: 'light-emperador',
-    name: 'Light Emperador',
-    slug: 'light-emperador',
-    description:
-      'A refined Spanish marble with soft toffee, cafe-au-lait, and caramel tones interlaced with light calcite web veins. Ideal for classic and transitional interior architectural projects.',
-    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
-    allImages: [
-      'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg'
-    ],
-    gallery: [
-      'https://arabmarble.ae/wp-content/uploads/2023/01/Light-Emperador.jpg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg'
-    ],
-    color: 'Brown',
-    country: 'Spain',
-    sizes: ['600x600x20mm', 'Slabs 20mm', 'Cut to size'],
-    finish: 'Polished',
-    options: [],
-    attributes: {
-      Color: 'Light Brown',
-      'Country of Origin': 'Spain',
-      Finish: 'Polished',
-      Application: 'Flooring, Vanity Tops, Cladding',
-    },
-    status: 'active',
-  },
-  'calacatta-oro': {
-    id: 'calacatta-oro',
-    name: 'Calacatta Oro',
-    slug: 'calacatta-oro',
-    description:
-      'An extraordinarily rare Italian luxury marble featuring bold, dramatic warm grey and honey-golden veins meandering across a crystalline white canvas. Highly desired for bookmatched feature walls and statement islands.',
-    primaryImage: 'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
-    allImages: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x60-1-768x768-1.jpeg'
-    ],
-    gallery: [
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x30-1-768x768-1.jpeg',
-      'https://arabmarble.ae/wp-content/uploads/2022/08/Calacatta-Oro-60x60-1-768x768-1.jpeg'
-    ],
-    color: 'White',
-    country: 'Italy',
-    sizes: ['Bookmatched Slabs 20mm', 'Custom Cut-to-Size'],
-    finish: 'Polished',
-    options: [],
-    attributes: {
-      Color: 'White & Gold',
-      'Country of Origin': 'Italy',
-      Finish: 'Polished',
-      Application: 'Bookmatched Walls, Bathrooms, Luxury Kitchen Countertops',
-    },
-    status: 'active',
-  },
-};
-
 export default function ProductDetailPage({
   slug,
   locale = 'en',
@@ -133,12 +17,10 @@ export default function ProductDetailPage({
   slug: string;
   locale?: string;
 }) {
-  const [product, setProduct] = useState<CatalogProduct | null>(
-    FALLBACK_STONES[slug] || null
-  );
+  const [product, setProduct] = useState<CatalogProduct | null>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [loading, setLoading] = useState(!FALLBACK_STONES[slug]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadProduct() {
@@ -149,33 +31,11 @@ export default function ProductDetailPage({
           const adapted = mapCommerceProductToCatalog(raw);
           setProduct(adapted);
           setSelectedImage(adapted.primaryImage);
+        } else {
+          setProduct(null);
         }
       } catch (err) {
-        // Fallback to local stone dictionary
-        const fallback = FALLBACK_STONES[slug] || {
-          id: slug,
-          name: slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
-          slug,
-          description:
-            'Premium natural stone sourced by Arab Marble. Exceptional density, natural character, and exquisite finish for luxury interior and exterior installations.',
-          primaryImage: '/images/products/walnut.jpg',
-          allImages: ['/images/products/walnut.jpg'],
-          gallery: ['/images/products/walnut.jpg'],
-          color: 'Natural',
-          country: 'Imported',
-          sizes: ['Slabs (20mm / 30mm)', '600x600mm', 'Custom Cut-to-Size'],
-          finish: 'Polished / Honed',
-          options: [],
-          attributes: {
-            Color: 'Natural',
-            'Country of Origin': 'Imported',
-            Finish: 'Polished / Honed',
-            Application: 'Flooring, Cladding, Countertops',
-          },
-          status: 'active',
-        };
-        setProduct(fallback);
-        setSelectedImage(fallback.primaryImage);
+        setProduct(null);
       } finally {
         setLoading(false);
       }
@@ -227,8 +87,12 @@ export default function ProductDetailPage({
   if (!product) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center bg-white px-6">
-        <h1 className="text-2xl font-light text-neutral-800 mb-4">Stone Not Found</h1>
-        <Link href="/shop" className="text-sm underline text-neutral-600 hover:text-black">
+        <h1 className="text-2xl font-light text-neutral-800 mb-2 uppercase tracking-wide">No Product Available</h1>
+        <p className="text-xs text-neutral-500 mb-6 font-light">The requested stone product is not available in our catalog.</p>
+        <Link
+          href="/shop"
+          className="px-6 py-2.5 bg-neutral-900 text-white text-xs uppercase tracking-wider font-semibold hover:bg-neutral-800 transition-colors"
+        >
           ← Back to Products Catalog
         </Link>
       </div>

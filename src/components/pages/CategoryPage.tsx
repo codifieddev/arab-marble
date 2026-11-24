@@ -41,169 +41,6 @@ export const CategoryPageSkeleton = () => (
   </div>
 );
 
-const DEFAULT_STONES: CatalogProduct[] = [
-  {
-    id: 'omani-beige',
-    name: 'Omani Beige',
-    slug: 'omani-beige',
-    description: 'Exclusive natural beige marble quarried in Oman, offering superior density and elegance.',
-    primaryImage: '/images/products/stone-1.jpg',
-    allImages: ['/images/products/stone-1.jpg'],
-    gallery: ['/images/products/stone-1.jpg'],
-    color: 'Beige',
-    country: 'Oman',
-    sizes: ['Slabs (20mm / 30mm)', '600x600mm', '600x300mm'],
-    finish: 'Polished / Honed / Brushed',
-    options: [],
-    attributes: { Color: 'Beige', Country: 'Oman', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'crema-marfil',
-    name: 'Crema Marfil',
-    slug: 'crema-marfil',
-    description: 'Classic creamy Spanish marble with subtle veining, suitable for grand flooring and wall cladding.',
-    primaryImage: '/images/products/stone-2.jpg',
-    allImages: ['/images/products/stone-2.jpg'],
-    gallery: ['/images/products/stone-2.jpg'],
-    color: 'Cream',
-    country: 'Spain',
-    sizes: ['Slabs 20mm', '600x600mm'],
-    finish: 'Polished',
-    options: [],
-    attributes: { Color: 'Cream', Country: 'Spain', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'dark-emperador',
-    name: 'Dark Emperador',
-    slug: 'dark-emperador',
-    description: 'Rich dark chocolate brown marble with prominent white and golden crystalline veins.',
-    primaryImage: '/images/products/stone-3.jpg',
-    allImages: ['/images/products/stone-3.jpg'],
-    gallery: ['/images/products/stone-3.jpg'],
-    color: 'Brown',
-    country: 'Spain',
-    sizes: ['Slabs', '600x600mm', 'Cut to size'],
-    finish: 'Polished / Honed',
-    options: [],
-    attributes: { Color: 'Brown', Country: 'Spain', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'light-emperador',
-    name: 'Light Emperador',
-    slug: 'light-emperador',
-    description: 'Delicate light brown and beige marble with intricate webs of crystalline veins.',
-    primaryImage: '/images/products/promo-light-emperador.jpg',
-    allImages: ['/images/products/promo-light-emperador.jpg'],
-    gallery: ['/images/products/promo-light-emperador.jpg'],
-    color: 'Brown',
-    country: 'Spain',
-    sizes: ['600x600x20mm', 'Slabs'],
-    finish: 'Polished',
-    options: [],
-    attributes: { Color: 'Brown', Country: 'Spain', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'carrara-white',
-    name: 'Carrara White',
-    slug: 'carrara-white',
-    description: 'Iconic Italian white marble with soft feathery grey veining from the quarries of Carrara.',
-    primaryImage: '/images/products/stone-4.jpg',
-    allImages: ['/images/products/stone-4.jpg'],
-    gallery: ['/images/products/stone-4.jpg'],
-    color: 'White',
-    country: 'Italy',
-    sizes: ['Slabs (20mm / 30mm)', '600x600mm'],
-    finish: 'Polished / Honed',
-    options: [],
-    attributes: { Color: 'White', Country: 'Italy', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'statuario-extra',
-    name: 'Statuario Extra',
-    slug: 'statuario',
-    description: 'Precious Italian marble characterized by bright white background and bold grey statement veins.',
-    primaryImage: '/images/products/stone-5.jpg',
-    allImages: ['/images/products/stone-5.jpg'],
-    gallery: ['/images/products/stone-5.jpg'],
-    color: 'White',
-    country: 'Italy',
-    sizes: ['Bookmatch Slabs 20mm', 'Cut to size'],
-    finish: 'Polished',
-    options: [],
-    attributes: { Color: 'White', Country: 'Italy', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'calacatta-oro',
-    name: 'Calacatta Oro',
-    slug: 'calacatta-oro',
-    description: 'High-end luxury Italian marble with distinctive warm golden and grey veins on an ivory base.',
-    primaryImage: '/images/products/promo-calacatta-oro.jpg',
-    allImages: ['/images/products/promo-calacatta-oro.jpg'],
-    gallery: ['/images/products/promo-calacatta-oro.jpg'],
-    color: 'White',
-    country: 'Italy',
-    sizes: ['Slabs', 'Custom Tiles'],
-    finish: 'Polished',
-    options: [],
-    attributes: { Color: 'White', Country: 'Italy', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'nero-marquina',
-    name: 'Nero Marquina',
-    slug: 'nero-marquina',
-    description: 'Deep nocturnal black marble quarried in Northern Spain, highlighted by striking white calcite veins.',
-    primaryImage: '/images/products/stone-6.jpg',
-    allImages: ['/images/products/stone-6.jpg'],
-    gallery: ['/images/products/stone-6.jpg'],
-    color: 'Black',
-    country: 'Spain',
-    sizes: ['Slabs 20mm', '600x600mm'],
-    finish: 'Polished',
-    options: [],
-    attributes: { Color: 'Black', Country: 'Spain', Finish: 'Polished' },
-    status: 'active',
-  },
-  {
-    id: 'travertino-navona',
-    name: 'Travertino Navona',
-    slug: 'travertino-navona',
-    description: 'Warm, porous natural Roman travertine celebrated for timeless warmth and architectural authenticity.',
-    primaryImage: '/images/products/stone-8.jpg',
-    allImages: ['/images/products/stone-8.jpg'],
-    gallery: ['/images/products/stone-8.jpg'],
-    color: 'Beige',
-    country: 'Italy',
-    sizes: ['Slabs 20mm / 30mm', 'Veincut Tiles'],
-    finish: 'Filled & Polished',
-    options: [],
-    attributes: { Color: 'Beige', Country: 'Italy', Finish: 'Filled & Polished' },
-    status: 'active',
-  },
-  {
-    id: 'black-absolute',
-    name: 'Black Absolute Granite',
-    slug: 'black-absolute',
-    description: 'Extremely dense, uniform solid black granite with virtually zero water absorption.',
-    primaryImage: '/images/products/stone-10.jpg',
-    allImages: ['/images/products/stone-10.jpg'],
-    gallery: ['/images/products/stone-10.jpg'],
-    color: 'Black',
-    country: 'India',
-    sizes: ['Slabs 20mm / 30mm', 'Counters', 'Tiles'],
-    finish: 'Polished / Flamed / Leathered',
-    options: [],
-    attributes: { Color: 'Black', Country: 'India', Finish: 'Polished' },
-    status: 'active',
-  },
-];
-
 export default function CategoryPageComponent({
   categorySlug,
 }: {
@@ -339,7 +176,7 @@ export default function CategoryPageComponent({
     const rawList =
       reduxProducts && reduxProducts.length > 0
         ? (reduxProducts as any[]).map(mapCommerceProductToCatalog)
-        : DEFAULT_STONES;
+        : [];
     return filterCatalogProducts(rawList, {
       color: selectedColor,
       country: selectedCountry,
@@ -347,18 +184,12 @@ export default function CategoryPageComponent({
     });
   }, [reduxProducts, selectedColor, selectedCountry, selectedSize]);
 
-  // Extract facet options from ALL known stones so filter dropdown never collapses
+  // Extract facet options dynamically from active database products
   const facetOptions = useMemo(() => {
-    const baseFacets = extractFacetOptions(DEFAULT_STONES);
-    const dynamicFacets = reduxProducts?.length
-      ? extractFacetOptions((reduxProducts as any[]).map(mapCommerceProductToCatalog))
-      : { colors: [], countries: [], sizes: [] };
-
-    return {
-      colors: Array.from(new Set([...baseFacets.colors, ...dynamicFacets.colors])).sort(),
-      countries: Array.from(new Set([...baseFacets.countries, ...dynamicFacets.countries])).sort(),
-      sizes: Array.from(new Set([...baseFacets.sizes, ...dynamicFacets.sizes])).sort(),
-    };
+    if (!reduxProducts || reduxProducts.length === 0) {
+      return { colors: [], countries: [], sizes: [] };
+    }
+    return extractFacetOptions((reduxProducts as any[]).map(mapCommerceProductToCatalog));
   }, [reduxProducts]);
 
   const visibleProducts = productsList.slice(0, visibleCount);
@@ -674,96 +505,127 @@ export default function CategoryPageComponent({
 
       {/* 4-Column Catalog Grid with Edit Buttons */}
       <div className="max-w-[1240px] mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {visibleProducts.map((stone) => {
-            const inEnquiry = isItemInEnquiry(stone.id);
-
-            return (
-              <div key={stone.id} className="flex flex-col group relative">
-                {/* Product Image Tile: Lightbox on click */}
-                <div
-                  onClick={() => {
-                    setLightboxImage(stone.primaryImage);
-                    setLightboxTitle(stone.name);
-                  }}
-                  className="relative aspect-square overflow-hidden bg-neutral-100 border border-neutral-200 cursor-zoom-in"
-                  title="Click to view full image"
-                >
-                  <img
-                    src={stone.primaryImage}
-                    alt={stone.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  {/* Edit Button for Admin */}
-                  <ReferenceEditButton
-                    type="product"
-                    title={`Edit Product: ${stone.name}`}
-                    data={stone}
-                    className="absolute right-2.5 top-2.5 z-20"
-                    compact
-                  />
-
-                  {/* Hover Overlay Zoom Indicator */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
-                    <span className="p-2 rounded-full bg-white/80 text-black shadow-xs">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-                {/* Product Title below Image */}
-                <div className="mt-3 text-center">
-                  <Link
-                    href={`/shop/${stone.slug}`}
-                    className="text-xs md:text-sm font-medium tracking-wide text-neutral-800 hover:text-black transition-colors block line-clamp-1"
-                  >
-                    {stone.name}
-                  </Link>
-                  {stone.country && stone.country !== 'Imported' && (
-                    <span className="text-[11px] text-neutral-500 font-light block mt-0.5">
-                      {stone.country}
-                    </span>
-                  )}
-
-                  {/* Add to Enquiry Button */}
-                  <div className="mt-2.5">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleEnquiryItem(stone);
-                      }}
-                      className={`w-full py-1.5 px-2 text-[11px] uppercase tracking-wider font-medium border transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
-                        inEnquiry
-                          ? 'bg-[#C9A96E] text-neutral-950 border-[#C9A96E]'
-                          : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-900 hover:text-black'
-                      }`}
-                    >
-                      {inEnquiry ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-neutral-950" />
-                          <span>Added to Enquiry</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5 text-neutral-500" />
-                          <span>Add to Enquiry</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
+        {isProductsLoading ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className="flex flex-col space-y-3">
+                <div className="aspect-square bg-stone-100 border border-stone-200 animate-pulse" />
+                <div className="h-4 w-3/4 bg-stone-200 mx-auto animate-pulse" />
+                <div className="h-3 w-1/2 bg-stone-100 mx-auto animate-pulse" />
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        ) : visibleProducts.length === 0 ? (
+          <div className="py-24 text-center space-y-4 bg-stone-50/50 border border-stone-200/60 p-8 my-4">
+            <h3 className="text-xl font-light text-neutral-800 tracking-wider uppercase">
+              No Products Available
+            </h3>
+            <p className="text-xs text-neutral-500 font-light max-w-md mx-auto">
+              There are currently no stone products available in this category.
+            </p>
+            {(selectedColor !== 'all' || selectedCountry !== 'all' || selectedSize !== 'all') && (
+              <div className="pt-2">
+                <button
+                  onClick={handleResetFilters}
+                  className="px-6 py-2.5 bg-neutral-900 text-white text-xs uppercase tracking-wider font-semibold hover:bg-neutral-800 transition-colors cursor-pointer"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {visibleProducts.map((stone) => {
+              const inEnquiry = isItemInEnquiry(stone.id);
+
+              return (
+                <div key={stone.id} className="flex flex-col group relative">
+                  {/* Product Image Tile: Lightbox on click */}
+                  <div
+                    onClick={() => {
+                      setLightboxImage(stone.primaryImage);
+                      setLightboxTitle(stone.name);
+                    }}
+                    className="relative aspect-square overflow-hidden bg-neutral-100 border border-neutral-200 cursor-zoom-in"
+                    title="Click to view full image"
+                  >
+                    <img
+                      src={stone.primaryImage}
+                      alt={stone.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    {/* Edit Button for Admin */}
+                    <ReferenceEditButton
+                      type="product"
+                      title={`Edit Product: ${stone.name}`}
+                      data={stone}
+                      className="absolute right-2.5 top-2.5 z-20"
+                      compact
+                    />
+
+                    {/* Hover Overlay Zoom Indicator */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+                      <span className="p-2 rounded-full bg-white/80 text-black shadow-xs">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Product Title below Image */}
+                  <div className="mt-3 text-center">
+                    <Link
+                      href={`/shop/${stone.slug}`}
+                      className="text-xs md:text-sm font-medium tracking-wide text-neutral-800 hover:text-black transition-colors block line-clamp-1"
+                    >
+                      {stone.name}
+                    </Link>
+                    {stone.country && stone.country !== 'Imported' && (
+                      <span className="text-[11px] text-neutral-500 font-light block mt-0.5">
+                        {stone.country}
+                      </span>
+                    )}
+
+                    {/* Add to Enquiry Button */}
+                    <div className="mt-2.5">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleEnquiryItem(stone);
+                        }}
+                        className={`w-full py-1.5 px-2 text-[11px] uppercase tracking-wider font-medium border transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
+                          inEnquiry
+                            ? 'bg-[#C9A96E] text-neutral-950 border-[#C9A96E]'
+                            : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-900 hover:text-black'
+                        }`}
+                      >
+                        {inEnquiry ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-neutral-950" />
+                            <span>Added to Enquiry</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="w-3.5 h-3.5 text-neutral-500" />
+                            <span>Add to Enquiry</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Load More Button */}
         {hasMore && (
