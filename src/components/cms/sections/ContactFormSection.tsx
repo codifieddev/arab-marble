@@ -143,7 +143,7 @@ export default function ContactFormSection({
               placeholder="Heading..."
             />
 
-            <div className="space-y-7">
+            <div className="space-y-7 pt-8">
               {/* Phone */}
               <div className="flex items-start gap-5">
                 <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
