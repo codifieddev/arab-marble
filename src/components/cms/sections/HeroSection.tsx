@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import type { PageBlock } from '@/lib/store/pages/pageType';
 import EditableText from '@/components/shared/EditableText';
 import { t } from '@/lib/i18n';
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { GoldDivider, Reveal, Magnetic } from '@/components/motion';
 
 interface HeroSectionProps {
@@ -26,8 +26,25 @@ export default function HeroSection({
   const props = block.props || {};
 
   const headingText = t(props.heading, locale) || 'Create.\nBuild.\nDesign.';
-  const subheadingText = t(props.subheading, locale) || '';
-  const bgImage = props.backgroundImage || props.image || '/images/home-hero.jpg';
+  const rawSubheading = t(props.subheading, locale) || '';
+  const subheadingText =
+    block.id === 'hero-home' &&
+    (!rawSubheading ||
+      rawSubheading === 'Premium Natural Stones & Marble in Abu Dhabi since 1973')
+      ? locale === 'ar'
+        ? 'تجربة رخام فريدة'
+        : 'A Unique Marble Experience'
+      : rawSubheading;
+  const HERO_IMAGE = 'https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png';
+  const rawBgImage = props.backgroundImage || props.image || '';
+  const bgImage =
+    block.id === 'hero-home' &&
+    (!rawBgImage ||
+      rawBgImage.includes('Slabs-1.jpg') ||
+      rawBgImage === '/images/home-hero.jpg')
+      ? HERO_IMAGE
+      : rawBgImage || HERO_IMAGE;
+ 
 
   const ctaLabel = t(props.cta?.label || props.ctaLabel, locale);
   const rawHref = props.cta?.href || props.ctaHref || '/shop';
@@ -35,56 +52,19 @@ export default function HeroSection({
 
   const lines = headingText.split(/\r?\n|\\n/);
   const isCenter = props.align === 'center';
-
-  const sectionRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const [mouseOffset, setMouseOffset] = React.useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (shouldReduceMotion) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    setMouseOffset({
-      x: (clientX / innerWidth - 0.5) * 22,
-      y: (clientY / innerHeight - 0.5) * 22,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMouseOffset({ x: 0, y: 0 });
-  };
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const rawY = useTransform(scrollYProgress, [0, 1], ['0%', '24%']);
-  const rawScale = useTransform(scrollYProgress, [0, 1], [1.14, 1.0]);
-  const yBg = useSpring(rawY, { stiffness: 100, damping: 25, mass: 0.2 });
-  const scaleBg = useSpring(rawScale, { stiffness: 100, damping: 25, mass: 0.2 });
 
   return (
     <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className={`relative w-full min-h-[540px] md:min-h-[660px] lg:min-h-[760px] flex items-center ${
         isCenter ? 'justify-center text-center' : 'justify-start text-left'
       } overflow-hidden bg-neutral-950 select-none`}
     >
-      {/* Background image with multi-layer slow parallax & mouse depth */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
-        animate={{
-          x: -mouseOffset.x * 0.6,
-          y: -mouseOffset.y * 0.6,
-        }}
-        transition={{ type: 'spring', damping: 30, stiffness: 120 }}
+      {/* Static full-bleed background image (no parallax/scale animation) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${bgImage})`,
-          y: shouldReduceMotion ? '0%' : yBg,
-          scale: shouldReduceMotion ? 1 : scaleBg,
         }}
       />
 
@@ -93,10 +73,10 @@ export default function HeroSection({
         className={`absolute inset-0 ${
           isCenter
             ? 'bg-black/65 backdrop-brightness-90'
-            : 'bg-gradient-to-r from-black/85 via-black/65 to-black/40 backdrop-brightness-95'
+            : 'bg-gradient-to-r from-black/45 via-black/25 to-black/10 backdrop-brightness-95'
         }`}
       />
-      <div className="absolute inset-0 bg-black/20" />
+      {/* <div className="absolute inset-0 bg-black/20" /> */}
 
       {/* Content Container with fast foreground depth */}
       <div className="relative z-10 w-full max-w-[1240px] mx-auto px-6 md:px-12 py-20">
@@ -108,20 +88,20 @@ export default function HeroSection({
                 onSave={(val) => onSave(block.id, 'props.heading', val)}
                 isEditable={isEditable}
                 tag="h1"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold !text-white tracking-tight leading-[1.1] whitespace-pre-line drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold !text-white tracking-[0.06em] leading-[185%] whitespace-pre-line"
                 placeholder="Hero Heading..."
               />
             </div>
           ) : (
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold !text-white tracking-tight leading-[1.1] mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold !text-white tracking-[0.06em] mb-6 "
               style={{
                 color: '#ffffff',
-                textShadow: '0 2px 14px rgba(0,0,0,0.95), 0 4px 28px rgba(0,0,0,0.8)',
+                lineHeight: '145%',
               }}
             >
               {lines.map((line, idx) => (
-                <span key={idx} className="block overflow-hidden">
+                <span key={idx} className="block">
                   <motion.span
                     initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: '100%' }}
                     animate={{ opacity: 1, y: 0 }}
@@ -133,7 +113,7 @@ export default function HeroSection({
                     className="block !text-white will-change-transform"
                     style={{
                       color: '#ffffff',
-                      textShadow: '0 2px 14px rgba(0,0,0,0.95), 0 4px 28px rgba(0,0,0,0.8)',
+                      
                     }}
                   >
                     {line}
@@ -153,18 +133,18 @@ export default function HeroSection({
                 onSave={(val) => onSave(block.id, 'props.subheading', val)}
                 isEditable={isEditable}
                 tag="p"
-                className="text-base sm:text-lg md:text-xl !text-neutral-100 font-light max-w-[550px] mb-8 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+                className="text-base sm:text-lg md:text-xl !text-neutral-100 font-light max-w-[550px] mb-8 leading-relaxed "
                 placeholder="Subheading..."
               />
             ) : (
               <Reveal direction="up" delay={0.7} duration={0.9}>
                 <p
-                  className={`text-base sm:text-lg md:text-xl !text-neutral-100 font-light max-w-[550px] mb-8 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] ${
+                  className={`text-base sm:text-lg md:text-[30px] !text-neutral-100 font-medium max-w-[550px] mb-8 leading-relaxed  ${
                     isCenter ? 'mx-auto' : ''
                   }`}
                   style={{
                     color: '#f5f5f5',
-                    textShadow: '0 1px 8px rgba(0,0,0,0.9)',
+                    
                   }}
                 >
                   {subheadingText}
@@ -172,7 +152,7 @@ export default function HeroSection({
               </Reveal>
             ))}
 
-          {ctaLabel && (
+          {block.id !== 'hero-home' && ctaLabel && (
             <Reveal direction="up" delay={0.9} duration={0.9}>
               <div className={`mt-8 ${isCenter ? 'flex justify-center' : ''}`}>
                 <Magnetic strength={0.35}>

@@ -336,10 +336,12 @@ export default function Header({
             })}
           </nav>
 
-          {/* Right Controls: Language Switcher & Mobile Hamburger */}
+          {/* Right Controls: Language Switcher (Desktop) & Mobile Hamburger */}
           <div className="flex items-center gap-3">
             {isLanguageSwitcherEnabled && (
-              <LanguageSwitcher currentLocale={locale} className="hidden sm:inline-block" />
+              <div className="hidden md:block">
+                <LanguageSwitcher currentLocale={locale} />
+              </div>
             )}
 
             {/* Mobile Hamburger */}

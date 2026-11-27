@@ -107,7 +107,7 @@ export default function LanguageSwitcher({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xs text-xs font-semibold tracking-wider text-neutral-800 hover:text-[#C9A96E] border border-neutral-300/80 hover:border-[#C9A96E] bg-white transition-all duration-300 shadow-2xs cursor-pointer select-none"
+        className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] text-xs font-semibold tracking-wider text-neutral-800 hover:text-[#C9A96E] border border-neutral-300/80 hover:border-[#C9A96E] bg-white transition-all duration-300 shadow-2xs cursor-pointer select-none"
         aria-label="Switch language"
         aria-expanded={isOpen}
       >

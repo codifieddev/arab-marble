@@ -28,7 +28,7 @@ export default function StatementSection({
 
   return (
     <section className="py-16 md:py-20 bg-white text-center">
-      <div className="max-w-[960px] mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {onSave && isEditable && block?.id ? (
           <div className="mb-8">
             <EditableText
@@ -36,16 +36,17 @@ export default function StatementSection({
               onSave={(val) => onSave(block.id, 'props.text', val)}
               isEditable={isEditable}
               tag="h2"
-              className="text-lg sm:text-xl md:text-2xl font-normal text-neutral-700 leading-relaxed tracking-wide"
+              className="text-lg sm:text-xl md:text-2xl font-semibold text-[#505050] leading-relaxed tracking-wide"
               placeholder="Statement text..."
             />
           </div>
         ) : (
-          <h2 className="text-lg sm:text-xl md:text-2xl font-normal text-neutral-700 leading-relaxed tracking-wide mb-8">
+          <h2 className="text-[30px] sm:text-xl md:text-2xl font-semibold text-[#505050] tracking-wide mb-8" 
+          style={{lineHeight:"40px", color:"#505050"}}>
             {statement}
           </h2>
         )}
-        <div className="w-24 h-0.5 bg-neutral-400 mx-auto" />
+        <div className="w-24 h-0.5 bg-neutral-400 mx-auto mt-4" />
       </div>
     </section>
   );

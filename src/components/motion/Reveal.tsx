@@ -49,7 +49,7 @@ export default function Reveal({
     <motion.div
       initial={getInitialPosition()}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: '-40px' }}
+      viewport={{ once, amount: 0.05 }}
       transition={{
         duration: shouldReduceMotion ? 0.3 : duration,
         delay: shouldReduceMotion ? 0 : delay,

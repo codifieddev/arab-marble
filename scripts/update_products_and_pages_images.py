@@ -291,7 +291,7 @@ def update_projects():
             'https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-004.jpg',
         ],
         'Saadiyat Island Private Villa': [
-            'https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg',
+            'https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png',
             'https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-2.jpg',
             'https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-3.jpg',
         ],
@@ -344,7 +344,7 @@ def update_site_pages():
             b_type = b.get('type')
             props = b.get('props', {})
             if b_type == 'hero':
-                props['backgroundImage'] = 'https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg'
+                props['backgroundImage'] = 'https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png'
             elif b_type == 'about-story':
                 props['image'] = 'https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg'
             elif b_type == 'home-tiles':

@@ -79,7 +79,7 @@ export default function ContactFormSection({
   }, [formId, formSlug]);
 
   return (
-    <section className="py-12 md:py-16 bg-white relative">
+    <section className="py-16 md:py-24 bg-[#f9f9f9] relative">
       <div className="max-w-[1140px] mx-auto px-6">
         {/* Top Reference Edit Bar */}
         {isEditable && (
@@ -118,7 +118,7 @@ export default function ContactFormSection({
 
         {/* Map Banner */}
         {mapImage && (
-          <div className="w-full mb-16 overflow-hidden rounded-none border border-neutral-200 shadow-sm">
+          <div className="w-full mb-16 overflow-hidden border border-neutral-200 shadow-sm">
             <img
               src={mapImage}
               alt="Arab Marble Mussafah Abu Dhabi Location Map"
@@ -133,112 +133,92 @@ export default function ContactFormSection({
         {/* Contact Info & Form Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Column: Contact Details */}
-          <div className="space-y-8">
+          <div>
             <EditableText
               value={t(props.contactHeading, locale) || t(props.heading, locale) || 'Contact Us'}
               onSave={(val) => onSave?.(block.id, 'props.contactHeading', val)}
               isEditable={isEditable}
               tag="h2"
-              className="text-2xl font-bold text-neutral-800 tracking-tight"
+              className="text-[26px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight mb-10"
               placeholder="Heading..."
             />
 
-            <div className="space-y-6">
+            <div className="space-y-7 pt-8">
               {/* Phone */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center shrink-0 text-neutral-700">
-                  <Phone size={18} />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
+                  <Phone size={17} strokeWidth={1.5} />
                 </div>
-                <div className="flex-1">
-                  <EditableText
-                    value={t(props.phoneHeading, locale) || 'Phone'}
-                    onSave={(val) => onSave?.(block.id, 'props.phoneHeading', val)}
-                    isEditable={isEditable}
-                    tag="p"
-                    className="text-xs uppercase font-semibold tracking-wider text-neutral-400"
-                    placeholder="Phone Label..."
-                  />
+                <div className="flex-1 pt-0.5">
+                  <p className="text-[10px] uppercase font-semibold tracking-[0.18em] text-neutral-400 mb-1">
+                    {t(props.phoneHeading, locale) || 'Phone'}
+                  </p>
                   <EditableText
                     value={phone}
                     onSave={(val) => onSave?.(block.id, 'props.phone', val)}
                     isEditable={isEditable}
                     tag="div"
-                    className="text-sm md:text-base font-medium text-neutral-800 hover:text-black"
+                    className="text-[16px] font-normal text-[#333333] leading-snug"
                     placeholder="Phone number..."
                   />
                 </div>
               </div>
 
               {/* FAX */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center shrink-0 text-neutral-700">
-                  <Printer size={18} />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
+                  <Printer size={17} strokeWidth={1.5} />
                 </div>
-                <div className="flex-1">
-                  <EditableText
-                    value={t(props.faxHeading, locale) || 'FAX'}
-                    onSave={(val) => onSave?.(block.id, 'props.faxHeading', val)}
-                    isEditable={isEditable}
-                    tag="p"
-                    className="text-xs uppercase font-semibold tracking-wider text-neutral-400"
-                    placeholder="FAX Label..."
-                  />
+                <div className="flex-1 pt-0.5">
+                  <p className="text-[10px] uppercase font-semibold tracking-[0.18em] text-neutral-400 mb-1">
+                    {t(props.faxHeading, locale) || 'Fax'}
+                  </p>
                   <EditableText
                     value={fax}
                     onSave={(val) => onSave?.(block.id, 'props.fax', val)}
                     isEditable={isEditable}
                     tag="div"
-                    className="text-sm md:text-base font-medium text-neutral-800"
+                    className="text-[16px] font-normal text-[#333333] leading-snug"
                     placeholder="Fax number..."
                   />
                 </div>
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center shrink-0 text-neutral-700">
-                  <Mail size={18} />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
+                  <Mail size={17} strokeWidth={1.5} />
                 </div>
-                <div className="flex-1">
-                  <EditableText
-                    value={t(props.emailHeading, locale) || 'Email'}
-                    onSave={(val) => onSave?.(block.id, 'props.emailHeading', val)}
-                    isEditable={isEditable}
-                    tag="p"
-                    className="text-xs uppercase font-semibold tracking-wider text-neutral-400"
-                    placeholder="Email Label..."
-                  />
+                <div className="flex-1 pt-0.5">
+                  <p className="text-[10px] uppercase font-semibold tracking-[0.18em] text-neutral-400 mb-1">
+                    {t(props.emailHeading, locale) || 'Email'}
+                  </p>
                   <EditableText
                     value={email}
                     onSave={(val) => onSave?.(block.id, 'props.email', val)}
                     isEditable={isEditable}
                     tag="div"
-                    className="text-sm md:text-base font-medium text-neutral-800 hover:underline"
+                    className="text-[16px] font-normal text-[#333333] leading-snug"
                     placeholder="Email address..."
                   />
                 </div>
               </div>
 
               {/* Address */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center shrink-0 text-neutral-700">
-                  <MapPin size={18} />
+              <div className="flex items-start gap-5">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
+                  <MapPin size={17} strokeWidth={1.5} />
                 </div>
-                <div className="flex-1">
-                  <EditableText
-                    value={t(props.addressHeading, locale) || 'Address'}
-                    onSave={(val) => onSave?.(block.id, 'props.addressHeading', val)}
-                    isEditable={isEditable}
-                    tag="p"
-                    className="text-xs uppercase font-semibold tracking-wider text-neutral-400"
-                    placeholder="Address Label..."
-                  />
+                <div className="flex-1 pt-0.5">
+                  <p className="text-[10px] uppercase font-semibold tracking-[0.18em] text-neutral-400 mb-1">
+                    {t(props.addressHeading, locale) || 'Address'}
+                  </p>
                   <EditableText
                     value={address}
                     onSave={(val) => onSave?.(block.id, 'props.address', val)}
                     isEditable={isEditable}
                     tag="div"
-                    className="text-sm md:text-base font-medium text-neutral-800 whitespace-pre-line leading-relaxed"
+                    className="text-[16px] font-normal text-[#333333] whitespace-pre-line leading-relaxed"
                     placeholder="Physical address..."
                   />
                 </div>
@@ -246,15 +226,15 @@ export default function ContactFormSection({
             </div>
           </div>
 
-          {/* Right Column: Email Us Form */}
+          {/* Right Column: Form */}
           <div>
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-8">
               <EditableText
-                value={t(props.formHeading, locale) || t(props.subheading, locale) || 'Email Us'}
+                value={t(props.formHeading, locale) || t(props.subheading, locale) || 'Project Enquiry Form'}
                 onSave={(val) => onSave?.(block.id, 'props.formHeading', val)}
                 isEditable={isEditable}
                 tag="h2"
-                className="text-2xl font-bold text-neutral-800 tracking-tight"
+                className="text-[26px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight"
                 placeholder="Form Heading..."
               />
               {isEditable && (
@@ -272,13 +252,13 @@ export default function ContactFormSection({
               )}
             </div>
 
-            {/* Dynamic Interactive Form connected to MongoDB & Admin Console */}
+            {/* Dynamic Interactive Form */}
             <DynamicCanvasForm
               formSlug={formSlug}
               formId={formId || formDef?._id || formDef?.id}
               heading=""
               subheading=""
-              submitButtonText={t(props.submitButtonText, locale) || 'SEND MESSAGE'}
+              submitButtonText={t(props.submitButtonText, locale) || 'SUBMIT ENQUIRY'}
               theme="plain"
             />
           </div>

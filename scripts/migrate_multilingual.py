@@ -523,7 +523,7 @@ home_blocks = [
                 "ar": "ابتكر.\nابنِ.\nصمم."
             },
             "subheading": {
-                "en": "Premium Natural Stones & Marble in Abu Dhabi since 1973",
+                "en": "A Unique Marble Experience",
                 "ar": "أرقى الأحجار الطبيعية والرخام في أبوظبي منذ 1973"
             },
             "backgroundImage": "/images/home-hero.jpg",
@@ -545,7 +545,7 @@ home_blocks = [
                 "ar": "من نحن"
             },
             "heading": {
-                "en": "Who Are We",
+                "en": "Who We are",
                 "ar": "من نحن"
             },
             "paragraphs": [

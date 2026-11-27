@@ -139,14 +139,14 @@ export default function Footer({
 
       {/* Main Footer Row */}
       <Reveal direction="up" duration={1.1} distance={20} className="w-full">
-        <div className="max-w-[1240px] mx-auto px-6 py-12 md:py-16 flex flex-col md:flex-row justify-between items-start gap-10">
+        <div className="max-w-[1240px] mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row justify-between items-start gap-10">
           {/* Left Column: Brand Logo */}
           <div className="space-y-3 flex flex-col items-start rtl:items-end">
             <Link href={localePrefix || '/'} className="inline-block">
               <img
                 src={dynamicLogo}
                 alt={getFooterLocalizedText(activeFooter?.brand?.name, locale) || 'Arab Marble'}
-                className="h-20 md:h-24 w-auto object-contain object-left rtl:object-right transition-transform duration-300 hover:scale-[1.02]"
+                className="h-20 md:h-26 w-auto object-contain object-left rtl:object-right transition-transform duration-300 hover:scale-[1.02]"
                 onError={(e) => {
                   e.currentTarget.src = '/images/arab-marble-footer-logo.png';
                 }}
@@ -213,12 +213,13 @@ export default function Footer({
           {/* Right Column: Contact Us */}
           <div className="space-y-3 rtl:text-right ltr:text-left min-w-[240px]">
             <div className="inline-block border-b-2 border-white pb-1 mb-2">
-              <h3 className="text-base md:text-lg font-bold text-white tracking-wide">
+              <h3 className="text-base md:text-2xl font-bold text-white font-medium tracking-wide">
                 {contactTitle}
               </h3>
             </div>
-            <div className="flex flex-col gap-2.5 text-xs md:text-sm text-neutral-200 font-normal">
-              <p className="flex items-center gap-2">
+            <div className="flex pt-4 flex-col gap-2.5 text-sm md:text-md text-neutral-200 font-normal" 
+            style={{fontSize:"16px"}}>
+              <p className="flex items-center gap-2 ">
                 <span className="font-semibold text-white">{phoneLabel}</span>
                 <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:underline transition-colors" dir="ltr">
                   {phone}

@@ -113,9 +113,9 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       title: "Saadiyat Island Private Villa",
       location: "Abu Dhabi",
       category: "Custom Projects",
-      image: "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+      image: "https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png",
       gallery: [
-        "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png",
         "https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg",
       ],
       description:
@@ -129,7 +129,7 @@ const DEFAULT_PROJECTS: Record<string, ProjectItem[]> = {
       image: "https://arabmarble.ae/wp-content/uploads/2022/07/Armani-Grey-Vanity-1.jpg",
       gallery: [
         "https://arabmarble.ae/wp-content/uploads/2022/07/Armani-Grey-Vanity-1.jpg",
-        "https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg",
+        "https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png",
       ],
       description:
         "Contemporary penthouse renovation featuring imported Italian marble kitchen islands and seamless bathroom vanities.",

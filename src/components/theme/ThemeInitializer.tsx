@@ -61,15 +61,15 @@ export function ThemeInitializer({ children }: { children: React.ReactNode }) {
         --overlay: ${colors.overlay || "rgba(61,46,46,0.65)"};
 
         /* Typography */
-        --font-body: ${typography?.bodyFont || "'Nunito', sans-serif"};
-        --font-heading: ${typography?.headingFont || "'DM Serif Display', Georgia, serif"};
+        --font-body: ${typography?.bodyFont || "var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif"};
+        --font-heading: ${typography?.headingFont || "var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif"};
       }
 
       /* Global Application Overrides */
       ${colors.background ? `body { background-color: var(--background); }` : ""}
       ${colors.text ? `body { color: var(--text); }` : ""}
       ${typography?.bodyFont ? `body { font-family: var(--font-body), sans-serif; }` : ""}
-      ${typography?.headingFont ? `h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading), serif; }` : ""}
+      ${typography?.headingFont ? `h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading), sans-serif; }` : ""}
     `;
   }, [blueprint]);
 

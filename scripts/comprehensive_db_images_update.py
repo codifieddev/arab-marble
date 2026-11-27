@@ -7,7 +7,7 @@ client = pymongo.MongoClient('mongodb://deepak:deepak123@2.25.90.170:27017/kalpz
 db = client['kp_arab_marble']
 
 URL_REPLACEMENTS = {
-    '/images/home-hero.jpg': 'https://arabmarble.ae/wp-content/uploads/2022/07/Slabs-1.jpg',
+    '/images/home-hero.jpg': 'https://arabmarble.ae/wp-content/uploads/2023/06/Colored_ArabMarble_-1-2-1-3.png',
     '/images/who-we-are.jpg': 'https://arabmarble.ae/wp-content/uploads/2022/07/Aerial-View-0002.jpg',
     '/images/products-tile.jpg': 'https://arabmarble.ae/wp-content/uploads/2023/03/Marble-1024x1024-1.jpeg',
     '/images/projects-tile.jpg': 'https://arabmarble.ae/wp-content/uploads/2023/03/Shangri-La-001.jpg',
