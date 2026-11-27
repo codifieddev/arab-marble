@@ -79,7 +79,7 @@ export default function ContactFormSection({
   }, [formId, formSlug]);
 
   return (
-    <section className="py-16 md:py-24 bg-[#f9f9f9] relative">
+    <section className="py-12 md:py-24 bg-[#f9f9f9] relative">
       <div className="max-w-[1140px] mx-auto px-6">
         {/* Top Reference Edit Bar */}
         {isEditable && (
@@ -131,7 +131,7 @@ export default function ContactFormSection({
         )}
 
         {/* Contact Info & Form Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
           {/* Left Column: Contact Details */}
           <div>
             <EditableText
@@ -139,11 +139,11 @@ export default function ContactFormSection({
               onSave={(val) => onSave?.(block.id, 'props.contactHeading', val)}
               isEditable={isEditable}
               tag="h2"
-              className="text-[26px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight mb-10"
+              className="text-[24px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight mb-6 md:mb-10"
               placeholder="Heading..."
             />
 
-            <div className="space-y-7 pt-8">
+            <div className="space-y-5 md:space-y-7 pt-4 md:pt-8">
               {/* Phone */}
               <div className="flex items-start gap-5">
                 <div className="w-10 h-10 flex items-center justify-center shrink-0 text-[#505050] border border-neutral-200 bg-white shadow-sm">
@@ -228,13 +228,13 @@ export default function ContactFormSection({
 
           {/* Right Column: Form */}
           <div>
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-6 md:mb-8">
               <EditableText
                 value={t(props.formHeading, locale) || t(props.subheading, locale) || 'Project Enquiry Form'}
                 onSave={(val) => onSave?.(block.id, 'props.formHeading', val)}
                 isEditable={isEditable}
                 tag="h2"
-                className="text-[26px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight"
+                className="text-[24px] md:text-[30px] font-bold text-[#333333] tracking-tight leading-tight"
                 placeholder="Form Heading..."
               />
               {isEditable && (

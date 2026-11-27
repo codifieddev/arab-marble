@@ -346,7 +346,7 @@ export default function ProjectsCategoryPage({
     <div className="bg-white min-h-screen">
       {/* Hero Header matching screenshot */}
       <div
-        className="relative py-20 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+        className="relative py-12 md:py-20 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
       >
         <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
@@ -356,7 +356,7 @@ export default function ProjectsCategoryPage({
             onSave={(val) => setCategoryHeading(val)}
             isEditable={isEditable}
             tag="h1"
-            className="text-4xl md:text-5xl font-light tracking-widest !text-white uppercase mb-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-center"
+            className="text-3xl md:text-5xl font-light tracking-widest !text-white uppercase mb-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-center"
             placeholder="Category Heading..."
           />
           <div className="w-16 h-0.5 bg-neutral-300 mx-auto mb-4" />
@@ -407,8 +407,8 @@ export default function ProjectsCategoryPage({
       </div>
 
       {/* Projects List matching screenshot */}
-      <div className="max-w-[1140px] mx-auto px-6 py-16">
-        <div className="space-y-12">
+      <div className="max-w-[1140px] mx-auto px-6 py-10 md:py-16">
+        <div className="space-y-8 md:space-y-12">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             const itemId = project.id || idx;
@@ -434,7 +434,7 @@ export default function ProjectsCategoryPage({
 
                 {/* Text Block */}
                 <div
-                  className={`p-8 md:p-14 flex flex-col justify-center bg-[#4A4A4A] text-white ${
+                  className={`p-6 sm:p-8 md:p-14 flex flex-col justify-center bg-[#4A4A4A] text-white ${
                     isEven ? "order-1" : "order-1 md:order-2"
                   }`}
                 >

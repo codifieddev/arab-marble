@@ -31,11 +31,11 @@ export default function TextSection({ block, locale = 'en', isEditable = false, 
                 isEditable={isEditable}
                 isReferenced={isReferenced}
                 tag="h1"
-                className="text-4xl font-bold"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold"
                 placeholder="Heading..."
               />
             ) : (
-              <h1 className="text-4xl font-bold">{t(heading, locale)}</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">{t(heading, locale)}</h1>
             )}
             {content && (
               <>

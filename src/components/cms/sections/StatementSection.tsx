@@ -27,7 +27,7 @@ export default function StatementSection({
   if (!statement) return null;
 
   return (
-    <section className="py-16 md:py-20 bg-white text-center">
+    <section className="py-12 md:py-20 bg-white text-center">
       <div className="max-w-7xl mx-auto px-6">
         {onSave && isEditable && block?.id ? (
           <div className="mb-8">
@@ -41,8 +41,10 @@ export default function StatementSection({
             />
           </div>
         ) : (
-          <h2 className="text-[30px] sm:text-xl md:text-2xl font-semibold text-[#505050] tracking-wide mb-8" 
-          style={{lineHeight:"40px", color:"#505050"}}>
+          <h2
+            className="text-lg sm:text-xl md:text-2xl font-semibold text-[#505050] leading-relaxed md:leading-[40px] tracking-wide mb-6 md:mb-8"
+            style={{ color: '#505050' }}
+          >
             {statement}
           </h2>
         )}

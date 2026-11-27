@@ -13,7 +13,6 @@ import { resolveBrandLogo, resolveBrandName } from '@/lib/brand/brand-resolver';
 import LanguageSwitcher from './LanguageSwitcher';
 import headerData from '@/lib/pages/headerData.json';
 import { resolveHrefWithPermalinks } from '@/lib/permalink/url-helper';
-import { Magnetic } from '@/components/motion';
 
 const DEFAULT_FALLBACK_LABELS: Record<string, Record<string, string>> = {
   home: { en: 'Home', ar: 'الرئيسية' },
@@ -244,29 +243,23 @@ export default function Header({
       <header
         className={`sticky top-0 z-50 transition-all duration-500 will-change-transform ${
           isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-        } ${
-          isScrolled
-            ? 'bg-white/85 backdrop-blur-md border-b border-[#C9A96E]/25 shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
-            : 'bg-white border-b border-gray-200 shadow-none'
-        }`}
+        } bg-white border-b border-gray-200 shadow-none`}
       >
-        <div className="max-w-[1240px] mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Brand Logo with Magnetic interaction */}
-          <Magnetic strength={0.25}>
-            <Link href={localePrefix || '/'} className="flex items-center outline-none focus:outline-none" data-cursor="Arab Marble">
-              <img
-                src={dynamicLogo}
-                alt={brandName}
-                className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
-                onError={(e) => {
-                  e.currentTarget.src = '/images/arab-marble-logo.svg';
-                }}
-              />
-            </Link>
-          </Magnetic>
+        <div className="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+          {/* Brand Logo */}
+          <Link href={localePrefix || '/'} className="flex items-center outline-none focus:outline-none">
+            <img
+              src={dynamicLogo}
+              alt={brandName}
+              className="h-10 md:h-11 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.src = '/images/arab-marble-logo.svg';
+              }}
+            />
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-9">
             {navigationItems.map((item, index) => {
               const label = getItemLabel(item, locale);
               const fullHref = buildLocalizedHref(localePrefix, item.path || item.href || item.url || '/', locale);
@@ -287,34 +280,30 @@ export default function Header({
                 >
                   <Link
                     href={fullHref}
-                    className={`group relative flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors uppercase outline-none focus:outline-none focus:ring-0 ${
-                      isActive ? 'text-[#C9A96E]' : isOpen ? 'text-black' : 'text-neutral-700 hover:text-black'
+                    className={`flex items-center gap-[3px] text-[15px] font-normal tracking-[0.1em] uppercase transition-colors duration-150 outline-none focus:outline-none focus:ring-0 ${
+                      isActive
+                        ? 'text-[#505050]'
+                        : isOpen
+                        ? 'text-[#505050]'
+                        : 'text-[#aaaaaa] hover:text-[#555555]'
                     }`}
                   >
                     <span>{label}</span>
                     {hasSub && (
                       <svg
-                        className={`w-3 h-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`w-2 h-2 mt-px transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
-                    {/* Elegant Gold Active & Hover Indicator */}
-                    <span
-                      className={`absolute -bottom-1 left-0 right-0 h-[2px] bg-[#C9A96E] rounded-full transition-all duration-300 ${
-                        isActive
-                          ? 'opacity-100 scale-x-100'
-                          : 'opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100'
-                      }`}
-                    />
                   </Link>
 
                   {/* Dropdown Menu */}
                   {hasSub && isOpen && (
-                    <div className="absolute top-full left-0 w-52 bg-white border border-gray-100 rounded-sm shadow-xl py-2 z-50">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 min-w-[240px] bg-white border border-gray-200 shadow-sm py-1 z-50">
                       {subItems.map((sub: any, subIdx: number) => {
                         const subLabel = getItemLabel(sub, locale);
                         const subFullHref = buildLocalizedHref(localePrefix, sub.path || sub.href || sub.url || '/', locale);
@@ -323,7 +312,7 @@ export default function Header({
                           <Link
                             key={subIdx}
                             href={subFullHref}
-                            className="block px-4 py-2.5 text-xs font-medium text-gray-700 hover:bg-gray-50 hover:text-black transition-colors"
+                            className="block px-6 py-3 text-[15px] font-normal tracking-[0.1em] uppercase text-[#555555] hover:text-[#222222] hover:bg-gray-50 transition-colors text-center whitespace-nowrap"
                           >
                             {subLabel}
                           </Link>
@@ -371,7 +360,7 @@ export default function Header({
       {isMobileMenuOpen && (
         <div
           ref={menuPanelRef}
-          className="fixed inset-0 top-20 bg-white z-40 p-6 flex flex-col overflow-y-auto md:hidden"
+          className="fixed inset-0 top-[72px] bg-white z-40 p-6 flex flex-col overflow-y-auto md:hidden"
         >
           <div className="flex flex-col divide-y divide-gray-100">
             {navigationItems.map((item, index) => {
@@ -382,19 +371,19 @@ export default function Header({
               const isExpanded = mobileExpandedIndex === index;
 
               return (
-                <div key={index} className="py-3">
+                <div key={index} className="py-3.5">
                   <div className="flex items-center justify-between">
                     <Link
                       href={fullHref}
                       onClick={closeMobile}
-                      className="text-sm font-semibold tracking-wider uppercase text-gray-800"
+                      className="text-[15px] font-normal tracking-[0.08em] uppercase text-[#505050]"
                     >
                       {label}
                     </Link>
                     {hasSub && (
                       <button
                         onClick={() => setMobileExpandedIndex(isExpanded ? null : index)}
-                        className="p-1 text-gray-500"
+                        className="p-2 -mr-2 text-gray-500"
                         aria-label="Expand submenu"
                       >
                         <svg
@@ -410,7 +399,7 @@ export default function Header({
                   </div>
 
                   {hasSub && isExpanded && (
-                    <div className="pl-4 pt-2 pb-1 flex flex-col gap-2">
+                    <div className="pl-4 pt-2.5 pb-1 flex flex-col gap-2">
                       {subItems.map((sub: any, subIdx: number) => {
                         const subLabel = getItemLabel(sub, locale);
                         const subFullHref = buildLocalizedHref(localePrefix, sub.path || sub.href || sub.url || '/', locale);
@@ -420,7 +409,7 @@ export default function Header({
                             key={subIdx}
                             href={subFullHref}
                             onClick={closeMobile}
-                            className="text-xs text-gray-600 hover:text-black py-1"
+                            className="text-[14px] font-normal tracking-[0.08em] uppercase text-[#666666] hover:text-[#222222] py-1.5 transition-colors"
                           >
                             {subLabel}
                           </Link>

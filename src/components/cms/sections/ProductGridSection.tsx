@@ -108,7 +108,7 @@ export default function ProductGridSection({
         </div>
 
         {loading || (!hasFetched && products.length === 0) ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div key={i} className="flex flex-col space-y-3">
                 <div className="aspect-square bg-stone-100 border border-stone-200 animate-pulse" />
@@ -122,7 +122,7 @@ export default function ProductGridSection({
             No products in catalog.
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {products.map((product) => {
               const id = getCommerceId(product) || product.id || product.slug;
               const name = t(product.name || product.title, locale);
