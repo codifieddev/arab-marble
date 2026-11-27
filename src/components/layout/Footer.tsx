@@ -249,7 +249,14 @@ export default function Footer({
             {creditsText.includes('CODIFIED') ? (
               <span>
                 {creditsText.split('CODIFIED')[0]}
-                <strong className="text-white font-semibold">CODIFIED</strong>
+                <a
+                  href="https://www.codifiedweb.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold hover:underline transition-colors"
+                >
+                  CODIFIED
+                </a>
                 {creditsText.split('CODIFIED')[1]}
               </span>
             ) : (
