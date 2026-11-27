@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif;
+  --font-heading: var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif;
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
   --color-primary-dark: var(--primary-dark);
@@ -59,8 +61,8 @@
   --overlay: rgba(23, 23, 23, 0.65);
 
   
-  --font-body: 'Nunito', sans-serif;
-  --font-heading: 'DM Serif Display', Georgia, serif;
+  --font-body: var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif;
+  --font-heading: var(--font-noto-sans), 'Noto Sans', Helvetica, Arial, Lucida, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --text-xs: 0.75rem;
@@ -234,6 +236,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: var(--font-body);
 }
 
 body {

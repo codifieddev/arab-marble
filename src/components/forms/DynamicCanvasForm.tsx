@@ -303,7 +303,7 @@ export default function DynamicCanvasForm({
                     placeholder={resolveSafeText(field.placeholder || field.label, 'Message')}
                     value={formData[field.name] || ''}
                     onChange={(e) => handleChange(field.name, e.target.value)}
-                    className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 bg-white transition-colors min-h-[140px] resize-y"
+                    className="w-full rounded-sm border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-700 bg-white transition-colors min-h-[140px] resize-y"
                   />
                 ) : isSelect ? (
                   <select
@@ -312,7 +312,7 @@ export default function DynamicCanvasForm({
                     required={field.required}
                     value={formData[field.name] || ''}
                     onChange={(e) => handleChange(field.name, e.target.value)}
-                    className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 focus:outline-none focus:border-neutral-900 bg-white transition-colors"
+                    className="w-full rounded-sm border border-neutral-300 px-4 py-3 text-sm text-neutral-800 focus:outline-none focus:border-neutral-700 bg-white transition-colors"
                   >
                     <option value="">{resolveSafeText(field.placeholder || field.label, 'Select an option')}</option>
                     {(field.options || []).map((opt, i) => {
@@ -334,7 +334,7 @@ export default function DynamicCanvasForm({
                     placeholder={resolveSafeText(field.placeholder || field.label, '')}
                     value={formData[field.name] || ''}
                     onChange={(e) => handleChange(field.name, e.target.value)}
-                    className="w-full rounded-none border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900 bg-white transition-colors"
+                    className="w-full rounded-sm border border-neutral-300 px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-700 bg-white transition-colors"
                   />
                 )}
                 {field.helpText && (

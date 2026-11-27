@@ -960,7 +960,7 @@ export default function CanvasProductForm({
       metaTitle: prev.metaTitle || `${sampleName} | Arab Marble`,
       metaDescription:
         prev.metaDescription ||
-        `Explore ${sampleName}. Premium natural stone supplied by Arab Marble UAE.`,
+        `Explore ${sampleName}. A Unique Marble Experience`,
     }));
 
     if (!pricing.price || Number(pricing.price) === 0) {

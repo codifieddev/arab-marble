@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Nunito, DM_Serif_Display } from 'next/font/google';
+import { Noto_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 import ReduxProvider from '@/providers/ReduxProvider';
 import BlueprintProvider from '@/components/providers/BlueprintProvider';
@@ -10,18 +10,11 @@ import { setRuntimePermalinkConfig } from '@/lib/permalink/url-helper';
 import StoreLayoutShell from '@/components/layout/StoreLayoutShell';
 import Script from 'next/script';
 
-const nunito = Nunito({
+const notoSans = Noto_Sans({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
-  variable: '--font-body',
-});
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-heading',
+  variable: '--font-noto-sans',
 });
 
 interface LocaleLayoutProps {
@@ -86,7 +79,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <link rel="shortcut icon" href={brandAssets.faviconUrl || '/images/arab-marble-logo.svg'} />
         <link rel="apple-touch-icon" href={brandAssets.faviconUrl || '/images/arab-marble-logo.svg'} />
       </head>
-      <body className={`${nunito.variable} ${dmSerifDisplay.variable} min-h-screen flex flex-col`}>
+      <body className={`${notoSans.variable} min-h-screen flex flex-col`}>
         <Script
           id="permalink-config"
           strategy="afterInteractive"

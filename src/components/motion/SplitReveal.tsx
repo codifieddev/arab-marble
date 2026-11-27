@@ -57,8 +57,13 @@ export default function SplitReveal({
       );
     }, el);
 
-    return () => ctx.revert();
-  }, [stagger, delay]);
+    const rafId = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      ctx.revert();
+    };
+  }, [children, stagger, delay]);
 
   if (typeof children !== 'string') {
     const Tag = as;
@@ -73,7 +78,7 @@ export default function SplitReveal({
       {lines.map((line, lIdx) => (
         <span key={lIdx} className="block overflow-hidden leading-tight">
           {line.split(' ').map((word, wIdx) => (
-            <span key={wIdx} className="inline-block overflow-hidden mr-[0.25em] align-top">
+            <span key={wIdx} className="inline-block overflow-hidden mr-[0.25em] align-top text-[#505050]">
               <span className="split-word-inner inline-block will-change-transform">
                 {word}
               </span>

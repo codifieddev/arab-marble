@@ -1,12 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import React, { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 
 interface MaskImageProps {
   src: string;
@@ -19,9 +14,8 @@ interface MaskImageProps {
 }
 
 /**
- * MaskImage: Architectural curtain wipe (clip-path: inset(100% 0 0 0) -> inset(0% 0 0 0))
- * with simultaneous inner image counter-scale (1.25 -> 1.0) and scrubbed parallax.
- * Uses native <img> with lazy loading to avoid any next/image unconfigured host crashes.
+ * MaskImage: Clean architectural image container with subtle entrance reveal
+ * and hover zoom. Always visible (never stuck clipped by ScrollTrigger).
  */
 export default function MaskImage({
   src,
@@ -32,69 +26,26 @@ export default function MaskImage({
   style,
   aspectRatio = '4/3',
 }: MaskImageProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const [imgSrc, setImgSrc] = useState(src);
 
   useEffect(() => {
     setImgSrc(src);
   }, [src]);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const img = imageRef.current;
-    if (!container || !img) return;
-
-    const ctx = gsap.context(() => {
-      // 1. Curtain wipe reveal on enter viewport
-      gsap.fromTo(
-        container,
-        { clipPath: 'inset(100% 0% 0% 0%)' },
-        {
-          clipPath: 'inset(0% 0% 0% 0%)',
-          duration: 1.35,
-          ease: 'power4.inOut',
-          scrollTrigger: {
-            trigger: container,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // 2. Parallax scale & translate scrub
-      gsap.fromTo(
-        img,
-        { scale: 1.25, yPercent: -10 },
-        {
-          scale: 1.0,
-          yPercent: 10,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: container,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.1,
-          },
-        }
-      );
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className={`relative overflow-hidden will-change-transform ${containerClassName}`}
+    <motion.div
+      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative overflow-hidden ${containerClassName}`}
       style={{
-        clipPath: 'inset(100% 0% 0% 0%)',
         aspectRatio,
         ...style,
       }}
     >
       <img
-        ref={imageRef}
         src={imgSrc}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
@@ -104,8 +55,8 @@ export default function MaskImage({
             setImgSrc('/images/arab-marble-logo.svg');
           }
         }}
-        className={`w-full h-full object-cover will-change-transform ${className}`}
+        className={`w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03] ${className}`}
       />
-    </div>
+    </motion.div>
   );
 }
