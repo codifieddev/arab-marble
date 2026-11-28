@@ -179,7 +179,50 @@ export default function Header({
     } else {
       items = headerData.navigation;
     }
-    return items.filter((item) => item && item.isActive !== false);
+
+    const filtered = items.filter((item) => {
+      if (!item || item.isActive === false) return false;
+      const rawPath = String(item.path || item.href || item.url || '').toLowerCase().trim();
+      const rawLabel = getItemLabel(item, 'en').toLowerCase().trim();
+      if (
+        rawPath === '/about' ||
+        rawPath === '/about-us' ||
+        rawPath === 'about' ||
+        rawLabel === 'about' ||
+        rawLabel === 'about us'
+      ) {
+        return false;
+      }
+      return true;
+    });
+
+    const hasPromotions = filtered.some((item) => {
+      const rawPath = String(item.path || item.href || item.url || '').toLowerCase().trim();
+      const rawLabel = getItemLabel(item, 'en').toLowerCase().trim();
+      return rawPath === '/promotions' || rawPath === 'promotions' || rawLabel === 'promotions';
+    });
+
+    if (!hasPromotions) {
+      const promoItem = {
+        label: { en: 'PROMOTIONS', ar: 'العروض' },
+        href: '/promotions',
+      };
+      const contactIdx = filtered.findIndex((item) => {
+        const rawPath = String(item.path || item.href || item.url || '').toLowerCase().trim();
+        const rawLabel = getItemLabel(item, 'en').toLowerCase().trim();
+        return rawPath === '/contact' || rawLabel.includes('contact');
+      });
+      if (contactIdx >= 0) {
+        return [
+          ...filtered.slice(0, contactIdx),
+          promoItem,
+          ...filtered.slice(contactIdx),
+        ];
+      }
+      return [...filtered, promoItem];
+    }
+
+    return filtered;
   }, [activeHeader, blueprintNav]);
 
   const closeMobile = useCallback(() => {

@@ -54,6 +54,50 @@ export default function HeroSection({
   const isCenter = props.align === 'center';
   const shouldReduceMotion = useReducedMotion();
 
+  // Inner pages (non-homepage) use the unified light stone banner matching Promotions
+  if (block.id !== 'hero-home') {
+    const innerBg =
+      !rawBgImage || rawBgImage.includes('page-banner')
+        ? 'https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png'
+        : rawBgImage;
+
+    return (
+      <section
+        className="relative py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url('${innerBg}')` }}
+      >
+        <div className="absolute inset-0 bg-white/30" />
+        <div className="relative z-10 max-w-[1140px] mx-auto px-6">
+          {onSave && isEditable ? (
+            <EditableText
+              value={headingText}
+              onSave={(val) => onSave(block.id, 'props.heading', val)}
+              isEditable={isEditable}
+              tag="h1"
+              className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+              placeholder="Page Heading..."
+            />
+          ) : (
+            <h1
+              className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+              style={{ color: '#505050' }}
+            >
+              {headingText}
+            </h1>
+          )}
+          {subheadingText && (
+            <p
+              className="text-sm md:text-base font-normal max-w-2xl mx-auto mt-3"
+              style={{ color: '#505050' }}
+            >
+              {subheadingText}
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       className={`relative w-full min-h-[540px] md:min-h-[660px] lg:min-h-[760px] flex items-center ${

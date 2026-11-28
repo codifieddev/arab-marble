@@ -386,27 +386,19 @@ export default function CategoryPageComponent({
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Category Hero Banner matching screenshot */}
+      {/* Category Hero Banner */}
       <div
-        className="relative py-20 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
+        className="relative py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover  overflow-hidden"
+        style={{ backgroundImage: `url('https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png')` }}
       >
-        <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
-        <div className="relative z-10 max-w-[1240px] mx-auto px-6">
+        <div className="absolute inset-0 bg-white/30" />
+        <div className="relative z-10 max-w-[1140px] mx-auto px-6">
           <h1
-            className="text-3xl md:text-5xl font-light tracking-widest !text-white uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] mb-3"
-            style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+            className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+            style={{ color: '#505050' }}
           >
             {categoryTitle}
           </h1>
-          {categoryDescription && (
-            <p
-              className="text-sm md:text-base !text-neutral-100 font-light max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
-              style={{ color: '#f5f5f5', textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}
-            >
-              {categoryDescription}
-            </p>
-          )}
         </div>
       </div>
 
@@ -731,39 +723,46 @@ export default function CategoryPageComponent({
 
       {/* Multi-Product Enquiry Slide-over Drawer - Compact & Scroll-free */}
       {isEnquiryDrawerOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-300">
-            {/* Compact Header */}
-            <div className="px-4 py-2.5 border-b border-neutral-200 bg-neutral-900 text-white flex items-center justify-between">
-              <div className="flex items-center gap-2">
+        <div
+          data-lenis-prevent
+          className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-xs flex justify-end"
+        >
+          <div className="w-full max-w-md bg-white h-dvh max-h-dvh shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-300">
+            {/* Header */}
+            <div className="shrink-0 px-5 py-3.5 border-b border-neutral-200 bg-[#333333] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
                 <ShoppingBag className="w-4 h-4 text-[#C9A96E]" />
-                <h3 className="text-xs font-semibold tracking-wider uppercase text-white">
+                <h3 className="text-sm font-semibold tracking-[0.1em] uppercase text-white">
                   Product Enquiry
                 </h3>
-                <span className="text-[10px] bg-neutral-800 text-neutral-300 px-1.5 py-0.5 rounded-xs font-mono">
+                <span className="text-[11px] bg-neutral-700 text-neutral-200 px-2 py-0.5 rounded-sm font-mono">
                   {enquiryItems.length} {enquiryItems.length === 1 ? 'stone' : 'stones'}
                 </span>
               </div>
               <button
                 onClick={() => setIsEnquiryDrawerOpen(false)}
-                className="w-6 h-6 rounded-full bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-white transition-colors cursor-pointer"
+                className="w-7 h-7 rounded-full bg-neutral-700 hover:bg-neutral-600 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Compact Body without unnecessary scrolling */}
-            <div className="flex-1 p-3.5 space-y-2.5 flex flex-col justify-start overflow-y-auto no-scrollbar">
-              {/* Selected Stones List - Compact */}
+            {/* Body */}
+            <div
+              data-lenis-prevent
+              className="flex-1 min-h-0 p-5 pb-6 space-y-4 overflow-y-auto [&::-webkit-scrollbar]:w-2.5 [&::-webkit-scrollbar-track]:bg-neutral-100 [&::-webkit-scrollbar-thumb]:bg-neutral-400 hover:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-thumb]:rounded-full"
+              style={{ scrollbarGutter: 'stable', scrollbarWidth: 'auto', scrollbarColor: '#a3a3a3 #f5f5f5' }}
+            >
+              {/* Selected Stones List */}
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                     Selected Items ({enquiryItems.length})
                   </span>
                   {enquiryItems.length > 0 && (
                     <button
                       onClick={() => saveEnquiryItems([])}
-                      className="text-[10px] text-neutral-400 hover:text-red-600 underline cursor-pointer"
+                      className="text-xs text-neutral-500 hover:text-red-600 underline cursor-pointer"
                     >
                       Clear All
                     </button>
@@ -771,39 +770,43 @@ export default function CategoryPageComponent({
                 </div>
 
                 {enquiryItems.length === 0 ? (
-                  <div className="p-4 border border-dashed border-neutral-300 text-center rounded-xs bg-neutral-50">
-                    <p className="text-xs text-neutral-500 font-light">
+                  <div className="p-5 border border-dashed border-neutral-300 text-center rounded-sm bg-neutral-50">
+                    <p className="text-sm text-neutral-500 font-normal">
                       No stones added yet. Browse catalog and click &quot;Add to Enquiry&quot;.
                     </p>
                   </div>
                 ) : (
-                  <div className="space-y-1.5 max-h-28 overflow-y-auto pr-0.5 no-scrollbar">
+                  <div
+                    data-lenis-prevent
+                    className="space-y-2 min-h-[140px] max-h-[280px] overflow-y-auto pr-1.5 border border-neutral-200 p-2.5 bg-neutral-50/50 rounded-sm [&::-webkit-scrollbar]:w-2.5 [&::-webkit-scrollbar-track]:bg-neutral-200/70 [&::-webkit-scrollbar-thumb]:bg-[#C9A96E] hover:[&::-webkit-scrollbar-thumb]:bg-[#b5955b] [&::-webkit-scrollbar-thumb]:rounded-full"
+                    style={{ scrollbarGutter: 'stable', scrollbarWidth: 'auto', scrollbarColor: '#C9A96E #ececec' }}
+                  >
                     {enquiryItems.map((stone) => (
                       <div
                         key={stone.id}
-                        className="flex items-center justify-between p-1.5 border border-neutral-200 bg-neutral-50 rounded-2xs"
+                        className="flex items-center justify-between p-2 border border-neutral-200 bg-white rounded-sm"
                       >
-                        <div className="flex items-center gap-2 min-w-0">
+                        <div className="flex items-center gap-3 min-w-0">
                           <img
                             src={stone.primaryImage}
                             alt={stone.name}
-                            className="w-8 h-8 object-cover border border-neutral-200 rounded-2xs shrink-0"
+                            className="w-10 h-10 object-cover border border-neutral-200 rounded-sm shrink-0"
                           />
                           <div className="min-w-0">
-                            <div className="text-xs font-semibold text-neutral-800 truncate">
+                            <div className="text-sm font-semibold text-neutral-800 truncate">
                               {stone.name}
                             </div>
-                            <div className="text-[10px] text-neutral-500 font-light truncate">
+                            <div className="text-xs text-neutral-500 font-normal truncate">
                               {stone.country || 'Natural Stone'} • {stone.color || 'Standard'}
                             </div>
                           </div>
                         </div>
                         <button
                           onClick={() => removeEnquiryItem(stone.id)}
-                          className="p-1 text-neutral-400 hover:text-red-600 transition-colors cursor-pointer shrink-0"
+                          className="p-1.5 text-neutral-400 hover:text-red-600 transition-colors cursor-pointer shrink-0"
                           title="Remove item"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     ))}
@@ -811,108 +814,99 @@ export default function CategoryPageComponent({
                 )}
               </div>
 
-              {/* Form & Verification Section - Ultra-Compact */}
+              {/* Form & Verification Section */}
               {enquiryItems.length > 0 && (
-                <div className="border-t border-neutral-200 pt-2.5">
+                <div className="border-t border-neutral-200 pt-4">
                   {verificationStep === 'form' && (
-                    <form onSubmit={handleRequestVerification} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-700">
+                    <form id="enquiry-drawer-form" onSubmit={handleRequestVerification} className="space-y-3.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-600">
                           Contact Details & Verification
                         </span>
-                        <span className="text-[9px] text-[#C9A96E] font-medium uppercase tracking-wider">
-                          Direct Stone Specialist Link
+                        <span className="text-[10px] text-[#C9A96E] font-medium uppercase tracking-wider">
+                          Direct Specialist Link
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         {/* Name */}
                         <div>
-                          <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
+                          <label className="block text-[11px] uppercase font-semibold tracking-wider text-neutral-500 mb-1">
                             Full Name *
                           </label>
                           <div className="relative">
-                            <User className="w-3 h-3 text-neutral-400 absolute left-2 top-2" />
+                            <User className="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                             <input
                               type="text"
                               required
                               value={enquiryName}
                               onChange={(e) => setEnquiryName(e.target.value)}
-                              placeholder="John Doe"
-                              className="w-full pl-6 pr-2 h-7 text-xs border border-neutral-300 focus:outline-none focus:border-neutral-800 rounded-none"
+                              placeholder="Enter your full name"
+                              className="w-full pl-9 pr-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-400 border border-neutral-300 focus:outline-none focus:border-neutral-700 bg-white rounded-sm transition-colors"
                             />
                           </div>
                         </div>
 
                         {/* Phone - Optional */}
                         <div>
-                          <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
-                            Phone / WhatsApp (Optional)
+                          <label className="block text-[11px] uppercase font-semibold tracking-wider text-neutral-500 mb-1">
+                            Phone / WhatsApp
                           </label>
                           <div className="relative">
-                            <Phone className="w-3 h-3 text-neutral-400 absolute left-2 top-2" />
+                            <Phone className="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                             <input
                               type="tel"
                               value={enquiryPhone}
                               onChange={(e) => setEnquiryPhone(e.target.value)}
-                              placeholder="+971 50 123 4567"
-                              className="w-full pl-6 pr-2 h-7 text-xs border border-neutral-300 focus:outline-none focus:border-neutral-800 rounded-none"
+                              placeholder="+971 50 000 0000"
+                              className="w-full pl-9 pr-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-400 border border-neutral-300 focus:outline-none focus:border-neutral-700 bg-white rounded-sm transition-colors"
                             />
                           </div>
                         </div>
 
                         {/* Email - Required */}
-                        <div className="col-span-2">
-                          <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
+                        <div className="sm:col-span-2">
+                          <label className="block text-[11px] uppercase font-semibold tracking-wider text-neutral-500 mb-1">
                             Email Address *
                           </label>
                           <div className="relative">
-                            <Mail className="w-3 h-3 text-neutral-400 absolute left-2 top-2" />
+                            <Mail className="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                             <input
                               type="email"
                               required
                               value={enquiryEmail}
                               onChange={(e) => setEnquiryEmail(e.target.value)}
-                              placeholder="client@domain.ae"
-                              className="w-full pl-6 pr-2 h-7 text-xs border border-neutral-300 focus:outline-none focus:border-neutral-800 rounded-none"
+                              placeholder="name@example.com"
+                              className="w-full pl-9 pr-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-400 border border-neutral-300 focus:outline-none focus:border-neutral-700 bg-white rounded-sm transition-colors"
                             />
                           </div>
                         </div>
 
                         {/* Project Scope / Quantity */}
-                        <div className="col-span-2">
-                          <label className="block text-[10px] uppercase font-semibold text-neutral-600 mb-0.5">
+                        <div className="sm:col-span-2">
+                          <label className="block text-[11px] uppercase font-semibold tracking-wider text-neutral-500 mb-1">
                             Project Scope & Quantity (Optional)
                           </label>
-                          <input
-                            type="text"
+                          <textarea
+                            rows={4}
                             value={enquiryNotes}
                             onChange={(e) => setEnquiryNotes(e.target.value)}
-                            placeholder="E.g., 250 sqm flooring for luxury villa in Abu Dhabi"
-                            className="w-full px-2 h-7 text-xs border border-neutral-300 focus:outline-none focus:border-neutral-800 rounded-none"
+                            placeholder="Provide dimensions, quantity (m²), finish (polished/honed), or project specifications..."
+                            className="w-full px-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-400 border border-neutral-300 focus:outline-none focus:border-neutral-700 bg-white rounded-sm transition-colors min-h-[110px] resize-y"
                           />
                         </div>
                       </div>
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full h-8 mt-1.5 bg-neutral-900 hover:bg-[#C9A96E] hover:text-neutral-950 text-white text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-60"
-                      >
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                        <span>{isSubmitting ? 'Sending Code to Email...' : 'Verify & Submit Enquiry'}</span>
-                      </button>
                     </form>
                   )}
 
                   {verificationStep === 'verify' && (
-                    <form onSubmit={handleConfirmAndSubmit} className="space-y-2">
-                      <div className="p-2 bg-amber-50 border border-amber-200 rounded-2xs">
-                        <div className="flex items-center gap-1.5 text-amber-900 font-semibold text-xs mb-0.5">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#C9A96E]" />
+                    <form id="enquiry-verify-form" onSubmit={handleConfirmAndSubmit} className="space-y-3.5">
+                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-sm">
+                        <div className="flex items-center gap-2 text-amber-900 font-semibold text-sm mb-1">
+                          <ShieldCheck className="w-4 h-4 text-[#C9A96E]" />
                           <span>Verification Code Sent to Email</span>
                         </div>
-                        <p className="text-[10px] text-amber-800 leading-snug font-light">
+                        <p className="text-xs text-amber-800 leading-relaxed">
                           We sent a 4-digit code to <strong>{enquiryEmail}</strong>. Please check your email inbox and enter the code below:
                         </p>
                       </div>
@@ -928,29 +922,11 @@ export default function CategoryPageComponent({
                             setOtpError('');
                           }}
                           placeholder="Enter 4-Digit PIN"
-                          className="w-full text-center tracking-[0.3em] font-mono text-base h-8 border border-neutral-300 focus:outline-none focus:border-neutral-800 rounded-none"
+                          className="w-full text-center tracking-[0.3em] font-mono text-base py-2.5 px-3.5 border border-neutral-300 focus:outline-none focus:border-neutral-700 bg-white rounded-sm transition-colors"
                         />
                         {otpError && (
-                          <p className="text-red-600 text-[10px] mt-0.5 font-medium">{otpError}</p>
+                          <p className="text-red-600 text-xs mt-1 font-medium">{otpError}</p>
                         )}
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setVerificationStep('form')}
-                          className="w-1/3 h-8 border border-neutral-300 text-neutral-700 hover:bg-neutral-100 text-[11px] uppercase tracking-wider transition-colors cursor-pointer"
-                        >
-                          Back
-                        </button>
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="flex-1 h-8 bg-[#C9A96E] hover:bg-[#b5955b] text-neutral-950 text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-50"
-                        >
-                          <Send className="w-3.5 h-3.5" />
-                          <span>{isSubmitting ? 'Submitting...' : 'Confirm & Send'}</span>
-                        </button>
                       </div>
 
                       <div className="text-center pt-1">
@@ -971,7 +947,7 @@ export default function CategoryPageComponent({
                               toast.error('Failed to resend email code');
                             }
                           }}
-                          className="text-[10px] text-neutral-500 hover:text-black underline cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-black underline cursor-pointer"
                         >
                           Didn&apos;t receive code? Resend PIN
                         </button>
@@ -980,14 +956,14 @@ export default function CategoryPageComponent({
                   )}
 
                   {verificationStep === 'success' && (
-                    <div className="p-4 text-center space-y-2.5">
-                      <div className="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
+                    <div className="p-5 text-center space-y-3">
+                      <div className="w-11 h-11 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
                         <Check className="w-5 h-5" />
                       </div>
-                      <h4 className="text-xs font-bold uppercase tracking-wide text-neutral-900">
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
                         Inquiry Received & Verified!
                       </h4>
-                      <p className="text-[11px] text-neutral-600 leading-snug font-light">
+                      <p className="text-sm text-neutral-600 leading-relaxed">
                         Thank you, <strong>{enquiryName}</strong>. Our Arab Marble stone specialists have received
                         your specifications and recorded it in the admin dashboard.
                       </p>
@@ -1005,6 +981,43 @@ export default function CategoryPageComponent({
                 </div>
               )}
             </div>
+
+            {/* Sticky Sidebar Footer */}
+            {enquiryItems.length > 0 && verificationStep !== 'success' && (
+              <div className="shrink-0 border-t border-neutral-200 bg-white px-5 py-3.5">
+                {verificationStep === 'form' && (
+                  <button
+                    type="submit"
+                    form="enquiry-drawer-form"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 bg-[#333333] hover:bg-black text-white text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>{isSubmitting ? 'Sending Code to Email...' : 'Verify & Submit Enquiry'}</span>
+                  </button>
+                )}
+                {verificationStep === 'verify' && (
+                  <div className="flex items-center gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setVerificationStep('form')}
+                      className="w-1/3 py-3 border border-neutral-300 text-neutral-700 hover:bg-neutral-100 text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      form="enquiry-verify-form"
+                      disabled={isSubmitting}
+                      className="flex-1 py-3 bg-[#333333] hover:bg-black text-white text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    >
+                      <Send className="w-4 h-4" />
+                      <span>{isSubmitting ? 'Submitting...' : 'Confirm & Send'}</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}

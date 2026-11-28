@@ -63,14 +63,14 @@ export default function ContactPage() {
     <div className="bg-white min-h-screen">
       {/* Hero Banner matching storefront theme */}
       <div
-        className="relative py-14 md:py-24 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
+        className="relative py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url('https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png')` }}
       >
-        <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
-        <div className="relative z-10 max-w-[1240px] mx-auto px-6">
+        <div className="absolute inset-0 bg-white/30" />
+        <div className="relative z-10 max-w-[1140px] mx-auto px-6">
           <h1
-            className="text-3xl md:text-5xl font-light tracking-widest !text-white uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
-            style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+            className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+            style={{ color: '#505050' }}
           >
             CONTACT US
           </h1>

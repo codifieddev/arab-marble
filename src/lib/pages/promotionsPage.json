@@ -19,7 +19,7 @@
         "title": "PROMOTIONS",
         "heading": "PROMOTIONS",
         "align": "center",
-        "backgroundImage": "/images/page-banner.jpg"
+        "backgroundImage": "https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png"
       }
     },
     {
@@ -33,7 +33,7 @@
             "title": "Light Emperador – Spain",
             "price": "AED 175/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-light-emperador.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg"
           },
           {
             "productId": "6ae8484e5cd44cc45b374c5c",
@@ -41,7 +41,7 @@
             "title": "Crema Marfil",
             "price": "AED 100/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-crema-marfil.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg"
           },
           {
             "productId": "6ae8486d5cd44cc45b374c65",
@@ -49,7 +49,7 @@
             "title": "Cat’s Eye",
             "price": "AED 60/m2",
             "size": "600x300x20mm",
-            "image": "/images/products/promo-cats-eye.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Aegean-Beige-001-Clearance.jpeg"
           },
           {
             "productId": "6ae848715cd44cc45b374c66",
@@ -57,23 +57,23 @@
             "title": "Aegean Cream",
             "price": "AED 60/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-aegean-cream.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Black-Opal-e1620127429235.jpeg"
           },
           {
             "productId": "6ae848745cd44cc45b374c67",
             "productSlug": "black-opal-quartz",
             "title": "Black Opal Quartz",
             "price": "AED 60/m2",
-            "size": "Slabs & Cut to size",
-            "image": "/images/products/promo-black-opal.jpg"
+            "size": "600x300x12mm",
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Aegean-Beige-001-Clearance.jpeg"
           },
           {
             "productId": "6ae848605cd44cc45b374c61",
             "productSlug": "calacatta-oro",
             "title": "Calacatta Oro",
             "price": "AED 150-250/m2",
-            "size": "Slabs & Custom Tiles",
-            "image": "/images/products/promo-calacatta-oro.jpg"
+            "size": "600x300x20mm",
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Black-Opal-e1620127429235.jpeg"
           }
         ]
       }
@@ -87,7 +87,7 @@
         "title": "PROMOTIONS",
         "heading": "PROMOTIONS",
         "align": "center",
-        "backgroundImage": "/images/page-banner.jpg"
+        "backgroundImage": "https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png"
       }
     },
     {
@@ -101,7 +101,7 @@
             "title": "Light Emperador – Spain",
             "price": "AED 175/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-light-emperador.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Light-Emperador-001-Clearance_FINAL.jpeg"
           },
           {
             "productId": "6ae8484e5cd44cc45b374c5c",
@@ -109,7 +109,7 @@
             "title": "Crema Marfil",
             "price": "AED 100/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-crema-marfil.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Crema-Marfil-2nd-Choice-001-Clearance_FINAL-768x768-1.jpeg"
           },
           {
             "productId": "6ae8486d5cd44cc45b374c65",
@@ -117,7 +117,7 @@
             "title": "Cat’s Eye",
             "price": "AED 60/m2",
             "size": "600x300x20mm",
-            "image": "/images/products/promo-cats-eye.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Aegean-Beige-001-Clearance.jpeg"
           },
           {
             "productId": "6ae848715cd44cc45b374c66",
@@ -125,23 +125,23 @@
             "title": "Aegean Cream",
             "price": "AED 60/m2",
             "size": "600x600x20mm",
-            "image": "/images/products/promo-aegean-cream.jpg"
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Black-Opal-e1620127429235.jpeg"
           },
           {
             "productId": "6ae848745cd44cc45b374c67",
             "productSlug": "black-opal-quartz",
             "title": "Black Opal Quartz",
             "price": "AED 60/m2",
-            "size": "Slabs & Cut to size",
-            "image": "/images/products/promo-black-opal.jpg"
+            "size": "600x300x12mm",
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Aegean-Beige-001-Clearance.jpeg"
           },
           {
             "productId": "6ae848605cd44cc45b374c61",
             "productSlug": "calacatta-oro",
             "title": "Calacatta Oro",
             "price": "AED 150-250/m2",
-            "size": "Slabs & Custom Tiles",
-            "image": "/images/products/promo-calacatta-oro.jpg"
+            "size": "600x300x20mm",
+            "image": "https://arabmarble.ae/wp-content/uploads/2022/08/Black-Opal-e1620127429235.jpeg"
           }
         ]
       }

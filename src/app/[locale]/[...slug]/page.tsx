@@ -30,7 +30,9 @@ export async function generateMetadata({
         s.endsWith('.map') ||
         s.endsWith('.ico') ||
         s.startsWith('com.chrome')
-    )
+    ) ||
+    slug.join('/').toLowerCase() === 'about' ||
+    slug.join('/').toLowerCase() === 'about-us'
   ) {
     notFound();
   }
@@ -215,7 +217,9 @@ export default async function DynamicPage({
         s.endsWith('.map') ||
         s.endsWith('.ico') ||
         s.startsWith('com.chrome')
-    )
+    ) ||
+    slug.join('/').toLowerCase() === 'about' ||
+    slug.join('/').toLowerCase() === 'about-us'
   ) {
     notFound();
   }
