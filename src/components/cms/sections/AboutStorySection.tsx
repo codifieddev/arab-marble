@@ -44,16 +44,16 @@ export default function AboutStorySection({
 
   return (
     <section
-      className="relative py-20 md:py-28 bg-[#f4f5f6] bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed overflow-hidden"
+      className="relative py-14 md:py-45 bg-[#f4f5f6] bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed overflow-hidden"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
     >
       {/* Subtle readability overlay on mobile/tablet where the sculpture sits behind text */}
-      <div className="absolute inset-0 bg-white/75 md:bg-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-white/80 md:bg-transparent pointer-events-none" />
 
-      <div className="relative z-10 max-w-[1340px] mx-auto px-6 md:px-0">
-        <div className="max-w-[540px] ">
+      <div className="relative z-10 max-w-[1380px] mx-auto px-6 md:px-0">
+        <div className="max-w-[520px] ">
           <Reveal direction="up" duration={0.9} className="flex flex-col justify-center">
             {onSave && isEditable ? (
               <div className="mb-5">
@@ -75,7 +75,7 @@ export default function AboutStorySection({
               </SplitReveal>
             )}
 
-            <div className="space-y-7 text-[#545454] font-medium text-[14px] md:text-[22px] leading-[1.85] tracking-[0.01em] text-left rtl:text-right">
+            <div className="space-y-5 md:space-y-7 text-[#545454] font-medium text-[15px] md:text-[20px] leading-[1.75] md:leading-[1.58] tracking-[0.04em] text-left rtl:text-right">
               {paragraphs.map((para, idx) => {
                 const paraText = t(para, locale) || (typeof para === 'string' ? para : '');
                 return (
@@ -86,11 +86,11 @@ export default function AboutStorySection({
                         onSave={(val) => onSave(block.id, `props.paragraphs[${idx}]`, val)}
                         isEditable={isEditable}
                         tag="p"
-                        className="whitespace-pre-line text-justify "
+                        className="whitespace-pre-line text-left md:text-justify"
                         placeholder="Paragraph text..."
                       />
                     ) : (
-                      <p className="whitespace-pre-line text-justify pt-4">{paraText}</p>
+                      <p className="whitespace-pre-line text-left md:text-justify pt-2 md:pt-4">{paraText}</p>
                     )}
                   </div>
                 );

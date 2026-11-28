@@ -139,7 +139,7 @@ export default function Footer({
 
       {/* Main Footer Row */}
       <Reveal direction="up" duration={1.1} distance={20} className="w-full">
-        <div className="max-w-[1240px] mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row justify-between items-start gap-10">
+        <div className="max-w-[1240px] mx-auto px-6 py-10 md:py-24 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-10">
           {/* Left Column: Brand Logo */}
           <div className="space-y-3 flex flex-col items-start rtl:items-end">
             <Link href={localePrefix || '/'} className="inline-block">
@@ -211,29 +211,28 @@ export default function Footer({
           )}
 
           {/* Right Column: Contact Us */}
-          <div className="space-y-3 rtl:text-right ltr:text-left min-w-[240px]">
+          <div className="space-y-3 rtl:text-right ltr:text-left w-full md:w-auto md:min-w-[240px]">
             <div className="inline-block border-b-2 border-white pb-1 mb-2">
-              <h3 className="text-base md:text-2xl font-bold text-white font-medium tracking-wide">
+              <h3 className="text-lg md:text-2xl font-bold text-white font-medium tracking-wide">
                 {contactTitle}
               </h3>
             </div>
-            <div className="flex pt-4 flex-col gap-2.5 text-sm md:text-md text-neutral-200 font-normal" 
-            style={{fontSize:"16px"}}>
-              <p className="flex items-center gap-2 ">
+            <div className="flex pt-2 md:pt-4 flex-col gap-2.5 text-sm md:text-[16px] text-neutral-200 font-normal">
+              <p className="flex flex-wrap items-center gap-2">
                 <span className="font-semibold text-white">{phoneLabel}</span>
                 <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:underline transition-colors" dir="ltr">
                   {phone}
                 </a>
               </p>
               {fax && (
-                <p className="flex items-center gap-2">
+                <p className="flex flex-wrap items-center gap-2">
                   <span className="font-semibold text-white">{faxLabel}</span>
                   <span dir="ltr">{fax}</span>
                 </p>
               )}
-              <p className="flex items-center gap-2">
+              <p className="flex flex-wrap items-center gap-2">
                 <span className="font-semibold text-white">{emailLabel}</span>
-                <a href={`mailto:${email}`} className="hover:underline transition-colors" dir="ltr">
+                <a href={`mailto:${email}`} className="hover:underline transition-colors break-all" dir="ltr">
                   {email}
                 </a>
               </p>
@@ -244,13 +243,20 @@ export default function Footer({
 
       {/* Bottom Bar: Black */}
       <div style={{ background: '#191919' }} className="border-t border-neutral-700/50">
-        <div className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-400 gap-2 font-normal">
+        <div className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left text-xs text-neutral-400 gap-2 font-normal">
           <div>{copyrightText}</div>
           <div>
             {creditsText.includes('CODIFIED') ? (
               <span>
                 {creditsText.split('CODIFIED')[0]}
-                <strong className="text-white font-semibold">CODIFIED</strong>
+                <a
+                  href="https://www.codifiedweb.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold hover:underline transition-colors"
+                >
+                  CODIFIED
+                </a>
                 {creditsText.split('CODIFIED')[1]}
               </span>
             ) : (

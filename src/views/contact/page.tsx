@@ -63,14 +63,14 @@ export default function ContactPage() {
     <div className="bg-white min-h-screen">
       {/* Hero Banner matching storefront theme */}
       <div
-        className="relative py-24 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
+        className="relative py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url('https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png')` }}
       >
-        <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
-        <div className="relative z-10 max-w-[1240px] mx-auto px-6">
+        <div className="absolute inset-0 bg-white/30" />
+        <div className="relative z-10 max-w-[1140px] mx-auto px-6">
           <h1
-            className="text-4xl md:text-5xl font-light tracking-widest !text-white uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
-            style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+            className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+            style={{ color: '#505050' }}
           >
             CONTACT US
           </h1>
@@ -78,8 +78,8 @@ export default function ContactPage() {
       </div>
 
       {/* Google Map Embed matching screenshot (Arab Marble Est, Musaffah M9) */}
-      <div className="max-w-[1240px] mx-auto px-6 pt-12">
-        <div className="w-full h-[380px] md:h-[450px] overflow-hidden border border-neutral-200 shadow-sm relative">
+      <div className="max-w-[1240px] mx-auto px-6 pt-8 md:pt-12">
+        <div className="w-full h-[260px] sm:h-[340px] md:h-[450px] overflow-hidden border border-neutral-200 shadow-sm relative">
           <iframe
             title="Arab Marble Est Location Map"
             src="https://maps.google.com/maps?q=Arab%20Marble%20Est,%209th%20St,%20Musaffah%20Industrial%20Area%20M9,%20Abu%20Dhabi&t=&z=14&ie=UTF8&iwloc=&output=embed"
@@ -91,8 +91,8 @@ export default function ContactPage() {
       </div>
 
       {/* Two Column Section: Contact Us (Left) & Email Us (Right) */}
-      <div className="max-w-[1240px] mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+      <div className="max-w-[1240px] mx-auto px-6 py-10 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Left Column: Contact Us Details */}
           <div>
             <h2 className="text-2xl font-normal text-neutral-800 mb-8 tracking-wide">

@@ -117,31 +117,38 @@ export default function CategoriesShowcaseSection({
 
   return (
     <div className="w-full bg-[#fdfdfc] text-neutral-900 overflow-hidden">
-      {/* 1. Hero Title Banner matching arabmarble.ae/products/ */}
+      {/* 1. Hero Title Banner matching arabmarble.ae */}
       {showBanner && (
         <section
-          className="relative w-full h-[240px] md:h-[300px] flex items-center justify-center bg-cover bg-center overflow-hidden"
-          style={{ backgroundImage: `url(${bannerImage})` }}
+          className="relative w-full py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+          style={{
+            backgroundImage: `url('${
+              !bannerImage || bannerImage.includes('page-banner')
+                ? 'https://arabmarble.ae/wp-content/uploads/2023/06/title-bg-2.png'
+                : bannerImage
+            }')`,
+          }}
         >
-          {/* Subtle dark gradient overlay */}
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-white/30" />
 
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <div className="relative z-10 max-w-[1140px] mx-auto px-6">
             {onSave && isEditable && block?.id ? (
               <EditableText
                 value={pageTitle}
                 onSave={(val) => onSave(block.id, 'props.title', val)}
                 isEditable={isEditable}
                 tag="h1"
-                className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-[0.08em] !text-white uppercase drop-shadow-md"
+                className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
                 placeholder="Page Title..."
               />
             ) : (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-[0.08em] !text-white uppercase drop-shadow-md" style={{ color: '#ffffff' }}>
+              <h1
+                className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] uppercase"
+                style={{ color: '#505050' }}
+              >
                 {pageTitle}
               </h1>
             )}
-            <div className="w-16 h-[2px] bg-[#C9A96E] mx-auto mt-4" />
           </div>
         </section>
       )}

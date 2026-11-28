@@ -344,28 +344,28 @@ export default function ProjectsCategoryPage({
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero Header matching screenshot */}
+      {/* Hero Header */}
       <div
-        className="relative py-20 bg-neutral-900 border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: `url('/images/page-banner.jpg')` }}
+        className="relative py-12 md:py-24 bg-[#e9e8e6] border-b border-neutral-200 text-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url('/images/ShutterstockProjects-scaled.jpeg')` }}
       >
-        <div className="absolute inset-0 bg-black/65 backdrop-brightness-85" />
-        <div className="relative z-10 max-w-[1240px] mx-auto px-6">
+        <div className="absolute inset-0 bg-white/30 a" />
+        <div className="relative z-10 max-w-[1140px] mx-auto px-6">
           <EditableText
             value={categoryHeading}
             onSave={(val) => setCategoryHeading(val)}
             isEditable={isEditable}
             tag="h1"
-            className="text-4xl md:text-5xl font-light tracking-widest !text-white uppercase mb-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-center"
+            className="text-3xl sm:text-4xl md:text-[80px] font-bold tracking-[0.06em] !text-[#505050] uppercase mb-3 text-center"
             placeholder="Category Heading..."
           />
-          <div className="w-16 h-0.5 bg-neutral-300 mx-auto mb-4" />
+          <div className="w-65 h-1.5 bg-[#505050]/90 mx-auto  my-12" />
           <EditableText
             value={categorySubtitle}
             onSave={(val) => setCategorySubtitle(val)}
             isEditable={isEditable}
             tag="p"
-            className="text-sm md:text-base font-light !text-neutral-100 tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] text-center"
+            className="text-sm md:text-[30px] font-medium !text-[#505050] tracking-wide text-center"
             placeholder="Category Subtitle..."
           />
 
@@ -407,8 +407,8 @@ export default function ProjectsCategoryPage({
       </div>
 
       {/* Projects List matching screenshot */}
-      <div className="max-w-[1140px] mx-auto px-6 py-16">
-        <div className="space-y-12">
+      <div className="max-w-[1140px] mx-auto px-6 py-10 md:py-16">
+        <div className="space-y-8 md:space-y-12">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             const itemId = project.id || idx;
@@ -434,7 +434,7 @@ export default function ProjectsCategoryPage({
 
                 {/* Text Block */}
                 <div
-                  className={`p-8 md:p-14 flex flex-col justify-center bg-[#4A4A4A] text-white ${
+                  className={`p-6 sm:p-8 md:p-14 flex flex-col justify-center bg-[#4A4A4A] text-white ${
                     isEven ? "order-1" : "order-1 md:order-2"
                   }`}
                 >

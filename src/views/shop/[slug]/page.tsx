@@ -231,7 +231,7 @@ export default function ProductDetailPage({
                 Enquire About This Product
               </Link>
 
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <a
                   href="tel:+97125554008"
                   className="py-3 px-2 border border-neutral-300 hover:border-black text-center text-xs font-medium text-neutral-700 hover:text-black transition-colors block"
